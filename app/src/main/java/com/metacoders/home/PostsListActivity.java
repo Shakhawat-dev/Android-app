@@ -88,6 +88,7 @@ public class PostsListActivity extends AppCompatActivity {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Model model, int position) {
+
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage());
                     }
 

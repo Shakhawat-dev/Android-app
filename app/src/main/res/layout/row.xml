@@ -23,7 +23,8 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxLength="10"/>
         <ImageView
             android:id="@+id/rImageView"
             android:layout_width="match_parent"
@@ -35,6 +36,8 @@
             android:id="@+id/rDescriptionTv"
             android:text="This will be the description of the post"
             android:textSize="20sp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
