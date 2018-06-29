@@ -41,7 +41,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         Intent i;
 
         switch (view.getId()){
-            case R.id.jobs_Button : i= new Intent(this,JobsActivity.class);startActivity(i); break;
+            case R.id.jobs_Button : i= new Intent(this,PostsListActivity.class);startActivity(i); break;
             case R.id.notification_Button : i= new Intent(this,NotificationActivity.class);startActivity(i); break;
             case R.id.quiz_Button : i= new Intent(this,QuizActivity.class);startActivity(i); break;
             case R.id.article_Button : i= new Intent(this,ArticleActivity.class);startActivity(i); break;

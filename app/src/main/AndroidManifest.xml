@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.metacoders.home">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--External storage permission-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--Wallpaper permission-->
+    <uses-permission android:name="android.permission.SET_WALLPAPER"/>
 
     <application
         android:allowBackup="true"
@@ -24,6 +29,8 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".ArticleActivity"></activity>
+        <activity android:name=".PostsListActivity"></activity>
+        <activity android:name=".PostDetailActivity"></activity>
     </application>
 
 </manifest>
