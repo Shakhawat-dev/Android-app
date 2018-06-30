@@ -24,7 +24,7 @@
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="10"/>
+           />
         <ImageView
             android:id="@+id/rImageView"
             android:layout_width="match_parent"
