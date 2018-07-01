@@ -27,9 +27,9 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_computer_black_24dp"
+                    android:src="@drawable/ic_account_balance_black_24dp"
                     android:padding="15dp"
-                    android:background="#000"
+                    android:background="@drawable/circlegreen"
                     />
                 <TextView
                     android:layout_width="match_parent"
@@ -57,9 +57,9 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
-                    android:src="@color/cardview_dark_background"
+                    android:src="@drawable/ic_computer_black_24dp"
                     android:padding="15dp"
-                    android:background="@color/cardview_dark_background"
+                    android:background="@drawable/circleyellow"
                     />
                 <TextView
                     android:layout_width="match_parent"
@@ -87,9 +87,9 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
-                    android:src="@color/cardview_dark_background"
+                    android:src="@drawable/ic_card_travel_black_24dp"
                     android:padding="15dp"
-                    android:background="@color/cardview_dark_background"
+                    android:background="@drawable/circleteal"
                     />
 
                 <TextView
@@ -117,9 +117,9 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
-                    android:src="@color/cardview_dark_background"
+                    android:src="@drawable/ic_supervisor_account_black_24dp"
                     android:padding="15dp"
-                    android:background="@color/cardview_dark_background"
+                    android:background="@drawable/circlepurple"
                     />
                 <TextView
                     android:layout_width="match_parent"
