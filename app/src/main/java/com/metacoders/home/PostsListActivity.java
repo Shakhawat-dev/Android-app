@@ -21,12 +21,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.io.ByteArrayOutputStream;
+
+import io.fabric.sdk.android.Fabric;
 
 public class PostsListActivity extends AppCompatActivity {
 
@@ -39,6 +42,7 @@ public class PostsListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this,new Crashlytics());
         setContentView(R.layout.activity_posts_list);
 
         //Actionbar

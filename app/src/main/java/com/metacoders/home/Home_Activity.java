@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener{
     private CardView jobsButton, notificationButton, quizButton,
@@ -13,6 +15,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
         //defining cardButtons
         jobsButton= (CardView)findViewById(R.id.jobs_Button);

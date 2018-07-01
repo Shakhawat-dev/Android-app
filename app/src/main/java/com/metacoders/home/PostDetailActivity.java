@@ -20,11 +20,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
+import io.fabric.sdk.android.Fabric;
 
 public class PostDetailActivity extends AppCompatActivity {
 
@@ -40,15 +44,16 @@ public class PostDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this,new  Crashlytics());
         setContentView(R.layout.activity_post_detail);
 
         //Action bar
-        ActionBar actionBar = getSupportActionBar();
+        //ActionBar actionBar = getSupportActionBar();
         //Actionbar title
-        actionBar.setTitle("Post Detail");
+        //actionBar.setTitle("Post Detail");
         //set back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+       // actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setDisplayShowHomeEnabled(true);
 
         //initialize views
         mTitleTv = findViewById(R.id.titleTv);
@@ -105,6 +110,7 @@ public class PostDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setImgWallpaper();
+
             }
         });
 
@@ -192,4 +198,8 @@ public class PostDetailActivity extends AppCompatActivity {
         }
 
     }
+
+
+
+
 }
