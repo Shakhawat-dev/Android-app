@@ -31,6 +31,8 @@
         <activity android:name=".ArticleActivity"></activity>
         <activity android:name=".PostsListActivity"></activity>
         <activity android:name=".PostDetailActivity"></activity>
+        <activity android:name=".WPPostDetails"></activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e5ed560138ef90420b4feb23f6939ba556c01e12" />
