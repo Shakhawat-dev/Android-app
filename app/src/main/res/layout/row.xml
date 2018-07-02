@@ -11,36 +11,65 @@
     app:cardElevation="3dp"
     app:contentPadding="5dp"
     app:cardUseCompatPadding="true">
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/rTitleTv"
-            android:text="Title"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           />
-        <ImageView
-            android:id="@+id/rImageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:background="@drawable/ic_launcher_background"/>
-        <TextView
-            android:id="@+id/rDescriptionTv"
-            android:text="This will be the description of the post"
-            android:textSize="20sp"
-            android:ellipsize="marquee"
-            android:singleLine="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/login"
+                    android:id="@+id/rImageView"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/rTitleTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Walton Group"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/rDescriptionTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="This will be the description of the post"
+                    android:textSize="20sp"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                   />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="10sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
 
 
 </android.support.v7.widget.CardView>
