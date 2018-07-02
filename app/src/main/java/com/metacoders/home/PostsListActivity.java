@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
@@ -38,12 +40,16 @@ public class PostsListActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
+    private  ProgressBar job_progressBar ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
         setContentView(R.layout.activity_posts_list);
+
+        job_progressBar = (ProgressBar) findViewById(R.id.progressbar_job_ad) ;
 
         //Actionbar
         ActionBar actionBar = getSupportActionBar();
@@ -81,7 +87,7 @@ public class PostsListActivity extends AppCompatActivity {
         //convert string entered in SearchView to lowercase
         String query = searchText.toLowerCase();
 
-        Query firebaseSearchQuery = mRef.orderByChild("search").startAt(query).endAt(query + "\uf8ff");
+        Query firebaseSearchQuery = mRef.orderByChild("Data").startAt(query).endAt(query + "\uf8ff");
 
         FirebaseRecyclerAdapter<Model, ViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Model, ViewHolder>(
@@ -127,10 +133,10 @@ public class PostsListActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onItemLongClick(View view, int position) {
-                                //TODO do your own implementaion on long item click
-                            }
-                        });
+                        public void onItemLongClick(View view, int position) {
+                            //TODO do your own implementaion on long item click
+                        }
+                    });
 
                         return viewHolder;
                     }
@@ -157,6 +163,15 @@ public class PostsListActivity extends AppCompatActivity {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Model model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage());
+                        Handler handler  = new Handler() ;
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                job_progressBar.setVisibility(View.GONE);
+
+                            }
+                        },5000);
+
                     }
 
                     @Override
@@ -175,9 +190,11 @@ public class PostsListActivity extends AppCompatActivity {
                                 String mTitle = mTitleTv.getText().toString();
                                 String mDesc = mDescTv.getText().toString();
                                 Drawable mDrawable = mImageView.getDrawable();
-                                Bitmap mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
+                                Bitmap mBitmap =null;
+                                 mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
 
                                 //pass this data to new activity
+
                                 Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
