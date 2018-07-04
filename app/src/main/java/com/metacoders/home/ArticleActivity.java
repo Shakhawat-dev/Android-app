@@ -45,6 +45,7 @@ public class ArticleActivity extends AppCompatActivity {
         list = new ArrayList<Model_for_Article_row>();
         // retrofit api
         //retrofit fill
+
             getRetrofit();
 
 
@@ -83,7 +84,7 @@ public class ArticleActivity extends AppCompatActivity {
 
                    list.add( new Model_for_Article_row( Model_for_Article_row.IMAGE_TYPE,  response.body().get(i).getTitle().getRendered(),
                            tempdetails,
-                           response.body().get(i).getLinks().getWpFeaturedmedia().get(0).getHref())  );
+                           response.body().get(i).getLink())  );
                }
                adapter.notifyDataSetChanged();
 

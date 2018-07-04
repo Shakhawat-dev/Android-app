@@ -53,9 +53,16 @@ public class WPPostDetails extends AppCompatActivity {
 
             }
         },5000);
+webview.setOnLongClickListener(new View.OnLongClickListener() {
+    @Override
+    public boolean onLongClick(View v) {
+        return true;
+    }
+});
 
 
     }
+
 
 
 
