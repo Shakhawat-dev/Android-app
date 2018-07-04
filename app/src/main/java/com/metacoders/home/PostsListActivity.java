@@ -49,6 +49,7 @@ public class PostsListActivity extends AppCompatActivity {
         Fabric.with(this,new Crashlytics());
         setContentView(R.layout.activity_posts_list);
 
+
         job_progressBar = (ProgressBar) findViewById(R.id.progressbar_job_ad) ;
 
         //Actionbar
@@ -79,6 +80,9 @@ public class PostsListActivity extends AppCompatActivity {
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Data");
+        mRef.keepSynced(true);
+
+
     }
 
     //search data
@@ -153,6 +157,7 @@ public class PostsListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         FirebaseRecyclerAdapter<Model, ViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Model, ViewHolder>(
                         Model.class,
