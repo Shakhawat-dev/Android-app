@@ -19,9 +19,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -89,9 +91,10 @@ public class PostsListActivity extends AppCompatActivity {
     private void firebaseSearch(String searchText) {
 
         //convert string entered in SearchView to lowercase
-        String query = searchText.toLowerCase();
+        String query = searchText;
 
-        Query firebaseSearchQuery = mRef.orderByChild("Data").startAt(query).endAt(query + "\uf8ff");
+        Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
+
 
         FirebaseRecyclerAdapter<Model, ViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Model, ViewHolder>(
@@ -100,6 +103,7 @@ public class PostsListActivity extends AppCompatActivity {
                         ViewHolder.class,
                         firebaseSearchQuery
                 ) {
+
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Model model, int position) {
 
@@ -136,6 +140,7 @@ public class PostsListActivity extends AppCompatActivity {
 
                             }
 
+
                             @Override
                         public void onItemLongClick(View view, int position) {
                             //TODO do your own implementaion on long item click
@@ -165,19 +170,32 @@ public class PostsListActivity extends AppCompatActivity {
                         ViewHolder.class,
                         mRef
                 ) {
+
+
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Model model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage());
+
                         Handler handler  = new Handler() ;
+
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                job_progressBar.setVisibility(View.GONE);
+
+
+                                    job_progressBar.setVisibility(View.GONE);
 
                             }
                         },5000);
 
+
+
+
+
                     }
+
+
+
 
                     @Override
                     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -187,10 +205,12 @@ public class PostsListActivity extends AppCompatActivity {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+
                                 //Views
                                 TextView mTitleTv = view.findViewById(R.id.rTitleTv);
                                 TextView mDescTv = view.findViewById(R.id.rDescriptionTv);
                                 ImageView mImageView = view.findViewById(R.id.rImageView);
+
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
                                 String mDesc = mDescTv.getText().toString();
@@ -226,7 +246,6 @@ public class PostsListActivity extends AppCompatActivity {
         //set adapter to recyclerview
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

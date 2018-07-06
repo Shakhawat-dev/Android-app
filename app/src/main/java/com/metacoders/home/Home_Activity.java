@@ -90,14 +90,14 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
         builder.setTitle("No Internet Connection");
-        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to Exit");
+        builder.setMessage("You need to have Mobile Data or wifi to access this App. Press ok to Continue Offline");
 
         builder.setPositiveButton("Use Offline", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                
+
             }
         });
 
