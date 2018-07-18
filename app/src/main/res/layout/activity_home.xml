@@ -177,7 +177,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Articles"
+                    android:text="Notices"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>

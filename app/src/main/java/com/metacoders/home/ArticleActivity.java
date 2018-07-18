@@ -26,7 +26,7 @@ public class ArticleActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager ;
     private ArrayList<Model_for_Article_row> list ;
     private Article_Recycleview_Adapter adapter ;
-        private  String baseUrl = "https://www.androbits.net" ;
+        private  String baseUrl = "https://careercoachbd.net" ;
     public static List<WpPost> mListPost;
 
 

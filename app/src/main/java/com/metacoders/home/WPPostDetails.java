@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -35,12 +36,41 @@ public class WPPostDetails extends AppCompatActivity {
         spinner = (ProgressBar) findViewById(R.id.progressBar1) ;
         spinner.setVisibility(View.VISIBLE);
         Intent o = getIntent() ;
-        int position = getIntent().getExtras().getInt("itemPosition") ;
+        final int position = getIntent().getExtras().getInt("itemPosition") ;
+        webview.setVisibility(View.INVISIBLE);
+
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.setWebChromeClient(new WebChromeClient());
+
+        webview.loadUrl(ArticleActivity.mListPost.get(position).getLink());
+        webview.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return true;
+            }
+        });
+        webview.setWebViewClient(new WebViewClient(){
 
 
-        Log.e("WpPostDetails", "title is "+ ArticleActivity.mListPost.get(position).getTitle().getRendered()) ;
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                webview.setVisibility(View.VISIBLE);
+                String javaScript ="javascript:(function() { var a= document.getElementsByTagName('header');a[0].hidden='true';a=document.getElementsByClassName('page_body');a[0].style.padding='0px';})()";
+                webview.loadUrl(javaScript);
+            }
 
-                webview.getSettings().setJavaScriptEnabled(true);
+        });
+        webview.loadUrl(getIntent().getStringExtra("url"));
+
+    }
+
+
+
+     //   Log.e("WpPostDetails", "title is "+ ArticleActivity.mListPost.get(position).getTitle().getRendered()) ;
+
+         /*       webview.getSettings().setJavaScriptEnabled(true);
+
 
                 webview.loadUrl(ArticleActivity.mListPost.get(position).getLink());
 
@@ -61,10 +91,11 @@ webview.setOnLongClickListener(new View.OnLongClickListener() {
 });
 
 
+
     }
 
 
-
+*/
 
 }
 

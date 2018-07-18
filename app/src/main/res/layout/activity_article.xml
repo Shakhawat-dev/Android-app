@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".ArticleActivity">
 
 
@@ -20,11 +21,12 @@
         </android.support.v7.widget.RecyclerView>
 
         <ProgressBar
+            android:id="@+id/progressbar_article"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressbar_article"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="191dp" />
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
