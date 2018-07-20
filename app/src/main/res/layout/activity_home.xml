@@ -20,9 +20,10 @@
             android:id="@+id/jobs_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="160dp"
             android:layout_height="190dp"
-            android:layout_margin="10dp">
+            android:layout_margin="5dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,7 +39,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jobs"
+                    android:text="চাকরি বাকরি"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
@@ -47,13 +48,6 @@
                     android:layout_height="1dp"
                     android:background="@color/lightgray"
                     android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Check Jobs of your match"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
 
 
             </LinearLayout>
@@ -65,9 +59,10 @@
             android:id="@+id/notification_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="160dp"
             android:layout_height="190dp"
-            android:layout_margin="10dp">
+            android:layout_margin="5dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -83,7 +78,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notifications"
+                    android:text="চাকরি প্রস্তুতি"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
@@ -92,13 +87,6 @@
                     android:layout_height="1dp"
                     android:background="@color/lightgray"
                     android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Daily new job Notifications"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
 
 
             </LinearLayout>
@@ -120,6 +108,7 @@
             android:id="@+id/quiz_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="110dp"
             android:layout_height="130dp"
             android:layout_margin="2dp">
@@ -138,7 +127,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quiz"
+                    android:text="কুইজ"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
@@ -159,6 +148,7 @@
             android:id="@+id/article_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="110dp"
             android:layout_height="130dp"
             android:layout_margin="2dp">
@@ -174,10 +164,10 @@
                     android:src="@drawable/ic_book_black_24dp"
                     android:padding="10dp"
                     android:background="@drawable/circleyellow"/>
-                <TextView
+                ম<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notices"
+                    android:text="নোটিশ বোর্ড"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
@@ -196,6 +186,7 @@
             android:id="@+id/news_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="110dp"
             android:layout_height="130dp"
             android:layout_margin="2dp">
@@ -214,7 +205,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="News"
+                    android:text="খবর"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
@@ -245,6 +236,7 @@
             android:id="@+id/contact_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="110dp"
             android:layout_height="130dp"
             android:layout_margin="2dp">
@@ -263,7 +255,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Contact Us"
+                    android:text="যোগাযোগ করুন"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
@@ -284,6 +276,7 @@
             android:id="@+id/settings_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="110dp"
             android:layout_height="130dp"
             android:layout_margin="2dp">
@@ -302,7 +295,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
+                    android:text="সেটিংস"
                     android:textSize="15sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
@@ -322,6 +315,7 @@
             android:id="@+id/about_Button"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
+            android:layout_weight="1"
             android:layout_width="110dp"
             android:layout_height="130dp"
             android:layout_margin="2dp">
@@ -340,8 +334,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="About Us"
-                    android:textSize="15sp"
+                    android:text="আমাদের পরিচিতি"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"/>
                 <View
