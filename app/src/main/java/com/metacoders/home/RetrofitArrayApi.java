@@ -9,6 +9,7 @@ public interface RetrofitArrayApi {
 
      // @GET("wp-json/wp/v2/posts?fields=id,title.rendered,link,excerpt.rendered")
      @GET("wp-json/wp/v2/posts?categories=5")
-      Call<List<WpPost>>getPostInfo();
+     Call<List<WpPost>> getPostInfo();
+
 
 }
