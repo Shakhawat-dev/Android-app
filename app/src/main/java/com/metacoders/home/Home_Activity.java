@@ -3,6 +3,7 @@ package com.metacoders.home;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.TextView;
+
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
@@ -22,6 +25,67 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
+        //selecting customs fonts
+        TextView cakri = (TextView)findViewById(R.id.cakribakri);
+        Typeface ace = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        cakri.setTypeface(ace);
+
+        TextView cakri_p = (TextView)findViewById(R.id.cakri_prostoti);
+        Typeface face = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        cakri_p.setTypeface(face);
+
+
+        TextView not=(TextView)findViewById(R.id.notice_text);
+        Typeface face2 = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        not.setTypeface(face2);
+
+        TextView amader_tit=(TextView)findViewById(R.id.amader_title);
+        Typeface amader = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        amader_tit.setTypeface(amader);
+
+        TextView settings=(TextView)findViewById(R.id.settings_ttile);
+        Typeface set= Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        settings.setTypeface(set);
+
+        TextView jog=(TextView)findViewById(R.id.jog);
+        Typeface con = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        jog.setTypeface(con);
+
+        TextView vid=(TextView)findViewById(R.id.vid_title);
+        Typeface vidTIt = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        vid.setTypeface(vidTIt);
+
+        TextView nott=(TextView)findViewById(R.id.voca_title);
+        Typeface face2a = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        nott.setTypeface(face2a);
+
+        TextView bTitle=(TextView)findViewById(R.id.bank_title);
+        Typeface face3 = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        bTitle.setTypeface(face3);
+
+        TextView notFeture=(TextView)findViewById(R.id.feature_title);
+        Typeface face2featre = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        notFeture.setTypeface(face2featre);
+
+
+        TextView notCurrent=(TextView)findViewById(R.id.current_title);
+        Typeface face2cu = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        notCurrent.setTypeface(face2cu);
+
+        TextView notQuiz=(TextView)findViewById(R.id.quiz_title);
+        Typeface face2Quiz = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        notQuiz.setTypeface(face2Quiz);
+
+        TextView notBises=(TextView)findViewById(R.id.bises);
+        Typeface face2b = Typeface.createFromAsset(getAssets(),"fonts/SolaimanLipi_29-05-06.ttf");
+        notBises.setTypeface(face2b);
+
+
+
+
+
+
+
 
         //defining cardButtons
         jobsButton= (CardView)findViewById(R.id.jobs_Button);

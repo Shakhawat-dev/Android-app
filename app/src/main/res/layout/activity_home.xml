@@ -53,6 +53,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circlepurple"/>
                         <TextView
+                            android:id="@+id/cakribakri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="চাকরি বাকরি"
@@ -96,6 +97,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circlepink"/>
                         <TextView
+                            android:id="@+id/cakri_prostoti"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="চাকরি প্রস্তুতি"
@@ -150,6 +152,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circleyellow"/>
                         <TextView
+                            android:id="@+id/notice_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="নোটিশ বোর্ড"
@@ -191,6 +194,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circleteal"/>
                         <TextView
+                            android:id="@+id/bises"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="বিশেষ"
@@ -250,6 +254,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circlegreen"/>
                         <TextView
+                            android:id="@+id/quiz_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="কুইজ"
@@ -291,6 +296,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circleteallight"/>
                         <TextView
+                            android:id="@+id/current_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="কারেন্ট "
@@ -331,6 +337,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circleyellow"/>
                         <TextView
+                            android:id="@+id/feature_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ফিচার "
@@ -381,6 +388,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circlepurple"/>
                         <TextView
+                            android:id="@+id/bank_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="প্রশ্নব্যাংক"
@@ -422,6 +430,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circlepink"/>
                         <TextView
+                            android:id="@+id/voca_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ভোকাবুলারি "
@@ -461,6 +470,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circleteal"/>
                         <TextView
+                            android:id="@+id/vid_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ভিডিও "
@@ -521,6 +531,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circlepink"/>
                         <TextView
+                            android:id="@+id/jog"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="যোগাযোগ করুন"
@@ -560,6 +571,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circleteal"/>
                         <TextView
+                            android:id="@+id/settings_ttile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="সেটিংস"
@@ -598,6 +610,7 @@
                             android:padding="10dp"
                             android:background="@drawable/circlepurple"/>
                         <TextView
+                            android:id="@+id/amader_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="আমাদের পরিচিতি"
