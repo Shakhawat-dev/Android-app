@@ -11,7 +11,7 @@ public class Model_for_Article_row {
     public  Model_for_Article_row (int mtype , String mtitle , String msubtitle , String Image ){
 
                 this.title = mtitle ;
-                 this.Image = Image ;
+              //   this.Image = Image ;
                  this.subtitle = msubtitle ;
                  this.type = mtype ;
 

@@ -31,7 +31,7 @@ public static class  ImageTypeViewHolder extends  RecyclerView.ViewHolder{
         super(itemView);
         this.title = (TextView) itemView.findViewById(R.id.title) ;
         this.subtitle=(TextView) itemView.findViewById(R.id.subtitle) ;
-        this.imageView = (ImageView) itemView.findViewById(R.id.Icon) ;
+      //  this.imageView = (ImageView) itemView.findViewById(R.id.Icon) ;
 
     }
 }
@@ -68,7 +68,7 @@ public static class  ImageTypeViewHolder extends  RecyclerView.ViewHolder{
                 mContext.startActivity(intent);
             }
         });
-        ( (ImageTypeViewHolder) holder).imageView.setOnClickListener(new View.OnClickListener() {
+    /*   ( (ImageTypeViewHolder) holder).imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, WPPostDetails.class);
@@ -78,7 +78,7 @@ public static class  ImageTypeViewHolder extends  RecyclerView.ViewHolder{
         });
 
 
-
+*/
 
 
     }
