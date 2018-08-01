@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/chakri" android:title="চাকরি বাকরি" android:icon="@drawable/chakri_icon" />
+    <item android:id="@+id/prostuti" android:title="চাকরি প্রস্তুতি" android:icon="@drawable/prostuti_icon"/>
+    <item android:id="@+id/noticeBoard" android:title="নোটিশ বোর্ড" android:icon="@drawable/notice_icon" />
+    <item android:id="@+id/bishesh" android:title="বিশেষ" android:icon="@drawable/bishesh_icon" />
+    <item android:id="@+id/quiz" android:title="কুইজ" android:icon="@drawable/quiz_icon" />
+    <item android:id="@+id/current" android:title="কারেন্ট" android:icon="@drawable/current_icon" />
+</menu>

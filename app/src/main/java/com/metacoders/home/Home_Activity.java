@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,6 +22,8 @@ import io.fabric.sdk.android.Fabric;
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener{
     private CardView jobsButton, notificationButton, quizButton,
             articleButton, newsButton, contactButton, settingsButton, aboutButton;
+    private DrawerLayout mDrawerlayout ;
+    private ActionBarDrawerToggle mToggle ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +121,22 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
         }
 
+        //For drawer
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.home_Drawer);
+        //mDrawerlayout = (DrawerLayout) findViewById(R.id.about_activity);
+        mToggle = new ActionBarDrawerToggle(this,mDrawerlayout,R.string.open,R.string.close);
+        mDrawerlayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
