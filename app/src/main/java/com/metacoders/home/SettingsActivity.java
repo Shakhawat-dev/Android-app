@@ -1,8 +1,11 @@
 package com.metacoders.home;
 
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,7 +15,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class SettingsActivity extends AppCompatActivity {
     Button btn ;
-
+    private DrawerLayout mDrawerlayout;
+    private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,19 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.setting_layout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
+        mDrawerlayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
 
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        if (mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

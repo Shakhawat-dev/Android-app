@@ -124,7 +124,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
             //For drawer
             mDrawerlayout = (DrawerLayout) findViewById(R.id.home_Drawer);
-            //mDrawerlayout = (DrawerLayout) findViewById(R.id.about_activity);
+            //mDrawerlayout = (DrawerLayout) findViewById(R.id.contact_activity);
             mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
             mDrawerlayout.addDrawerListener(mToggle);
             mToggle.syncState();
