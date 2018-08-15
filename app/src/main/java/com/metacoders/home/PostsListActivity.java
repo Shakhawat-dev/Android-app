@@ -9,7 +9,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,6 +38,7 @@ import java.io.ByteArrayOutputStream;
 import io.fabric.sdk.android.Fabric;
 
 public class PostsListActivity extends AppCompatActivity {
+
 
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings

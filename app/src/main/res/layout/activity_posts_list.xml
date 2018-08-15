@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:id="@+id/post_list"
     tools:context="com.metacoders.home.PostsListActivity">
 
     <LinearLayout
@@ -167,4 +168,15 @@
 
 
 </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        app:headerLayout="@layout/header"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:itemTextColor="@color/colorPrimaryDark"
+        app:menu="@menu/drawer_menu"
+        android:layout_gravity="start"
+        android:background="#ffffff">
+
+    </android.support.design.widget.NavigationView>
 </LinearLayout>
