@@ -45,7 +45,11 @@
             android:value="e5ed560138ef90420b4feb23f6939ba556c01e12" />
 
         <activity android:name=".activity_register" />
-        <activity android:name=".login"></activity>
+        <activity android:name=".login" />
+        <activity android:name=".Voca_activity" />
+        <activity android:name=".Voc_post_detail" />
+        <activity android:name=".Qustion_Bank" />
+        <activity android:name=".qus_bank_detail"></activity>
     </application>
 
 </manifest>

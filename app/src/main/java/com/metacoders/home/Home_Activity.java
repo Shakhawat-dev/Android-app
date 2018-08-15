@@ -23,8 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 import io.fabric.sdk.android.Fabric;
 
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
-    private CardView jobsButton, notificationButton, quizButton,
-            articleButton, newsButton, contactButton, settingsButton, aboutButton;
+    private CardView jobsButton, notificationButton, quizButton, vocaButton ,
+            articleButton, newsButton, contactButton, settingsButton, aboutButton , Qus_Bank_Button;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
     FirebaseAuth mAuth;
@@ -102,6 +102,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             contactButton = (CardView) findViewById(R.id.contact_Button);
             settingsButton = (CardView) findViewById(R.id.settings_Button);
             aboutButton = (CardView) findViewById(R.id.about_Button);
+            vocaButton = (CardView)findViewById(R.id.vocabulari_Button);
+            Qus_Bank_Button = (CardView)findViewById(R.id.questionBank_Button);
 
             //Click Listener to CardButton
             jobsButton.setOnClickListener(this);
@@ -112,6 +114,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             contactButton.setOnClickListener(this);
             settingsButton.setOnClickListener(this);
             aboutButton.setOnClickListener(this);
+            vocaButton.setOnClickListener(this);
+            Qus_Bank_Button.setOnClickListener(this);
 
 
             // checking  net acces
@@ -145,6 +149,15 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             Intent i;
 
             switch (view.getId()) {
+                case R.id.questionBank_Button:
+                    i = new Intent(this, Qustion_Bank.class);
+                    startActivity(i);
+                    break;
+
+                case R.id.vocabulari_Button:
+                    i = new Intent(this, Voca_activity.class);
+                    startActivity(i);
+                    break;
                 case R.id.jobs_Button:
                     i = new Intent(this, PostsListActivity.class);
                     startActivity(i);
