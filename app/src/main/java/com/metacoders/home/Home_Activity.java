@@ -25,7 +25,7 @@ import io.fabric.sdk.android.Fabric;
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
     private CardView jobsButton, notificationButton, quizButton, vocaButton ,
             articleButton, current_Button, contactButton, settingsButton, aboutButton , Qus_Bank_Button
-            , bisesButton;
+            , bisesButton  , feature_Button;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
     FirebaseAuth mAuth;
@@ -106,6 +106,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             vocaButton = (CardView)findViewById(R.id.vocabulari_Button);
             Qus_Bank_Button = (CardView)findViewById(R.id.questionBank_Button);
             bisesButton = (CardView)findViewById(R.id.Bises_Btn) ;
+            feature_Button = (CardView)findViewById(R.id.feature_Button);
             //Click Listener to CardButton
             jobsButton.setOnClickListener(this);
             notificationButton.setOnClickListener(this);
@@ -118,6 +119,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             vocaButton.setOnClickListener(this);
             Qus_Bank_Button.setOnClickListener(this);
             bisesButton.setOnClickListener(this);
+            feature_Button.setOnClickListener(this);
 
 
             // checking  net acces
@@ -158,6 +160,11 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
                 case R.id.Bises_Btn:
                     i = new Intent(this, Bises.class);
+                    startActivity(i);
+                    break;
+
+                case R.id.feature_Button:
+                    i = new Intent(this, Feature_Activity.class);
                     startActivity(i);
                     break;
 

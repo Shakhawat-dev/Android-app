@@ -55,7 +55,9 @@
         <activity android:name=".Bises" />
         <activity android:name=".bises_post_detail" />
         <activity android:name=".Current_Activity" />
-        <activity android:name=".Current_Post_Detail"></activity>
+        <activity android:name=".Current_Post_Detail" />
+        <activity android:name=".Feature_Activity" />
+        <activity android:name=".Feature_Detail_Activity"></activity>
     </application>
 
 </manifest>
