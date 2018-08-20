@@ -16,535 +16,85 @@
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
                 android:orientation="vertical">
 
-                <ScrollView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginLeft="6dp"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Career Preparation's"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:padding="6dp" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:clipToPadding="false">
 
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/prep_btn"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_weight="1"
+                        android:layout_width="110dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="0dp">
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_height="match_parent"
                             android:gravity="center"
-                            android:clipToPadding="false">
+                            android:paddingTop="0dp"
+                            android:orientation="vertical">
 
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/syll_button"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_marginRight="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_lightbulb_outline_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circlegreen"/>
-                                    <TextView
-                                        android:id="@+id/syll_title"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="সিলেবাস"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-
-
-
-                                </LinearLayout>
-
-
-                            </android.support.v7.widget.CardView>
-
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/qsn_Button"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_email_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circleteallight"/>
-
-                                    <TextView
-                                        android:id="@+id/qsn_title"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
-                                        android:text="প্রশ্নব্যাংক"
-                                        android:textSize="15sp"
-                                        android:textStyle="bold" />
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-
-
-
-                                </LinearLayout>
-
-
-                            </android.support.v7.widget.CardView>
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/bangla_Button"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_supervisor_account_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circleyellow"/>
-
-                                    <TextView
-                                        android:id="@+id/bangla_bhass"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
-                                        android:text="বাংলা ভাষা ও সাহিত্য"
-                                        android:textSize="15sp"
-                                        android:textStyle="bold" />
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-
-
-
-                                </LinearLayout>
-
-
-                            </android.support.v7.widget.CardView>
-
-
-
+                            <ImageView
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:src="@drawable/ic_lightbulb_outline_black_24dp"
+                                android:padding="10dp"
+                                android:background="@drawable/circlegreen"/>
+                            <TextView
+                                android:id="@+id/prep_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="প্রস্তুতি"
+                                android:textSize="15sp"
+                                android:layout_marginTop="1dp"
+                                android:textStyle="bold"/>
                         </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/qsn_Button"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_weight="1"
+                        android:layout_width="110dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="0dp">
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_height="match_parent"
                             android:gravity="center"
-                            android:clipToPadding="false">
+                            android:orientation="vertical">
 
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/english_Button"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:src="@drawable/ic_email_black_24dp"
+                                android:padding="10dp"
+                                android:background="@drawable/circleteallight"/>
 
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_question_answer_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circlepurple"/>
-                                    <TextView
-                                        android:id="@+id/eng_title"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="English Language and Literature"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-
-
-
-                                </LinearLayout>
-
-
-                            </android.support.v7.widget.CardView>
-
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/bdtopic_Button"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_format_align_left_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circlepink"/>
-                                    <TextView
-                                        android:id="@+id/bdtopics_title"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="বাংলাদেশ বিষয়াবলি"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-                                </LinearLayout>
-                            </android.support.v7.widget.CardView>
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/international_btn"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_event_available_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circleteallight"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="আন্তর্জাতিক বিষয়াবলি"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-                                </LinearLayout>
-                            </android.support.v7.widget.CardView>
+                            <TextView
+                                android:id="@+id/qsn_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+                                android:text="প্রশ্নব্যাংক"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center"
-                            android:clipToPadding="false">
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/geo_btn"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_question_answer_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circlepurple"/>
-                                    <TextView
-                                        android:id="@+id/geo_text"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="ভূগোল, পরিবেশ ও দুর্যোগ ব্যবস্থাপনা"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-
-
-
-                                </LinearLayout>
-
-
-                            </android.support.v7.widget.CardView>
-
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/general_btn"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_format_align_left_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circlepink"/>
-                                    <TextView
-                                        android:id="@+id/general_text"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="সাধারণ বিজ্ঞান"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-                                </LinearLayout>
-                            </android.support.v7.widget.CardView>
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/compu_btn"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_event_available_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circleteallight"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="কম্পিউটার ও তথ্য প্রযুক্তি"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-                                </LinearLayout>
-                            </android.support.v7.widget.CardView>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center"
-                            android:clipToPadding="false">
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/math_btn"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_question_answer_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circlepurple"/>
-                                    <TextView
-                                        android:id="@+id/math_text"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="গাণিতিক যুক্তি"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-
-
-
-                                </LinearLayout>
-
-
-                            </android.support.v7.widget.CardView>
-
-
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/skill_btn"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_format_align_left_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circlepink"/>
-                                    <TextView
-                                        android:id="@+id/skill_text"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="মানসিক দক্ষতা"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-                                </LinearLayout>
-                            </android.support.v7.widget.CardView>
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/mullo_btn"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:layout_weight="1"
-                                android:layout_width="110dp"
-                                android:layout_height="130dp"
-                                android:layout_margin="0dp">
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <ImageView
-                                        android:layout_width="64dp"
-                                        android:layout_height="64dp"
-                                        android:src="@drawable/ic_event_available_black_24dp"
-                                        android:padding="10dp"
-                                        android:background="@drawable/circleteallight"/>
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="নৈতিকতা, মূল্যবোধ ও সুশাসন"
-                                        android:textAlignment="center"
-                                        android:textSize="15sp"
-                                        android:layout_marginTop="10dp"
-                                        android:textStyle="bold"/>
-                                    <View
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1dp"
-                                        android:background="@color/lightgray"
-                                        android:layout_margin="10dp"/>
-                                </LinearLayout>
-                            </android.support.v7.widget.CardView>
-                        </LinearLayout>
-                    </LinearLayout>
-                </ScrollView>
 
             </LinearLayout>
         </ScrollView>
