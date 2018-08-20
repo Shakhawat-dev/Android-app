@@ -1,5 +1,6 @@
 package com.metacoders.home;
 
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 public class Feature_Detail_Activity extends AppCompatActivity {
     TextView mTitleTv , mDetailTv ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +33,8 @@ public class Feature_Detail_Activity extends AppCompatActivity {
         mTitleTv.setText(title);
         mDetailTv.setText(desc);
     }
+
+
+
     }
 
