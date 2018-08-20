@@ -24,7 +24,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
     private CardView jobsButton, notificationButton, quizButton, vocaButton ,
-            articleButton, newsButton, contactButton, settingsButton, aboutButton , Qus_Bank_Button;
+            articleButton, current_Button, contactButton, settingsButton, aboutButton , Qus_Bank_Button
+            , bisesButton;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
     FirebaseAuth mAuth;
@@ -98,24 +99,25 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             notificationButton = (CardView) findViewById(R.id.notification_Button);
             quizButton = (CardView) findViewById(R.id.quiz_Button);
             articleButton = (CardView) findViewById(R.id.article_Button);
-            newsButton = (CardView) findViewById(R.id.news_Button);
+            current_Button = (CardView) findViewById(R.id.current_Button);
             contactButton = (CardView) findViewById(R.id.contact_Button);
             settingsButton = (CardView) findViewById(R.id.settings_Button);
             aboutButton = (CardView) findViewById(R.id.about_Button);
             vocaButton = (CardView)findViewById(R.id.vocabulari_Button);
             Qus_Bank_Button = (CardView)findViewById(R.id.questionBank_Button);
-
+            bisesButton = (CardView)findViewById(R.id.Bises_Btn) ;
             //Click Listener to CardButton
             jobsButton.setOnClickListener(this);
             notificationButton.setOnClickListener(this);
             quizButton.setOnClickListener(this);
             articleButton.setOnClickListener(this);
-            newsButton.setOnClickListener(this);
+            current_Button.setOnClickListener(this);
             contactButton.setOnClickListener(this);
             settingsButton.setOnClickListener(this);
             aboutButton.setOnClickListener(this);
             vocaButton.setOnClickListener(this);
             Qus_Bank_Button.setOnClickListener(this);
+            bisesButton.setOnClickListener(this);
 
 
             // checking  net acces
@@ -154,6 +156,12 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                     startActivity(i);
                     break;
 
+                case R.id.Bises_Btn:
+                    i = new Intent(this, Bises.class);
+                    startActivity(i);
+                    break;
+
+
                 case R.id.vocabulari_Button:
                     i = new Intent(this, Voca_activity.class);
                     startActivity(i);
@@ -174,8 +182,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                     i = new Intent(this, ArticleActivity.class);
                     startActivity(i);
                     break;
-                case R.id.news_Button:
-                    i = new Intent(this, NewsActivity.class);
+                case R.id.current_Button:
+                    i = new Intent(this, Current_Activity.class);
                     startActivity(i);
                     break;
                 case R.id.contact_Button:

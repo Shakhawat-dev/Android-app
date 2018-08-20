@@ -29,7 +29,6 @@
         <activity android:name=".JobsActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".QuizActivity" />
-        <activity android:name=".NewsActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".AboutActivity" />
@@ -52,7 +51,11 @@
         <activity android:name=".qus_bank_detail" />
         <activity android:name=".BcsActivity" />
         <activity android:name=".SyllabusActivity" />
-        <activity android:name=".BcsButtonActivity"></activity>
+        <activity android:name=".BcsButtonActivity" />
+        <activity android:name=".Bises" />
+        <activity android:name=".bises_post_detail" />
+        <activity android:name=".Current_Activity" />
+        <activity android:name=".Current_Post_Detail"></activity>
     </application>
 
 </manifest>
