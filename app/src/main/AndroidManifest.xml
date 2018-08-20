@@ -49,7 +49,10 @@
         <activity android:name=".Voca_activity" />
         <activity android:name=".Voc_post_detail" />
         <activity android:name=".Qustion_Bank" />
-        <activity android:name=".qus_bank_detail"></activity>
+        <activity android:name=".qus_bank_detail" />
+        <activity android:name=".BcsActivity" />
+        <activity android:name=".SyllabusActivity" />
+        <activity android:name=".BcsButtonActivity"></activity>
     </application>
 
 </manifest>

@@ -39,6 +39,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class PostsListActivity extends AppCompatActivity {
 
+    private DrawerLayout mDrawerlayout;
+    private ActionBarDrawerToggle mToggle;
 
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
@@ -86,6 +88,13 @@ public class PostsListActivity extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Data");
         mRef.keepSynced(true);
+
+        //For Drawer
+        /*mDrawerlayout = (DrawerLayout) findViewById(R.id.notification_activity);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
+        mDrawerlayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
 
     }
@@ -281,6 +290,10 @@ public class PostsListActivity extends AppCompatActivity {
         if (id == R.id.action_sort) {
             //display alert dialog to choose sorting
             showSortDialog();
+            return true;
+        }
+
+        if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
