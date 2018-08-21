@@ -46,23 +46,29 @@
         <activity android:name=".activity_register" />
         <activity android:name=".login" />
         <activity android:name=".Voca_activity" />
-        <activity android:name=".Voc_post_detail"
-            android:parentActivityName=".Voca_activity"/>
+        <activity
+            android:name=".Voc_post_detail"
+            android:parentActivityName=".Voca_activity" />
         <activity android:name=".Qustion_Bank" />
-        <activity android:name=".qus_bank_detail"
-            android:parentActivityName=".Qustion_Bank"/>
+        <activity
+            android:name=".qus_bank_detail"
+            android:parentActivityName=".Qustion_Bank" />
         <activity android:name=".BcsActivity" />
         <activity android:name=".SyllabusActivity" />
         <activity android:name=".BcsButtonActivity" />
         <activity android:name=".Bises" />
-        <activity android:name=".bises_post_detail"
-        android:parentActivityName=".Bises"/>
+        <activity
+            android:name=".bises_post_detail"
+            android:parentActivityName=".Bises" />
         <activity android:name=".Current_Activity" />
-        <activity android:name=".Current_Post_Detail"
-            android:parentActivityName=".Current_Activity"/>
+        <activity
+            android:name=".Current_Post_Detail"
+            android:parentActivityName=".Current_Activity" />
         <activity android:name=".Feature_Activity" />
-        <activity android:name=".Feature_Detail_Activity"
-            android:parentActivityName=".Feature_Activity"/>
+        <activity
+            android:name=".Feature_Detail_Activity"
+            android:parentActivityName=".Feature_Activity" />
+        <activity android:name=".Bcs_Prep_POst_DeatilsActivity"></activity>
     </application>
 
 </manifest>
