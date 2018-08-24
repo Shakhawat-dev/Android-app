@@ -22,7 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Feature_Activity extends AppCompatActivity {
+public class Govt_job_prep extends AppCompatActivity {
+
+    //this is working with the bises model and viewholder , and row for bises and also detail for bises  .
+
+
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
     RecyclerView mRecyclerView;
@@ -32,9 +36,7 @@ public class Feature_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feature_);
-
-
+        setContentView(R.layout.activity_govt_job_prep);
 
 
         //Actionbar
@@ -64,8 +66,9 @@ public class Feature_Activity extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Feature");
+        mRef = mFirebaseDatabase.getReference("Govt_job");
     }
+
     //search data
     private void firebaseSearch(String searchText) {
 
@@ -74,29 +77,29 @@ public class Feature_Activity extends AppCompatActivity {
 
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
-        FirebaseRecyclerAdapter<model_for_feature_Activtiy,viewHolder_For_Feature> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>(
-                        model_for_feature_Activtiy.class,
-                        R.layout.row_for_feature_activity,
-                        viewHolder_For_Feature.class,
+        FirebaseRecyclerAdapter<Model_for_Bises, viewHoder_for_bises> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<Model_for_Bises, viewHoder_for_bises>(
+                        Model_for_Bises.class,
+                        R.layout.row_for_bises,
+                        viewHoder_for_bises.class,
                         firebaseSearchQuery
                 ) {
                     @Override
-                    protected void populateViewHolder(viewHolder_For_Feature viewHolder, model_for_feature_Activtiy model, int position) {
+                    protected void populateViewHolder(viewHoder_for_bises viewHolder, Model_for_Bises model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
                     }
 
                     @Override
-                    public viewHolder_For_Feature onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHoder_for_bises onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        viewHolder_For_Feature viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHoder_for_bises viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_bises);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bises);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -132,30 +135,30 @@ public class Feature_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>
+        FirebaseRecyclerAdapter<Model_for_Bises, viewHoder_for_bises>
                 firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>(
-                        model_for_feature_Activtiy.class,
-                        R.layout.row_for_feature_activity,
-                        viewHolder_For_Feature.class,
+                new FirebaseRecyclerAdapter<Model_for_Bises, viewHoder_for_bises>(
+                        Model_for_Bises.class,
+                        R.layout.row_for_bises,
+                        viewHoder_for_bises.class,
                         mRef
                 ) {
                     @Override
-                    protected void populateViewHolder(viewHolder_For_Feature viewHolder, model_for_feature_Activtiy model, int position) {
+                    protected void populateViewHolder(viewHoder_for_bises viewHolder, Model_for_Bises model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
                     }
 
                     @Override
-                    public viewHolder_For_Feature onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHoder_for_bises onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        viewHolder_For_Feature viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHoder_for_bises viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_bises);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bises);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -258,8 +261,4 @@ public class Feature_Activity extends AppCompatActivity {
     }
 
 
-
-
-
 }
-

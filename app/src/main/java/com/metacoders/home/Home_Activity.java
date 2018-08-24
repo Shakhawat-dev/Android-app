@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.onesignal.OneSignal;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -36,7 +37,13 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
         //forebase auth
+// notification
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
+startService(new Intent(this, FireBase_notification.class));
 
             //selecting customs fonts
             TextView cakri = (TextView) findViewById(R.id.cakribakri);

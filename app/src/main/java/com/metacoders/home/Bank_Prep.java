@@ -22,7 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Feature_Activity extends AppCompatActivity {
+public class Bank_Prep extends AppCompatActivity {
+
+    //this is use the model and the view holder of the feature activty and so on ....
+
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
     RecyclerView mRecyclerView;
@@ -32,9 +35,7 @@ public class Feature_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feature_);
-
-
+        setContentView(R.layout.activity_bank__prep);
 
 
         //Actionbar
@@ -64,7 +65,7 @@ public class Feature_Activity extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Feature");
+        mRef = mFirebaseDatabase.getReference("Bank_prep");
     }
     //search data
     private void firebaseSearch(String searchText) {

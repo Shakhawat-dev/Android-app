@@ -15,7 +15,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class NotificationActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private CardView bcsButton, bankButton, govtButton, teacherButton;
+    private CardView bcsButton, bankButton, govtButton, teacherButton , banglaButton ;
 
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
@@ -33,17 +33,20 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         //defining cardButtons
         bcsButton = (CardView) findViewById(R.id.bcs_Button);
         bankButton = (CardView) findViewById(R.id.bank_Button);
         govtButton = (CardView) findViewById(R.id.govt_Button);
         teacherButton = (CardView) findViewById(R.id.teacher_Button);
+        banglaButton= (CardView)findViewById(R.id.bangla_Button);
 
         //Click Listener to CardButton
         bcsButton.setOnClickListener(this);
         bankButton.setOnClickListener(this);
         govtButton.setOnClickListener(this);
         teacherButton.setOnClickListener(this);
+        banglaButton.setOnClickListener(this);
     }
 
     @Override
@@ -65,6 +68,30 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
                 i = new Intent(this, BcsButtonActivity.class);
                 startActivity(i);
                 break;
+
+            case R.id.govt_Button:
+                i = new Intent(this, Govt_job_prep.class);
+                startActivity(i);
+                break;
+
+            case R.id.bank_Button:
+                i = new Intent(this, Bank_Prep.class);
+                startActivity(i);
+                break;
+
+            case R.id.teacher_Button:
+             i=new Intent(this , Shikok_nivondon.class);
+             startActivity(i);
+             break;
+
+            case R.id.bangla_Button:
+                i=new Intent(this , career_prep_Bangla.class);
+                startActivity(i);
+                break;
+
+
+
+
             default:
                 break;
 

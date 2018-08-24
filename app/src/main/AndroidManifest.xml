@@ -37,7 +37,6 @@
         <activity android:name=".PostDetailActivity" />
         <activity android:name=".WPPostDetails" />
         <activity android:name=".Wp_Quiz_details" />
-        <activity android:name=".activity_register" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -68,7 +67,22 @@
         <activity
             android:name=".Feature_Detail_Activity"
             android:parentActivityName=".Feature_Activity" />
-        <activity android:name=".Bcs_Prep_POst_DeatilsActivity"></activity>
+        <activity android:name=".Bcs_Prep_POst_DeatilsActivity" />
+        <activity android:name=".Govt_job_prep" />
+        <activity android:name=".Bank_Prep" />
+        <activity android:name=".Shikok_nivondon" />
+        <activity android:name=".postDetails_for_Career_prep_by_subject" />
+        <activity android:name=".career_prep_Bangla" />
+
+        <service
+            android:name=".one_singal_notification"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+            <intent-filter>
+                <action android:name="com.onesignal.NotificationExtender" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

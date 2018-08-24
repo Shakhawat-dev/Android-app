@@ -22,7 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Feature_Activity extends AppCompatActivity {
+public class career_prep_Bangla extends AppCompatActivity {
+    //this is use the model and the view holder of the all subject  and so on ....
+
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
     RecyclerView mRecyclerView;
@@ -32,7 +34,8 @@ public class Feature_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feature_);
+        setContentView(R.layout.activity_career_prep__bangla);
+
 
 
 
@@ -64,7 +67,7 @@ public class Feature_Activity extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Feature");
+        mRef = mFirebaseDatabase.getReference("Career_Prep_Bangla");
     }
     //search data
     private void firebaseSearch(String searchText) {
@@ -74,29 +77,32 @@ public class Feature_Activity extends AppCompatActivity {
 
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
-        FirebaseRecyclerAdapter<model_for_feature_Activtiy,viewHolder_For_Feature> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>(
-                        model_for_feature_Activtiy.class,
-                        R.layout.row_for_feature_activity,
-                        viewHolder_For_Feature.class,
+        FirebaseRecyclerAdapter<model_for__Career_prep_by_subject,viewHolder_for__Career_prep_by_subject> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>(
+                       model_for__Career_prep_by_subject.class,
+                        R.layout.row_for_subject_career_prep,
+                        viewHolder_for__Career_prep_by_subject.class,
                         firebaseSearchQuery
                 ) {
                     @Override
-                    protected void populateViewHolder(viewHolder_For_Feature viewHolder, model_for_feature_Activtiy model, int position) {
+                    protected void populateViewHolder(viewHolder_for__Career_prep_by_subject viewHolder, model_for__Career_prep_by_subject model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
+                        // this is for seacrh entry
+
+
                     }
 
                     @Override
-                    public viewHolder_For_Feature onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for__Career_prep_by_subject onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        viewHolder_For_Feature viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for__Career_prep_by_subject viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -104,7 +110,7 @@ public class Feature_Activity extends AppCompatActivity {
 
 
                                 //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
                                 intent.putExtra("title", mTitle); // put title
                                 intent.putExtra("description", mDesc); //put description
                                 startActivity(intent); //start activity
@@ -132,30 +138,31 @@ public class Feature_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>
+        FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>
                 firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>(
-                        model_for_feature_Activtiy.class,
-                        R.layout.row_for_feature_activity,
-                        viewHolder_For_Feature.class,
+                new FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>(
+                        model_for__Career_prep_by_subject.class,
+                        R.layout.row_for_subject_career_prep,
+                       viewHolder_for__Career_prep_by_subject.class,
                         mRef
                 ) {
                     @Override
-                    protected void populateViewHolder(viewHolder_For_Feature viewHolder, model_for_feature_Activtiy model, int position) {
+                    protected void populateViewHolder(viewHolder_for__Career_prep_by_subject viewHolder, model_for__Career_prep_by_subject model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
                     }
 
                     @Override
-                    public viewHolder_For_Feature onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for__Career_prep_by_subject onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        viewHolder_For_Feature viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for__Career_prep_by_subject viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -262,4 +269,3 @@ public class Feature_Activity extends AppCompatActivity {
 
 
 }
-

@@ -14,7 +14,7 @@ public class BcsActivity extends AppCompatActivity implements View.OnClickListen
 
     private CardView syllButton, qsnButton, banglaButton, englishButton,
             bdtopicButton, internationalButton, geoButton, generalButton,
-            compuButton,mathButton,skillButton, mulloButton;
+            compuButton,mathButton,skillButton, mulloButton ;
 
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;

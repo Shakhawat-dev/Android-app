@@ -1,5 +1,6 @@
 package com.metacoders.home;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -28,15 +30,17 @@ public class Voca_activity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
+    private ProgressBar progreebar_voc ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voca_activity);
+        progreebar_voc = (ProgressBar)findViewById(R.id.progressbar_Voc);
+        progreebar_voc.setVisibility(View.VISIBLE);
 
-
-        //Actionbar
+                //Actionbar
         ActionBar actionBar = getSupportActionBar();
         //set title
         mSharedPref = getSharedPreferences("SortSettings", MODE_PRIVATE);
@@ -148,6 +152,18 @@ public class Voca_activity extends AppCompatActivity {
                     @Override
                     protected void populateViewHolder(viewHolder_for_Vocabulary viewHolder, model_for_vocabulary model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
+
+                        Handler handler  = new Handler() ;
+
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+
+                                progreebar_voc.setVisibility(View.GONE);
+
+                            }
+                        },950);
                     }
 
                     @Override
