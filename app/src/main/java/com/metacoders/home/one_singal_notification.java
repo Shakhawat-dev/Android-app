@@ -3,6 +3,8 @@ package com.metacoders.home;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -12,8 +14,11 @@ import com.onesignal.OSNotificationReceivedResult;
 
 import java.math.BigInteger;
 
-public class one_singal_notification extends NotificationExtenderService {
+public class one_singal_notification  {
 
+
+/*
+    //public class one_singal_notification extends NotificationExtenderService
     @Override
     protected boolean onNotificationProcessing(OSNotificationReceivedResult notification) {
 
@@ -27,8 +32,26 @@ public class one_singal_notification extends NotificationExtenderService {
         };
         OSNotificationDisplayedResult displayedResult = displayNotification(overrideSettings);
         Log.d("OneSignalExample", "Notification displayed with id: " + displayedResult.androidNotificationId);
-        return true;
+        return true ;
+    }
+    @Override
+    public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
+        onTaskRemoved(intent);
+        return START_STICKY;
     }
 
+    @Override
+    public IBinder onBind(@NonNull Intent intent) {
 
+        throw new UnsupportedOperationException("Not Yet Done");
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        Intent restartservirce = new Intent(getApplicationContext(), this.getClass()) ;
+        restartservirce.setPackage(getPackageName());
+        startService(restartservirce);
+        super.onTaskRemoved(rootIntent);
+    }
+    */
 }

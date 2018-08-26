@@ -74,15 +74,13 @@
         <activity android:name=".postDetails_for_Career_prep_by_subject" />
         <activity android:name=".career_prep_Bangla" />
 
-        <service
-            android:name=".one_singal_notification"
-            android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE">
-            <intent-filter>
-                <action android:name="com.onesignal.NotificationExtender" />
-            </intent-filter>
-        </service>
 
+        <service
+            android:name=".persistant_service"
+            android:enabled="true"
+            android:exported="true">
+
+        </service>
     </application>
 
 </manifest>

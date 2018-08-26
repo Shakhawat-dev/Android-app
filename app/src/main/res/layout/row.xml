@@ -29,7 +29,7 @@
                     android:layout_gravity="center"
                     android:scaleType="centerCrop"
                     android:adjustViewBounds="true"
-                    android:background="@drawable/login"
+                    android:background="@drawable/loading"
                     android:id="@+id/rImageView"/>
             </LinearLayout>
 

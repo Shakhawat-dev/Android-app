@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -44,6 +45,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mTitleTv.setText(title);
         mDetailTv.setText(description);
         Picasso.get().load(image).into(mImageIv);
+
     }
 
     private ViewHolder.ClickListener mClickListener;
@@ -57,4 +59,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public void setOnClickListener(ViewHolder.ClickListener clickListener){
         mClickListener = clickListener;
     }
+
+
 }
