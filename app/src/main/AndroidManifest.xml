@@ -74,13 +74,20 @@
         <activity android:name=".postDetails_for_Career_prep_by_subject" />
         <activity android:name=".career_prep_Bangla" />
 
-
         <service
             android:name=".persistant_service"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true" />
 
-        </service>
+        <activity android:name=".career_prep_Eng" />
+        <activity android:name=".career_prep_Math" />
+        <activity android:name=".career_prep_ict" />
+        <activity android:name=".career_prep_Bangladesh" />
+        <activity android:name=".career_prep_International" />
+        <activity android:name=".career_prep_GK" />
+        <activity android:name=".career_prep_Others" />
+        <activity android:name=".Under_Bcs_prep_Button" />
+        <activity android:name=".Under_Bcs_Button_QustionBank"></activity>
     </application>
 
 </manifest>

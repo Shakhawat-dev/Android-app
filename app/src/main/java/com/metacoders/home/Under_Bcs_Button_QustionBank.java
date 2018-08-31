@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -27,52 +24,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class BcsButtonActivity extends AppCompatActivity implements View.OnClickListener {
+public class Under_Bcs_Button_QustionBank extends AppCompatActivity {
+    //this is use the model and the view holder of the all subject  and so on ....
+
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
-// this activity shares the model of bises and post detail of bises (experimental )
-    private DrawerLayout mDrawerlayout;
-    private ActionBarDrawerToggle mToggle;
-private ProgressBar Bcs_Bar ;
-public CardView QusBank_button;
-    public CardView PrepButton ;
+    public ProgressBar spinner ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bcs_button);
-
-        Bcs_Bar = (ProgressBar) findViewById(R.id.progressbar_Bcs_prep) ;
-        Bcs_Bar.setVisibility(View.VISIBLE);
-        //button linking with id
-        QusBank_button =  (CardView)findViewById(R.id.qsnBank_Button_in_Bcs);
-        PrepButton = (CardView)findViewById(R.id.prep_IN_Bcs_btn);
-
-        ////Click Listener to CardButton
+        setContentView(R.layout.activity_under__bcs__button__qustion_bank);
 
 
-            QusBank_button.setOnClickListener(this);
-            PrepButton.setOnClickListener(this);
-
-
-
-
-
-
-
-
-
-        //For Drawer
-     //   mDrawerlayout = (DrawerLayout) findViewById(R.id.bcs_activity);
-      //  mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
-     //   mDrawerlayout.addDrawerListener(mToggle);
-    //    mToggle.syncState();
-    //    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
+//spinner
+        spinner =  findViewById(R.id.progressBar_Under_BcsButton_QusBank);
+        spinner.setVisibility(View.VISIBLE);
 
         //Actionbar
         ActionBar actionBar = getSupportActionBar();
@@ -101,9 +71,8 @@ public CardView QusBank_button;
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Bcs_Prep");
+        mRef = mFirebaseDatabase.getReference("Bcs_prep_QusBank");
     }
-
     //search data
     private void firebaseSearch(String searchText) {
 
@@ -112,29 +81,32 @@ public CardView QusBank_button;
 
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
-        FirebaseRecyclerAdapter<Model_for_Bises,viewHolder_for_bcs_prep> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<Model_for_Bises, viewHolder_for_bcs_prep>(
-                        Model_for_Bises.class,
-                        R.layout.row_for_bcs_prep,
-                        viewHolder_for_bcs_prep.class,
+        FirebaseRecyclerAdapter<model_for__Career_prep_by_subject,viewHolder_for__Career_prep_by_subject> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>(
+                        model_for__Career_prep_by_subject.class,
+                        R.layout.row_for_subject_career_prep,
+                        viewHolder_for__Career_prep_by_subject.class,
                         firebaseSearchQuery
                 ) {
                     @Override
-                    protected void populateViewHolder(viewHolder_for_bcs_prep viewHolder, Model_for_Bises model, int position) {
+                    protected void populateViewHolder(viewHolder_for__Career_prep_by_subject viewHolder, model_for__Career_prep_by_subject model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
+                        // this is for seacrh entry
+
+
                     }
 
                     @Override
-                    public viewHolder_for_bcs_prep onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for__Career_prep_by_subject onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        viewHolder_for_bcs_prep viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for__Career_prep_by_subject viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_bcs_prep);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bcs_prep);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -142,7 +114,7 @@ public CardView QusBank_button;
 
 
                                 //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
                                 intent.putExtra("title", mTitle); // put title
                                 intent.putExtra("description", mDesc); //put description
                                 startActivity(intent); //start activity
@@ -165,46 +137,50 @@ public CardView QusBank_button;
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
 
+
     //load data into recycler view onStart
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<Model_for_Bises, viewHolder_for_bcs_prep>
+        FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>
                 firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<Model_for_Bises, viewHolder_for_bcs_prep>(
-                        Model_for_Bises.class,
-                        R.layout.row_for_bcs_prep,
-                        viewHolder_for_bcs_prep.class,
+                new FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>(
+                        model_for__Career_prep_by_subject.class,
+                        R.layout.row_for_subject_career_prep,
+                        viewHolder_for__Career_prep_by_subject.class,
                         mRef
                 ) {
                     @Override
-                    protected void populateViewHolder(viewHolder_for_bcs_prep viewHolder, Model_for_Bises model, int position) {
+                    protected void populateViewHolder(viewHolder_for__Career_prep_by_subject viewHolder, model_for__Career_prep_by_subject model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
 
-                        Handler handler  = new Handler() ;
 
+                        Handler handler  = new Handler() ;
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
 
-
-                               Bcs_Bar.setVisibility(View.GONE);
+                                spinner.setVisibility(View.GONE);
 
                             }
                         },950);
+
+
+
                     }
 
                     @Override
-                    public viewHolder_for_bcs_prep onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for__Career_prep_by_subject onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        viewHolder_for_bcs_prep viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for__Career_prep_by_subject viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_bcs_prep);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bcs_prep);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -307,25 +283,7 @@ public CardView QusBank_button;
     }
 
 
-    @Override
-    public void onClick(View view) {
-        Intent i ;
-        switch (view.getId()){
-            case R.id.prep_IN_Bcs_btn :
-            i=new Intent(this, Under_Bcs_prep_Button.class);
-            startActivity(i);
-            break;
-            case R.id.qsnBank_Button_in_Bcs :
-                i=new Intent(this, Under_Bcs_Button_QustionBank.class);
-                startActivity(i);
-                break;
 
-
-
-
-            default:
-                break;
-
-        }
-    }
 }
+
+
