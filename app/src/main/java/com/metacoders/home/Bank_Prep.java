@@ -22,7 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Current_Activity extends AppCompatActivity {
+public class Bank_Prep extends AppCompatActivity {
+
+    //this is use the model and the view holder of the feature activty and so on ....
 
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
@@ -30,15 +32,10 @@ public class Current_Activity extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current);
-
-
-
-
+        setContentView(R.layout.activity_bank__prep);
 
 
         //Actionbar
@@ -68,7 +65,7 @@ public class Current_Activity extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Current_Aff");
+        mRef = mFirebaseDatabase.getReference("Bank_prep");
     }
     //search data
     private void firebaseSearch(String searchText) {
@@ -78,29 +75,29 @@ public class Current_Activity extends AppCompatActivity {
 
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
-        FirebaseRecyclerAdapter<model_for_Current,ViEwHolder_For_Current> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>(
-                       model_for_Current.class,
-                        R.layout.row_for_current,
-                        ViEwHolder_For_Current.class,
+        FirebaseRecyclerAdapter<model_for_feature_Activtiy,viewHolder_For_Feature> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>(
+                        model_for_feature_Activtiy.class,
+                        R.layout.row_for_feature_activity,
+                        viewHolder_For_Feature.class,
                         firebaseSearchQuery
                 ) {
                     @Override
-                    protected void populateViewHolder(ViEwHolder_For_Current viewHolder, model_for_Current model, int position) {
+                    protected void populateViewHolder(viewHolder_For_Feature viewHolder, model_for_feature_Activtiy model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
                     }
 
                     @Override
-                    public ViEwHolder_For_Current onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_For_Feature onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViEwHolder_For_Current viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_For_Feature viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -136,30 +133,30 @@ public class Current_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>
+        FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>
                 firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>(
-                        model_for_Current.class,
-                        R.layout.row_for_current,
-                        ViEwHolder_For_Current.class,
+                new FirebaseRecyclerAdapter<model_for_feature_Activtiy, viewHolder_For_Feature>(
+                        model_for_feature_Activtiy.class,
+                        R.layout.row_for_feature_activity,
+                        viewHolder_For_Feature.class,
                         mRef
                 ) {
                     @Override
-                    protected void populateViewHolder(ViEwHolder_For_Current viewHolder, model_for_Current model, int position) {
+                    protected void populateViewHolder(viewHolder_For_Feature viewHolder, model_for_feature_Activtiy model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
                     }
 
                     @Override
-                    public ViEwHolder_For_Current onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_For_Feature onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViEwHolder_For_Current viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_For_Feature viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -260,8 +257,6 @@ public class Current_Activity extends AppCompatActivity {
                 });
         builder.show();
     }
-
-
 
 
 

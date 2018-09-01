@@ -3,6 +3,7 @@ package com.metacoders.home;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -22,24 +24,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Current_Activity extends AppCompatActivity {
+public class career_prep_Others extends AppCompatActivity {
+    //this is use the model and the view holder of the all subject  and so on ....
 
     LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
-
+    public ProgressBar spinner ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current);
+        setContentView(R.layout.activity_career_prep__others);
 
 
-
-
-
+//spinner
+        spinner =  findViewById(R.id.progressBar_carrer_prep_Others);
+        spinner.setVisibility(View.VISIBLE);
 
         //Actionbar
         ActionBar actionBar = getSupportActionBar();
@@ -68,7 +71,7 @@ public class Current_Activity extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Current_Aff");
+        mRef = mFirebaseDatabase.getReference("career_prep_Others");
     }
     //search data
     private void firebaseSearch(String searchText) {
@@ -78,29 +81,32 @@ public class Current_Activity extends AppCompatActivity {
 
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
-        FirebaseRecyclerAdapter<model_for_Current,ViEwHolder_For_Current> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>(
-                       model_for_Current.class,
-                        R.layout.row_for_current,
-                        ViEwHolder_For_Current.class,
+        FirebaseRecyclerAdapter<model_for__Career_prep_by_subject,viewHolder_for__Career_prep_by_subject> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>(
+                        model_for__Career_prep_by_subject.class,
+                        R.layout.row_for_subject_career_prep,
+                        viewHolder_for__Career_prep_by_subject.class,
                         firebaseSearchQuery
                 ) {
                     @Override
-                    protected void populateViewHolder(ViEwHolder_For_Current viewHolder, model_for_Current model, int position) {
+                    protected void populateViewHolder(viewHolder_for__Career_prep_by_subject viewHolder, model_for__Career_prep_by_subject model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
+                        // this is for seacrh entry
+
+
                     }
 
                     @Override
-                    public ViEwHolder_For_Current onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for__Career_prep_by_subject onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViEwHolder_For_Current viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for__Career_prep_by_subject viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -108,7 +114,7 @@ public class Current_Activity extends AppCompatActivity {
 
 
                                 //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
                                 intent.putExtra("title", mTitle); // put title
                                 intent.putExtra("description", mDesc); //put description
                                 startActivity(intent); //start activity
@@ -136,30 +142,45 @@ public class Current_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>
+        FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>
                 firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>(
-                        model_for_Current.class,
-                        R.layout.row_for_current,
-                        ViEwHolder_For_Current.class,
+                new FirebaseRecyclerAdapter<model_for__Career_prep_by_subject, viewHolder_for__Career_prep_by_subject>(
+                        model_for__Career_prep_by_subject.class,
+                        R.layout.row_for_subject_career_prep,
+                        viewHolder_for__Career_prep_by_subject.class,
                         mRef
                 ) {
                     @Override
-                    protected void populateViewHolder(ViEwHolder_For_Current viewHolder, model_for_Current model, int position) {
+                    protected void populateViewHolder(viewHolder_for__Career_prep_by_subject viewHolder, model_for__Career_prep_by_subject model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
+
+
+                        Handler handler  = new Handler() ;
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                spinner.setVisibility(View.GONE);
+
+                            }
+                        },950);
+
+
+
                     }
 
                     @Override
-                    public ViEwHolder_For_Current onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for__Career_prep_by_subject onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViEwHolder_For_Current viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for__Career_prep_by_subject viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -260,10 +281,6 @@ public class Current_Activity extends AppCompatActivity {
                 });
         builder.show();
     }
-
-
-
-
 
 
 

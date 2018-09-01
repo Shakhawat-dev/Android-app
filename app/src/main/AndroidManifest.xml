@@ -37,7 +37,6 @@
         <activity android:name=".PostDetailActivity" />
         <activity android:name=".WPPostDetails" />
         <activity android:name=".Wp_Quiz_details" />
-        <activity android:name=".activity_register" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -46,23 +45,49 @@
         <activity android:name=".activity_register" />
         <activity android:name=".login" />
         <activity android:name=".Voca_activity" />
-        <activity android:name=".Voc_post_detail"
-            android:parentActivityName=".Voca_activity"/>
+        <activity
+            android:name=".Voc_post_detail"
+            android:parentActivityName=".Voca_activity" />
         <activity android:name=".Qustion_Bank" />
-        <activity android:name=".qus_bank_detail"
-            android:parentActivityName=".Qustion_Bank"/>
+        <activity
+            android:name=".qus_bank_detail"
+            android:parentActivityName=".Qustion_Bank" />
         <activity android:name=".BcsActivity" />
         <activity android:name=".SyllabusActivity" />
         <activity android:name=".BcsButtonActivity" />
         <activity android:name=".Bises" />
-        <activity android:name=".bises_post_detail"
-        android:parentActivityName=".Bises"/>
+        <activity
+            android:name=".bises_post_detail"
+            android:parentActivityName=".Bises" />
         <activity android:name=".Current_Activity" />
-        <activity android:name=".Current_Post_Detail"
-            android:parentActivityName=".Current_Activity"/>
+        <activity
+            android:name=".Current_Post_Detail"
+            android:parentActivityName=".Current_Activity" />
         <activity android:name=".Feature_Activity" />
-        <activity android:name=".Feature_Detail_Activity"
-            android:parentActivityName=".Feature_Activity"/>
+        <activity
+            android:name=".Feature_Detail_Activity"
+            android:parentActivityName=".Feature_Activity" />
+        <activity android:name=".Bcs_Prep_POst_DeatilsActivity" />
+        <activity android:name=".Govt_job_prep" />
+        <activity android:name=".Bank_Prep" />
+        <activity android:name=".Shikok_nivondon" />
+        <activity android:name=".postDetails_for_Career_prep_by_subject" />
+        <activity android:name=".career_prep_Bangla" />
+
+        <service
+            android:name=".persistant_service"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".career_prep_Eng" />
+        <activity android:name=".career_prep_Math" />
+        <activity android:name=".career_prep_ict" />
+        <activity android:name=".career_prep_Bangladesh" />
+        <activity android:name=".career_prep_International" />
+        <activity android:name=".career_prep_GK" />
+        <activity android:name=".career_prep_Others" />
+        <activity android:name=".Under_Bcs_prep_Button" />
+        <activity android:name=".Under_Bcs_Button_QustionBank"></activity>
     </application>
 
 </manifest>

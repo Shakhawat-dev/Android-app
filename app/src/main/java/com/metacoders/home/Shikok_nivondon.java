@@ -22,22 +22,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class Current_Activity extends AppCompatActivity {
+public class Shikok_nivondon extends AppCompatActivity {
 
-    LinearLayoutManager mLayoutManager; //for sorting
+
+// this page shares from  Voc_activity such model and viewholder everything even xml
+LinearLayoutManager mLayoutManager; //for sorting
     SharedPreferences mSharedPref; //for saving sort settings
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current);
-
-
-
+        setContentView(R.layout.activity_shikok_nivondon);
 
 
 
@@ -45,7 +43,7 @@ public class Current_Activity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         //set title
         mSharedPref = getSharedPreferences("SortSettings", MODE_PRIVATE);
-        String mSorting = mSharedPref.getString("Sort", "newest"); //where if no settings is selected newest will be default
+        String mSorting = mSharedPref.getString("Sort", "newest"); //where if no settingsis selected newest will be default
 
         if (mSorting.equals("newest")) {
             mLayoutManager = new LinearLayoutManager(this);
@@ -59,6 +57,12 @@ public class Current_Activity extends AppCompatActivity {
             mLayoutManager.setStackFromEnd(false);
         }
 
+
+
+
+
+
+
         //RecyclerView
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
@@ -68,7 +72,7 @@ public class Current_Activity extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Current_Aff");
+        mRef = mFirebaseDatabase.getReference("Shikok_nivondon");
     }
     //search data
     private void firebaseSearch(String searchText) {
@@ -78,29 +82,29 @@ public class Current_Activity extends AppCompatActivity {
 
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
-        FirebaseRecyclerAdapter<model_for_Current,ViEwHolder_For_Current> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>(
-                       model_for_Current.class,
-                        R.layout.row_for_current,
-                        ViEwHolder_For_Current.class,
+        FirebaseRecyclerAdapter<model_for_vocabulary,viewHolder_for_Vocabulary> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<model_for_vocabulary, viewHolder_for_Vocabulary>(
+                        model_for_vocabulary.class,
+                        R.layout.row_for_vocabulary,
+                        viewHolder_for_Vocabulary.class,
                         firebaseSearchQuery
                 ) {
                     @Override
-                    protected void populateViewHolder(ViEwHolder_For_Current viewHolder, model_for_Current model, int position) {
+                    protected void populateViewHolder(viewHolder_for_Vocabulary viewHolder, model_for_vocabulary model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
                     }
 
                     @Override
-                    public ViEwHolder_For_Current onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for_Vocabulary onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViEwHolder_For_Current viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for_Vocabulary viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
@@ -108,7 +112,7 @@ public class Current_Activity extends AppCompatActivity {
 
 
                                 //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
                                 intent.putExtra("title", mTitle); // put title
                                 intent.putExtra("description", mDesc); //put description
                                 startActivity(intent); //start activity
@@ -136,37 +140,37 @@ public class Current_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>
+        FirebaseRecyclerAdapter<model_for_vocabulary, viewHolder_for_Vocabulary>
                 firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<model_for_Current, ViEwHolder_For_Current>(
-                        model_for_Current.class,
-                        R.layout.row_for_current,
-                        ViEwHolder_For_Current.class,
+                new FirebaseRecyclerAdapter<model_for_vocabulary, viewHolder_for_Vocabulary>(
+                        model_for_vocabulary.class,
+                        R.layout.row_for_vocabulary,
+                        viewHolder_for_Vocabulary.class,
                         mRef
                 ) {
                     @Override
-                    protected void populateViewHolder(ViEwHolder_For_Current viewHolder, model_for_Current model, int position) {
+                    protected void populateViewHolder(viewHolder_for_Vocabulary viewHolder, model_for_vocabulary model, int position) {
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription());
                     }
 
                     @Override
-                    public ViEwHolder_For_Current onCreateViewHolder(ViewGroup parent, int viewType) {
+                    public viewHolder_for_Vocabulary onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViEwHolder_For_Current viewHolder = super.onCreateViewHolder(parent, viewType);
+                        viewHolder_for_Vocabulary viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
+                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
 
                                 //get data from views
                                 String mTitle = mTitleTv.getText().toString();
                                 String mDesc = mDescTv.getText().toString();
 
                                 //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
                                 intent.putExtra("title", mTitle); // put title
                                 intent.putExtra("description", mDesc); //put description
                                 startActivity(intent); //start activity
@@ -260,12 +264,6 @@ public class Current_Activity extends AppCompatActivity {
                 });
         builder.show();
     }
-
-
-
-
-
-
 
 }
 

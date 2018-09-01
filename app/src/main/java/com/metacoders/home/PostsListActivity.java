@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,9 +30,13 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 
@@ -55,6 +60,9 @@ public class PostsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
         setContentView(R.layout.activity_posts_list);
+        Toast toast = Toast.makeText(getApplicationContext(), "Wait For The  Loading To End" ,Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+        toast.show();
 
 
         job_progressBar = (ProgressBar) findViewById(R.id.progressbar_job_ad) ;
@@ -125,7 +133,7 @@ public class PostsListActivity extends AppCompatActivity {
                     @Override
                     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                        ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
+                        final ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
@@ -140,18 +148,20 @@ public class PostsListActivity extends AppCompatActivity {
                                 Drawable mDrawable = mImageView.getDrawable();
                                 Bitmap mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
-                                byte[] bytes = stream.toByteArray();
-                                intent.putExtra("image", bytes); //put bitmap image as array of bytes
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                //handling the click before load
 
-                            }
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
+                                    byte[] bytes = stream.toByteArray();
+                                    intent.putExtra("image", bytes); //put bitmap image as array of bytes
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
 
+
+                          }
 
                             @Override
                         public void onItemLongClick(View view, int position) {
@@ -186,25 +196,31 @@ public class PostsListActivity extends AppCompatActivity {
 
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Model model, int position) {
+
+
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage());
 
-                        Handler handler  = new Handler() ;
 
+                       Handler handler  = new Handler() ;
                         handler.postDelayed(new Runnable() {
-                            @Override
+                           @Override
                             public void run() {
 
+                               job_progressBar.setVisibility(View.GONE);
 
-                                    job_progressBar.setVisibility(View.GONE);
+                           }
+                       },5000);
 
-                            }
-                        },5000);
+
+
 
 
 
 
 
                     }
+
+
 
 
 
@@ -227,19 +243,24 @@ public class PostsListActivity extends AppCompatActivity {
                                 String mTitle = mTitleTv.getText().toString();
                                 String mDesc = mDescTv.getText().toString();
                                 Drawable mDrawable = mImageView.getDrawable();
-                                Bitmap mBitmap =null;
+                                Bitmap mBitmap = null;
                                  mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
 
-                                //pass this data to new activity
 
-                                Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
-                                byte[] bytes = stream.toByteArray();
-                                intent.putExtra("image", bytes); //put bitmap image as array of bytes
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                 // sending to new activity
+
+                                     Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
+                                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                     mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
+                                     byte[] bytes = stream.toByteArray();
+                                        //put bitmap image as array of bytes
+                                         intent.putExtra("image", bytes);
+
+                                         intent.putExtra("title", mTitle); // put title
+                                         intent.putExtra("description", mDesc); //put description
+                                         startActivity(intent); //start activity
+
+
 
 
                             }
@@ -257,6 +278,7 @@ public class PostsListActivity extends AppCompatActivity {
 
         //set adapter to recyclerview
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
+
     }
 
     @Override
@@ -333,5 +355,6 @@ public class PostsListActivity extends AppCompatActivity {
                 });
         builder.show();
     }
+
 
 }

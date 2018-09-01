@@ -70,7 +70,7 @@ public class Feature_Activity extends AppCompatActivity {
     private void firebaseSearch(String searchText) {
 
         //convert string entered in SearchView to lowercase
-        String query = searchText.toLowerCase();
+        String query = searchText;
 
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
