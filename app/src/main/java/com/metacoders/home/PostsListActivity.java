@@ -139,11 +139,13 @@ public class PostsListActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
+                                /*
+
                                 TextView mTitleTv = view.findViewById(R.id.rTitleTv);
                                 TextView mDescTv = view.findViewById(R.id.rDescriptionTv);
                                 ImageView mImageView = view.findViewById(R.id.rImageView);
                                 //get data from views
-                                String mTitle = mTitleTv.getText().toString();
+                                String mTitle =  mTitleTv.getText().toString();
                                 String mDesc = mDescTv.getText().toString();
                                 Drawable mDrawable = mImageView.getDrawable();
                                 Bitmap mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
@@ -152,13 +154,41 @@ public class PostsListActivity extends AppCompatActivity {
 
                                     //pass this data to new activity
                                     Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
-                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                     mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
                                     byte[] bytes = stream.toByteArray();
+
+
                                     intent.putExtra("image", bytes); //put bitmap image as array of bytes
                                     intent.putExtra("title", mTitle); // put title
                                     intent.putExtra("description", mDesc); //put description
-                                    startActivity(intent); //start activity
+                                    startActivity(intent); //start activity*/
+
+
+
+                                //get data from views
+                                String mTitle = getItem(position).getTitle() ;                         //mTitleTv.getText().toString();
+                                String mDesc = getItem(position).getDescription();                                  //mDescTv.getText().toString();
+                                String   mImage =  getItem(position).getImage();
+
+                              /*  Drawable mDrawable = mImageView.getDrawable();
+                                Bitmap mBitmap = null;
+                                 mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
+                                        */
+
+                                // sending to new activity
+
+                                Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
+                                                               /*  ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                              mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
+                                                         byte[] bytes = stream.toByteArray(); */
+                                //put bitmap image as array of bytes
+                                intent.putExtra("title", mTitle); // put title
+                                intent.putExtra("description", mDesc); //put description
+                                intent.putExtra("image",mImage); //put image
+
+
+                                startActivity(intent); //start activity
 
 
                           }
@@ -235,29 +265,34 @@ public class PostsListActivity extends AppCompatActivity {
                             public void onItemClick(View view, int position) {
 
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv);
-                                ImageView mImageView = view.findViewById(R.id.rImageView);
+                             //   TextView mTitleTv = view.findViewById(R.id.rTitleTv);
+                            //    TextView mDescTv = view.findViewById(R.id.rDescriptionTv);
+                           //     ImageView mImageView = view.findViewById(R.id.rImageView);
+
+
 
                                 //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
-                                Drawable mDrawable = mImageView.getDrawable();
+                                String mTitle = getItem(position).getTitle() ;                         //mTitleTv.getText().toString();
+                                String mDesc = getItem(position).getDescription();                                  //mDescTv.getText().toString();
+                                String   mImage =  getItem(position).getImage();
+
+                              /*  Drawable mDrawable = mImageView.getDrawable();
                                 Bitmap mBitmap = null;
                                  mBitmap = ((BitmapDrawable) mDrawable).getBitmap();
-
+                                        */
 
                                  // sending to new activity
 
                                      Intent intent = new Intent(view.getContext(), PostDetailActivity.class);
-                                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                     mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
-                                     byte[] bytes = stream.toByteArray();
-                                        //put bitmap image as array of bytes
-                                         intent.putExtra("image", bytes);
+                                                               /*  ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                              mBitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
+                                                         byte[] bytes = stream.toByteArray(); */
+                                                        //put bitmap image as array of bytes
+                                intent.putExtra("title", mTitle); // put title
+                                intent.putExtra("description", mDesc); //put description
+                                intent.putExtra("image",mImage); //put image
 
-                                         intent.putExtra("title", mTitle); // put title
-                                         intent.putExtra("description", mDesc); //put description
+
                                          startActivity(intent); //start activity
 
 

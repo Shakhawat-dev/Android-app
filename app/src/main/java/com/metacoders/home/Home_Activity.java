@@ -3,6 +3,7 @@ package com.metacoders.home;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -36,7 +37,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
-        //forebase auth
+
+
 // notification
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
@@ -44,6 +46,17 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 .init();
 
 startService(new Intent(this, FireBase_notification.class));
+
+
+//0ne time Dialogue Box
+        SharedPreferences  prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean fstart = prefs.getBoolean("firstStart", true);
+        if(fstart){
+
+            show_Dialog_after_Install();
+        }
+
+
 
             //selecting customs fonts
             TextView cakri = (TextView) findViewById(R.id.cakribakri);
@@ -136,6 +149,8 @@ startService(new Intent(this, FireBase_notification.class));
                 //without interent what u wnat future devlopment
 
             }
+
+
 
             //For drawer
             mDrawerlayout = (DrawerLayout) findViewById(R.id.home_Drawer);
@@ -250,4 +265,24 @@ startService(new Intent(this, FireBase_notification.class));
 
             return builder;
            }
+private  void show_Dialog_after_Install(){
+
+
+        new AlertDialog.Builder(this)
+                .setTitle("Hey User !!")
+                .setMessage("Thanks For Installing The App . This is A Beta Version OF the Full App . So You May face some Problem")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart" , false ) ;
+        editor.apply();
+}
+
+
     }
