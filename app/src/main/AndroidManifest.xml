@@ -11,6 +11,7 @@
     <!-- Wallpaper permission -->
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
+
     <application
         android:name=".Android_app"
         android:allowBackup="true"
@@ -18,7 +19,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:launchMode="singleInstance"
         android:theme="@style/AppTheme">
+        <activity android:name=".SplashScreen" android:theme="@style/splash">
+            <intent-filter>
+<action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                
+            </intent-filter>
+
+        </activity>
+
         <activity android:name=".Home_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -87,7 +98,8 @@
         <activity android:name=".career_prep_GK" />
         <activity android:name=".career_prep_Others" />
         <activity android:name=".Under_Bcs_prep_Button" />
-        <activity android:name=".Under_Bcs_Button_QustionBank"></activity>
+        <activity android:name=".Under_Bcs_Button_QustionBank" />
+
     </application>
 
 </manifest>

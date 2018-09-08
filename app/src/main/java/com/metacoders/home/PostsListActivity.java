@@ -61,7 +61,6 @@ public class PostsListActivity extends AppCompatActivity {
         Fabric.with(this,new Crashlytics());
         setContentView(R.layout.activity_posts_list);
         Toast toast = Toast.makeText(getApplicationContext(), "Wait For The  Loading To End" ,Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
         toast.show();
 
 
@@ -239,7 +238,7 @@ public class PostsListActivity extends AppCompatActivity {
                                job_progressBar.setVisibility(View.GONE);
 
                            }
-                       },5000);
+                       },3000);
 
 
 
