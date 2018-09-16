@@ -19,15 +19,17 @@
         app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/button_send_nofition"
+        android:layout_width="20dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="148dp"
+        android:text="Nottification"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.widget.NavigationView
-            app:headerLayout="@layout/header"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:itemTextColor="@color/colorPrimaryDark"
-            app:menu="@menu/drawer_menu"
-            android:layout_gravity="start"
-            android:background="#ffffff">
 
-        </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

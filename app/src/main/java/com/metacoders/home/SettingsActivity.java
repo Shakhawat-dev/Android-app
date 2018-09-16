@@ -1,6 +1,8 @@
 package com.metacoders.home;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +13,15 @@ import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
 
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Scanner;
+
 import io.fabric.sdk.android.Fabric;
 
 public class SettingsActivity extends AppCompatActivity {
-    Button btn ;
+    Button btn , send_btn ;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
 
@@ -23,7 +30,11 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
         setContentView(R.layout.activity_settings);
+
         btn = (Button)findViewById(R.id.button_register);
+
+
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +51,8 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {

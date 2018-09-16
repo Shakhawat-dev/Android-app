@@ -73,7 +73,10 @@ public ProgressBar spinner ;
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("career_prep_English");
+        mRef = mFirebaseDatabase.getReference( "career_prep_English");
+       //career_prep_English
+
+
     }
     //search data
     private void firebaseSearch(String searchText) {
