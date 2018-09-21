@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Title"
+                android:fontFamily="@font/lip"
                 android:textColor="#000"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -36,6 +37,7 @@
                 android:id="@+id/descriptionTv_feature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lip"
                 android:text="This will be the description of the post"
                 android:textSize="18sp"
                 />

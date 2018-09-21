@@ -15,6 +15,7 @@
         <ImageView
             android:layout_width="225dp"
             android:layout_height="60dp"
+
             android:background="@drawable/notic"
             android:id="@+id/Icon_quiz"
             android:layout_margin="5dp"
@@ -35,6 +36,7 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:ellipsize="marquee"
+                android:fontFamily="@font/lip"
                 android:singleLine="true"
                 android:text="this is a  Demo text "
                 android:id="@+id/title_quiz"
@@ -43,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="left"
+                android:fontFamily="@font/lip"
                 android:id="@+id/subtitle_quiz"
                 android:textSize="15sp"
                 android:textColor="#ffff"

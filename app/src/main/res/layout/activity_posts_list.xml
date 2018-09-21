@@ -42,6 +42,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:text="Govt. Job"
+                        android:fontFamily="@font/lip"
                         android:textStyle="bold"
                         />
 
@@ -72,6 +73,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:text="IT Jobs"
+                        android:fontFamily="@font/lip"
                         android:textStyle="bold"
                         />
 
@@ -102,6 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Bank Jobs"
+                        android:fontFamily="@font/lip"
                         android:textAlignment="center"
                         android:textStyle="bold" />
 
@@ -131,6 +134,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
+                        android:fontFamily="@font/lip"
                         android:text="Govt. Job"
                         android:textStyle="bold"
                         />

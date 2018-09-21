@@ -31,6 +31,7 @@
                 android:text="Title"
                 android:fontFamily="@font/lip"
                 android:textColor="#000"
+
                 android:textSize="22sp"
                 android:textStyle="bold" />
 

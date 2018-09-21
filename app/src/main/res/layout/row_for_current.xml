@@ -27,6 +27,7 @@
                 android:layout_width="331dp"
                 android:layout_height="wrap_content"
                 android:text="Title"
+                android:fontFamily="@font/lip"
                 android:textColor="#000"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -35,6 +36,7 @@
                 android:id="@+id/rDescriptionTv_current"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lip"
                 android:layout_marginLeft="3dp"
                 android:ellipsize="marquee"
                 android:singleLine="true"

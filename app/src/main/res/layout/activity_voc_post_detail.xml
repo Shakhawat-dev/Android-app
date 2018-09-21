@@ -27,6 +27,7 @@ tools:context=".Voc_post_detail">
             android:layout_height="wrap_content"
             android:text="Title"
             android:textColor="#000"
+            android:fontFamily="@font/lip"
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginLeft="2dp"/>
@@ -34,6 +35,7 @@ tools:context=".Voc_post_detail">
         <TextView
             android:id="@+id/descriptionTv_voc"
             android:layout_width="match_parent"
+            android:fontFamily="@font/lip"
             android:layout_height="wrap_content"
             android:text="This will be the description of the post"
             android:textSize="18sp"

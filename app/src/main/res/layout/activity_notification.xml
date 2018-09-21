@@ -56,6 +56,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="বিসিএস"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>
@@ -99,7 +100,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="ব্যংক"
+                            android:fontFamily="@font/lip"
+                            android:text="ব্যাংক"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                         <View
@@ -151,6 +153,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="সরকারি চাকরি"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>
@@ -193,6 +196,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="শিক্ষক নিবন্ধন "
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>
@@ -209,6 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Career Preparation's"
+                android:fontFamily="@font/lip"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -246,6 +251,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="বাংলা"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>
@@ -290,6 +296,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="ইংরেজি"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                         <View
@@ -334,6 +341,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="গণিত"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>
@@ -371,6 +379,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="তথ্য প্রযুক্তি"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>
@@ -414,6 +423,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="বাংলাদেশ বিষয়াবলী"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>
@@ -456,6 +466,7 @@
                             android:id="@+id/international_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/lip"
                             android:layout_marginTop="10dp"
                             android:text="আন্তর্জাতিক বিষয়াবলী"
                             android:textSize="15sp"
@@ -505,6 +516,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="সাধারণ বিজ্ঞান"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -542,6 +554,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="অন্যান্য"
+                            android:fontFamily="@font/lip"
                             android:textSize="15sp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"/>

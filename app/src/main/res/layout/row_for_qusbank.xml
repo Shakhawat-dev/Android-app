@@ -22,6 +22,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:layout_gravity="center"
+            android:fontFamily="@font/lip"
             android:orientation="vertical">
 
             <TextView
@@ -30,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="Title"
                 android:textColor="#000"
+                android:fontFamily="@font/lip"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -38,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
+                android:fontFamily="@font/lip"
                 android:ellipsize="marquee"
                 android:singleLine="true"
                 android:text="This will be the description of the post"
@@ -48,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/lip"
                 android:layout_marginTop="5dp"
                 android:textSize="10sp"/>
 
