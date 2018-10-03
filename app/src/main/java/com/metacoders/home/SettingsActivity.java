@@ -22,8 +22,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class SettingsActivity extends AppCompatActivity {
     Button btn , send_btn ;
-    private DrawerLayout mDrawerlayout;
-    private ActionBarDrawerToggle mToggle;
+    //private DrawerLayout mDrawerlayout;
+    //private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +43,13 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        /*
         mDrawerlayout = (DrawerLayout) findViewById(R.id.setting_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        */
 
     }
 
@@ -56,9 +57,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
+        /*
         if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }
+        */
         return super.onOptionsItemSelected(item);
     }
 }

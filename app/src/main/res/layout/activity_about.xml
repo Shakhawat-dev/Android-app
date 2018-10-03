@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="28sp"
         android:text="Development on process keep patience :D "/>
-
+    <!--
     <android.support.design.widget.NavigationView
         app:headerLayout="@layout/header"
         android:layout_width="wrap_content"
@@ -23,5 +23,5 @@
         android:background="#ffffff">
 
     </android.support.design.widget.NavigationView>
-
+    -->
 </android.support.v4.widget.DrawerLayout>

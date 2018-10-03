@@ -28,8 +28,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     private CardView jobsButton, notificationButton, quizButton, vocaButton ,
             articleButton, current_Button, contactButton, settingsButton, aboutButton , Qus_Bank_Button
             , bisesButton  , feature_Button;
-    private DrawerLayout mDrawerlayout;
-    private ActionBarDrawerToggle mToggle;
+    //private DrawerLayout mDrawerlayout;
+    //private ActionBarDrawerToggle mToggle;
     FirebaseAuth mAuth;
 
     @Override
@@ -153,21 +153,24 @@ startService(new Intent(this, FireBase_notification.class));
 
 
             //For drawer
-            mDrawerlayout = (DrawerLayout) findViewById(R.id.home_Drawer);
+           /* mDrawerlayout = (DrawerLayout) findViewById(R.id.home_Drawer);
             //mDrawerlayout = (DrawerLayout) findViewById(R.id.contact_activity);
             mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
             mDrawerlayout.addDrawerListener(mToggle);
             mToggle.syncState();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
         }
 
         @Override
         public boolean onOptionsItemSelected (MenuItem item){
+            /*
             if (mToggle.onOptionsItemSelected(item)) {
                 return true;
             }
+            */
             return super.onOptionsItemSelected(item);
+
         }
 
         @Override

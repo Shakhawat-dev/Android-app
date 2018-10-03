@@ -18,21 +18,22 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
     private CardView bcsButton, bankButton, govtButton, teacherButton , banglaButton  , engbtn , ictButton, mathButton
            ,  BD_Button , GKButton ,Internation_btn , Others_btn ;
 
-    private DrawerLayout mDrawerlayout;
-    private ActionBarDrawerToggle mToggle;
+    //private DrawerLayout mDrawerlayout;
+    //private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
-        setContentView(R.layout.activity_notification);
+        setContentView(R.layout.activity_career_prep);
 
         //For Drawer
+        /*
         mDrawerlayout = (DrawerLayout) findViewById(R.id.notification_activity);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
         mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); */
 
 
         //defining cardButtons
@@ -67,9 +68,10 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item){
+        /*
         if (mToggle.onOptionsItemSelected(item)) {
             return true;
-        }
+        } */
         return super.onOptionsItemSelected(item);
     }
 

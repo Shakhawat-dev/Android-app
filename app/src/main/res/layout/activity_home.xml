@@ -311,7 +311,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="কারেন্ট "
+                            android:text="সাম্প্রতিক"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -495,7 +495,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="ভিডিও "
+                            android:text="সম্পাদকীয়"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -556,7 +556,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="যোগাযোগ করুন"
+                            android:text="যোগাযোগ"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -640,7 +640,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="আমাদের পরিচিতি"
+                            android:text="আমাদের সম্পর্কে"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -660,7 +660,7 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
+    <!--
     <android.support.design.widget.NavigationView
         app:headerLayout="@layout/header"
         android:layout_width="wrap_content"
@@ -672,6 +672,6 @@
 
 
     </android.support.design.widget.NavigationView>
-
+    -->
 
 </android.support.v4.widget.DrawerLayout>
