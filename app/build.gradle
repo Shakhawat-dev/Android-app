@@ -73,6 +73,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true;
     }
+    //About us Library
+    compile 'com.github.medyo:android-about-page:1.1.1'
 
 }
 
