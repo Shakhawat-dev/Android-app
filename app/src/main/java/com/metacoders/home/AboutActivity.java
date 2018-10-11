@@ -26,22 +26,24 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
 
+
         Element adsElement = new Element();
-        adsElement.setTitle("Advertise Here");
+        adsElement.setTitle("Call Us: +8809638214476");
+
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setImage(R.drawable.app_logo)
-                .setDescription("Welcome to our complete Job Solution App")
+                .setImage(R.drawable.aboutlogo)
+                .setDescription("জব সলিউশন")
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addItem(adsElement)
                 .addGroup("Connect with us")
-                .addEmail("metacoders18@gmail.com")
-                .addWebsite("http://metacoders.com")
-                .addFacebook("JobSolution Facebook")
+                .addEmail("contact.jobsolutionapp@gmail.com")
+                //.addWebsite("http://metacoders.com")
+                .addFacebook("jobsolutionapp")
                 .addTwitter("JobSolution Twitter")
                 .addPlayStore("Our Playstore")
-                .addItem(createCopyright())
+                //.addItem(createCopyright())
                 .create();
         
         setContentView(aboutPage);
@@ -55,6 +57,7 @@ public class AboutActivity extends AppCompatActivity {
         */
     }
 
+    /*
     private Element createCopyright() {
         Element copyright = new Element();
         final String copyrightString = String.format("Copyright %d by MetaCoders", Calendar.getInstance().get(Calendar.YEAR));
@@ -69,6 +72,7 @@ public class AboutActivity extends AppCompatActivity {
         });
         return copyright;
     }
+    */
 
     @Override
     public boolean onOptionsItemSelected (MenuItem item){

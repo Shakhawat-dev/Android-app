@@ -7,11 +7,7 @@
     android:id="@+id/about_activity"
     tools:context="com.metacoders.home.AboutActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:text="Development on process keep patience :D "/>
+
     <!--
     <android.support.design.widget.NavigationView
         app:headerLayout="@layout/header"

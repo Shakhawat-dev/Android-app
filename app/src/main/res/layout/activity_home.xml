@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="Career"
+                android:text="বিশেষ প্রস্তুতি"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -227,7 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="Career Preparation's"
+                android:text="বিষয়ভিত্তিক প্রস্তুতি"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -488,7 +488,7 @@
                             android:layout_height="64dp"
                             android:background="@drawable/circleteal"
                             android:padding="10dp"
-                            android:src="@drawable/ic_ondemand_video_black_24dp" />
+                            android:src="@drawable/ic_sort_by_alpha_black_24dp" />
 
                         <TextView
                             android:id="@+id/vid_title"
@@ -518,7 +518,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="About Us"
+                android:text="জব সলিউশন"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -531,7 +531,7 @@
                 android:orientation="horizontal">
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/contact_Button"
+                    android:id="@+id/about_Button"
                     android:layout_width="110dp"
                     android:layout_height="130dp"
                     android:layout_weight="1"
@@ -552,12 +552,12 @@
                             android:src="@drawable/ic_send_black_24dp" />
 
                         <TextView
-                            android:id="@+id/jog"
+                            android:id="@+id/amader_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="যোগাযোগ"
-                            android:textSize="15sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <View
@@ -614,8 +614,9 @@
 
                 </android.support.v7.widget.CardView>
 
+
                 <android.support.v7.widget.CardView
-                    android:id="@+id/about_Button"
+                    android:id="@+id/contact_Button"
                     android:layout_width="110dp"
                     android:layout_height="130dp"
                     android:layout_weight="1"
@@ -636,12 +637,12 @@
                             android:src="@drawable/ic_contact_mail_black_24dp" />
 
                         <TextView
-                            android:id="@+id/amader_title"
+                            android:id="@+id/jog"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="আমাদের সম্পর্কে"
-                            android:textSize="14sp"
+                            android:textSize="15sp"
                             android:textStyle="bold" />
 
                         <View
