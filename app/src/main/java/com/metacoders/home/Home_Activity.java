@@ -27,7 +27,7 @@ import io.fabric.sdk.android.Fabric;
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
     private CardView jobsButton, notificationButton, quizButton, vocaButton ,
             articleButton, current_Button, contactButton, settingsButton, aboutButton , Qus_Bank_Button
-            , bisesButton  , feature_Button;
+            , bisesButton  , feature_Button , edotrial_btn;
     //private DrawerLayout mDrawerlayout;
     //private ActionBarDrawerToggle mToggle;
     FirebaseAuth mAuth;
@@ -84,7 +84,7 @@ startService(new Intent(this, FireBase_notification.class));
             Typeface con = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
             jog.setTypeface(con);
 
-            TextView vid = (TextView) findViewById(R.id.vid_title);
+            TextView vid = (TextView) findViewById(R.id.Editorial_title);
             Typeface vidTIt = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
             vid.setTypeface(vidTIt);
 
@@ -115,6 +115,7 @@ startService(new Intent(this, FireBase_notification.class));
 
 
             //defining cardButtons
+            edotrial_btn=(CardView)findViewById(R.id.video_Button);
             jobsButton = (CardView) findViewById(R.id.jobs_Button);
             notificationButton = (CardView) findViewById(R.id.notification_Button);
             quizButton = (CardView) findViewById(R.id.quiz_Button);
@@ -128,6 +129,8 @@ startService(new Intent(this, FireBase_notification.class));
             bisesButton = (CardView)findViewById(R.id.Bises_Btn) ;
             feature_Button = (CardView)findViewById(R.id.feature_Button);
             //Click Listener to CardButton
+            edotrial_btn.setOnClickListener(this);
+
             jobsButton.setOnClickListener(this);
             notificationButton.setOnClickListener(this);
             quizButton.setOnClickListener(this);
@@ -230,6 +233,10 @@ startService(new Intent(this, FireBase_notification.class));
                     i = new Intent(this, AboutActivity.class);
                     startActivity(i);
                     break;
+                case R.id.video_Button:
+                        i = new Intent(this, Editorial.class);
+                        startActivity(i);
+                        break;
                 default:
                     break;
             }

@@ -1,5 +1,10 @@
 package com.metacoders.home;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +34,23 @@ public class AboutActivity extends AppCompatActivity {
 
         Element adsElement = new Element();
         adsElement.setTitle("Call Us: +8809638214476");
+
+        adsElement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    String temp = "tel:" + "+88019638214476";
+                    intent.setData(Uri.parse(temp));
+
+                    startActivity(intent);
+
+
+            }
+        });
+
 
 
         View aboutPage = new AboutPage(this)

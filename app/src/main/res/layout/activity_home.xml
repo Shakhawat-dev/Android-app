@@ -491,7 +491,7 @@
                             android:src="@drawable/ic_sort_by_alpha_black_24dp" />
 
                         <TextView
-                            android:id="@+id/vid_title"
+                            android:id="@+id/Editorial_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
