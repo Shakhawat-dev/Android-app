@@ -5,12 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class bises_post_detail extends AppCompatActivity {
     TextView mTitleTv, mDetailTv;
+    AdView mAdView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bises_post_detail);
+
+        //add
+        mAdView = findViewById(R.id.adView_Biases);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
 
         //Action bar
         ActionBar actionBar = getSupportActionBar();

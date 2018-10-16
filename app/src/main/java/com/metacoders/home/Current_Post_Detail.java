@@ -5,8 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class Current_Post_Detail extends AppCompatActivity {
     TextView mTitleTv, mDetailTv;
+    AdView mAdView ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +18,13 @@ public class Current_Post_Detail extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current__post__detail);
+        //advirtisement
+        mAdView = findViewById(R.id.adView_current);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        mAdView.loadAd(adRequest);
+
 
 
 

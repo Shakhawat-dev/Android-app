@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -39,6 +41,7 @@ public class PostDetailActivity extends AppCompatActivity {
     Bitmap bitmap;
 
     Button mSaveBtn, mShareBtn, mWallBtn;
+    AdView mAdView , downAdview  ;
 
     private static final int WRITE_EXTERNAL_STORAGE_CODE = 1;
 
@@ -47,6 +50,18 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new  Crashlytics());
         setContentView(R.layout.activity_post_detail);
+
+
+        //aDD
+
+        mAdView = findViewById(R.id.adView_cakriBakri);
+        downAdview = findViewById(R.id.adView_cakriBakriDOwn);
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        mAdView.loadAd(adRequest);
+        downAdview.loadAd(adRequest);
+
+
 
         //Action bar
         //ActionBar actionBar = getSupportActionBar();

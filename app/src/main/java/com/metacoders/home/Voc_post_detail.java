@@ -22,6 +22,9 @@ import android.widget.TextView;
 import android.Manifest;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -30,11 +33,20 @@ import java.util.Locale;
 public class Voc_post_detail extends AppCompatActivity {
 
     TextView mTitleTv, mDetailTv;
+    AdView mAdView ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voc_post_detail);
+
+        mAdView = findViewById(R.id.adView_Voc);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
+
         //Action bar
         ActionBar actionBar = getSupportActionBar();
         //Actionbar title

@@ -18,6 +18,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.onesignal.OneSignal;
@@ -30,13 +34,19 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             , bisesButton  , feature_Button , edotrial_btn;
     //private DrawerLayout mDrawerlayout;
     //private ActionBarDrawerToggle mToggle;
+
     FirebaseAuth mAuth;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
+
+        adView=(AdView)findViewById(R.id.adView_homepage);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
 
 // notification

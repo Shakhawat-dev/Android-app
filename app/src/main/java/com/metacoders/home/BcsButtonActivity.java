@@ -23,6 +23,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -33,6 +35,7 @@ public class BcsButtonActivity extends AppCompatActivity implements View.OnClick
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
+    AdView mAdView ;
 // this activity shares the model of bises and post detail of bises (experimental )
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
@@ -44,6 +47,17 @@ public CardView QusBank_button;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bcs_button);
+
+        //advirtisement
+        mAdView = findViewById(R.id.adView_Under_BCS_BUTTON);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        mAdView.loadAd(adRequest);
+
+
+
+
 
         Bcs_Bar = (ProgressBar) findViewById(R.id.progressbar_Bcs_prep) ;
         Bcs_Bar.setVisibility(View.VISIBLE);
