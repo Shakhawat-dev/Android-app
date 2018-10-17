@@ -33,7 +33,7 @@ public class AboutActivity extends AppCompatActivity {
 
 
         Element adsElement = new Element();
-        adsElement.setTitle("Call Us: +8809638214476");
+        adsElement.setTitle("Call Us: +880963824476");
 
         adsElement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +42,7 @@ public class AboutActivity extends AppCompatActivity {
 
 
                     Intent intent = new Intent(Intent.ACTION_DIAL);
-                    String temp = "tel:" + "+88019638214476";
+                    String temp = "tel:" + "+8801963824476";
                     intent.setData(Uri.parse(temp));
 
                     startActivity(intent);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="বিশেষ প্রস্তুতি"
+                android:text="বিশেষ"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -229,7 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="বিষয়ভিত্তিক প্রস্তুতি"
+                android:text="প্রস্তুতি সহায়িকা"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -447,7 +447,7 @@
                             android:layout_height="64dp"
                             android:background="@drawable/circlepink"
                             android:padding="10dp"
-                            android:src="@drawable/ic_format_align_left_black_24dp" />
+                            android:src="@drawable/ic_sort_by_alpha_black_24dp" />
 
                         <TextView
                             android:id="@+id/voca_title"
@@ -490,7 +490,7 @@
                             android:layout_height="64dp"
                             android:background="@drawable/circleteal"
                             android:padding="10dp"
-                            android:src="@drawable/ic_sort_by_alpha_black_24dp" />
+                            android:src="@drawable/ic_map_black_24dp" />
 
                         <TextView
                             android:id="@+id/Editorial_title"
@@ -575,7 +575,6 @@
 
 
                 </android.support.v7.widget.CardView>
-
                 <android.support.v7.widget.CardView
                     android:id="@+id/settings_Button"
                     android:layout_width="110dp"
@@ -695,4 +694,4 @@
     </android.support.design.widget.NavigationView>
     -->
 
-</android.support.v4.widget.DrawerLayout>
+</LinearLayout>

@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- External storage permission -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -26,7 +25,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4354325212935431~3219288699"/>
+            android:value="ca-app-pub-4354325212935431~3219288699" />
+
         <activity
             android:name=".SplashScreen"
             android:theme="@style/splash">
@@ -104,6 +104,7 @@
         <activity android:name=".Under_Bcs_prep_Button" />
         <activity android:name=".Under_Bcs_Button_QustionBank" />
         <activity android:name=".Editorial" />
+        <activity android:name=".ShopActivity"></activity>
     </application>
 
 </manifest>
