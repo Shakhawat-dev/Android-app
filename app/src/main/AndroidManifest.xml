@@ -104,7 +104,8 @@
         <activity android:name=".Under_Bcs_prep_Button" />
         <activity android:name=".Under_Bcs_Button_QustionBank" />
         <activity android:name=".Editorial" />
-        <activity android:name=".ShopActivity"></activity>
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".Shop"></activity>
     </application>
 
 </manifest>

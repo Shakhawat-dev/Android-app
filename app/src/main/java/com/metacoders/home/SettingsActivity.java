@@ -29,20 +29,20 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
-        setContentView(R.layout.activity_settings);
+      //  setContentView(R.layout.activity_shop2);
 
-        btn = (Button)findViewById(R.id.button_register);
-
-
+       // btn = (Button)findViewById(R.id.button_register);
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SettingsActivity.this ,login.class);
-                startActivity(intent);
-            }
-        });
+
+
+      //  btn.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+          //  public void onClick(View view) {
+             //   Intent intent = new Intent(SettingsActivity.this ,login.class);
+               // startActivity(intent);
+          //  }
+    //    });
         /*
         mDrawerlayout = (DrawerLayout) findViewById(R.id.setting_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
@@ -55,13 +55,5 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
-        /*
-        if (mToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        */
-        return super.onOptionsItemSelected(item);
-    }
+
 }

@@ -44,6 +44,7 @@ public class Wp_Quiz_details extends AppCompatActivity {
                 return true;
             }
         });
+
         webview.setWebViewClient(new WebViewClient(){
 
             @Override

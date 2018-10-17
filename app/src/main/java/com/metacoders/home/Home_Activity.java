@@ -236,7 +236,7 @@ startService(new Intent(this, FireBase_notification.class));
                     startActivity(i);
                     break;
                 case R.id.settings_Button:
-                    i = new Intent(this, SettingsActivity.class);
+                    i = new Intent(this, Shop.class);
                     startActivity(i);
                     break;
                 case R.id.about_Button:
