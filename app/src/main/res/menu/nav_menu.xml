@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+        android:id="@+id/cakRi_menu"
+        android:title="চাকরি বাকরি"
+
+        />
+        <item
+            android:id="@+id/job_prep_menu"
+            android:title="চাকরি প্রস্তুতি"
+
+            />
+        <item
+            android:id="@+id/Bcs_prep_menu"
+            android:title="বিসিএস"
+
+            />
+        <item
+            android:id="@+id/Bank_prep_menu"
+            android:title="ব্যাংক"
+
+            />
+        <item
+            android:id="@+id/Govt_job_prep_menu"
+            android:title="সরকারি চাকরি"
+
+            />
+        <item
+            android:id="@+id/Others_prep_menu"
+            android:title="অন্যান্য"
+
+            />
+
+
+        <item
+            android:id="@+id/noticeBoard_prep_menu"
+            android:title="নোটিশ বোর্ড"
+
+            />
+        <item
+            android:id="@+id/bises_prep_menu"
+            android:title="বিশেষ"
+
+            />
+        <item
+            android:id="@+id/Quiz_prep_menu"
+            android:title="কুইজ"
+
+            />
+        <item
+            android:id="@+id/Samprotik_prep_menu"
+            android:title="সাম্প্রতিক"
+
+            />
+
+        <item
+            android:id="@+id/Voca_prep_menu"
+            android:title="ভোকাবুলারি"
+
+            />
+        <item
+            android:id="@+id/Edotorial_prep_menu"
+            android:title="সম্পাদকীয়"
+
+            />
+        <item
+            android:id="@+id/Shop_prep_menu"
+            android:title="শপ"
+
+            />
+
+
+
+    </group>
+
+<item android:title="যোগাযোগ">
+
+    <menu>
+
+        <item
+            android:id="@+id/contact_us_menu"
+            android:title="যোগাযোগ করুন">
+
+
+        </item>
+        <item
+            android:title="Rate Us "
+            android:id="@+id/Rate_menu"/>
+
+    </menu>
+
+
+
+
+</item>
+
+
+
+</menu>

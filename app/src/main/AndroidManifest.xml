@@ -10,8 +10,6 @@
 
     <!-- External storage permission -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- Wallpaper permission -->
-    <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
         android:name=".Android_app"
@@ -25,7 +23,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4354325212935431~3219288699" />
+            android:value="ca-app-pub-1385980455216480~6372398780" />
 
         <activity
             android:name=".SplashScreen"
@@ -37,6 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Home_Activity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -62,26 +61,26 @@
         <activity android:name=".Voca_activity" />
         <activity
             android:name=".Voc_post_detail"
-            android:parentActivityName=".Voca_activity" />
+             />
         <activity android:name=".Qustion_Bank" />
         <activity
             android:name=".qus_bank_detail"
-            android:parentActivityName=".Qustion_Bank" />
+             />
         <activity android:name=".BcsActivity" />
         <activity android:name=".SyllabusActivity" />
         <activity android:name=".BcsButtonActivity" />
         <activity android:name=".Bises" />
         <activity
             android:name=".bises_post_detail"
-            android:parentActivityName=".Bises" />
+            />
         <activity android:name=".Current_Activity" />
         <activity
             android:name=".Current_Post_Detail"
-            android:parentActivityName=".Current_Activity" />
+             />
         <activity android:name=".Feature_Activity" />
         <activity
             android:name=".Feature_Detail_Activity"
-            android:parentActivityName=".Feature_Activity" />
+             />
         <activity android:name=".Bcs_Prep_POst_DeatilsActivity" />
         <activity android:name=".Govt_job_prep" />
         <activity android:name=".Bank_Prep" />
@@ -105,7 +104,9 @@
         <activity android:name=".Under_Bcs_Button_QustionBank" />
         <activity android:name=".Editorial" />
         <activity android:name=".ShopActivity" />
-        <activity android:name=".Shop"></activity>
+        <activity android:name=".Shop">
+
+        </activity>
     </application>
 
 </manifest>

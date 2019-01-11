@@ -2,4 +2,7 @@
     <string name="app_name">Job Solution</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="nav_open">open</string>
+    <string name="nav_close">Close</string>
+    <string name="adUnitId">ca-app-pub-1385980455216480/1705152193</string>
 </resources>

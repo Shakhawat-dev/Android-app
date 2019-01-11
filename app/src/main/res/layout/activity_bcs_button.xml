@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/bcs_activity"
+    android:id="@+id/drawerId_bcs_Activity"
+    android:fitsSystemWindows="true"
+
     tools:context=".BcsButtonActivity">
 
     <LinearLayout
@@ -34,7 +36,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         ads:adSize="BANNER"
-                        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+                        ads:adUnitId="ca-app-pub-1385980455216480/1705152193"
                         >
                     </com.google.android.gms.ads.AdView>
                 </LinearLayout>
@@ -131,20 +133,7 @@
 
 
 
-    <android.support.design.widget.NavigationView
-        app:headerLayout="@layout/header"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:itemTextColor="@color/colorPrimaryDark"
-        app:menu="@menu/drawer_menu"
-        android:layout_gravity="start"
-        android:background="#ffffff">
 
-
-
-
-
-    </android.support.design.widget.NavigationView>
 
     <ProgressBar
         android:id="@+id/progressbar_Bcs_prep"
@@ -156,6 +145,21 @@
 
 
         />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/NAVVIew_ID_bcs_activty"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:clickable="true"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_menu"
+        app:itemBackground="@drawable/menu_item_background"
+        android:focusable="true">
+
+    </android.support.design.widget.NavigationView>
+
+
 
 
 </android.support.v4.widget.DrawerLayout>

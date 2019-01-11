@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:id="@+id/drawerId_quiz_deatils"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
 
     <WebView
         android:layout_width="match_parent"
@@ -17,5 +25,18 @@
         android:layout_height="73dp"
         android:layout_gravity="center"
         android:layout_marginTop="200dp" />
+    </LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/NAVVIew_ID_quizDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:clickable="true"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/nav_menu"
+        app:itemBackground="@drawable/menu_item_background"
+        android:focusable="true">
 
-</LinearLayout>
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>
