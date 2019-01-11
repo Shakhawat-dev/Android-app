@@ -208,14 +208,6 @@ public class PostsListActivity extends AppCompatActivity  {
         mRef = mFirebaseDatabase.getReference("Data");
         mRef.keepSynced(true);
 
-        //For Drawer
-        /*mDrawerlayout = (DrawerLayout) findViewById(R.id.notification_activity);
-        mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
-        mDrawerlayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
-
     }
 
 
