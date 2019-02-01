@@ -203,7 +203,7 @@ public class PostsListActivity extends AppCompatActivity  {
         //set layout as LinearLayout
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //send Query to FirebaseDatabase
+
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Data");
         mRef.keepSynced(true);
@@ -344,13 +344,6 @@ public class PostsListActivity extends AppCompatActivity  {
 
                            }
                        },3000);
-
-
-
-
-
-
-
 
                     }
 
