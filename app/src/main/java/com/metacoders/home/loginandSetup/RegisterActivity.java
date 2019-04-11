@@ -92,8 +92,9 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
 
 
-                            Intent io = new Intent(getApplicationContext() , Home_Activity.class);
+                            Intent io = new Intent(getApplicationContext() , ProfileSetupPage.class);
                             startActivity(io);
+                            finish();
 
                         }
                         else {

@@ -27,6 +27,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 public class Govt_job_prep extends AppCompatActivity {
 
@@ -67,6 +68,15 @@ public class Govt_job_prep extends AppCompatActivity {
                 switch (id) {
                     case R.id.cakRi_menu:
                         Intent i = new Intent(getApplicationContext() ,PostsListActivity.class);
+                        startActivity(i);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
                         startActivity(i);
                         break;
                     case R.id.Bcs_prep_menu:

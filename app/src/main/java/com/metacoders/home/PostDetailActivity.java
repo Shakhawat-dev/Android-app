@@ -18,6 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,14 @@ import android.widget.Toast;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.metacoders.home.loginandSetup.loginactivity;
+import com.metacoders.home.model.modelForBookMark;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -51,6 +60,14 @@ public class PostDetailActivity extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
+    DatabaseReference mref ;
+    FirebaseAuth mauth ;
+    String  uid ;
+    Boolean ispressed = false ;
+
+String image , title , desc ;
+
+
 
     private static final int WRITE_EXTERNAL_STORAGE_CODE = 1;
 
@@ -60,6 +77,18 @@ public class PostDetailActivity extends AppCompatActivity {
         Fabric.with(this,new  Crashlytics());
         setContentView(R.layout.activity_post_detail);
 
+        mauth = FirebaseAuth.getInstance();
+        try{
+            uid = mauth.getUid();
+
+        }
+        catch (NullPointerException e ){
+
+
+        }
+
+
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         //aDD
 
@@ -179,9 +208,9 @@ public class PostDetailActivity extends AppCompatActivity {
      //   mWallBtn = findViewById(R.id.wallBtn);
 
         //get data from intent
-       String image = getIntent().getStringExtra("image");
-        String title = getIntent().getStringExtra("title");
-        String desc = getIntent().getStringExtra("description");
+        image = getIntent().getStringExtra("image");
+         title = getIntent().getStringExtra("title");
+         desc = getIntent().getStringExtra("description");
     //    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
         //set data to views
@@ -337,8 +366,58 @@ public class PostDetailActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
+        MenuItem item = menu.findItem(R.id.bookmark_btn);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
 
 
+                if (ispressed){
+                    Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                }
+                else  {
+                    uploadPostToServer();
+
+                }
+
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    private void uploadPostToServer() {
+
+
+        String ts = mref.push().getKey();
+
+        modelForBookMark  model = new modelForBookMark(title , image , desc, ts);
+            mref.child(ts).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    ispressed= true ;
+
+
+                    Toast.makeText(getApplicationContext() , "Added To The Bookmark ", Toast.LENGTH_SHORT).show();
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    ispressed= false;
+
+                    Toast.makeText(getApplicationContext() , "Network Error!! Could Not Save The Data  ", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+    }
 
 
 }

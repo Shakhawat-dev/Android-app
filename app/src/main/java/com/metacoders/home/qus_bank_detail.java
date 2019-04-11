@@ -10,11 +10,21 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.model.modelForBookMark;
 
 public class qus_bank_detail extends AppCompatActivity {
     TextView mTitleTv, mDetailTv;
@@ -24,11 +34,30 @@ public class qus_bank_detail extends AppCompatActivity {
     NavigationView navigationView ;
 
     AdView ad , adBelow ;
+    DatabaseReference mref ;
+    FirebaseAuth mauth ;
+    String  uid ;
+    Boolean ispressed = false ;
+
+    String image ="null" , title , desc ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qus_bank_detail);
 
+        mauth = FirebaseAuth.getInstance();
+        try{
+            uid = mauth.getUid();
+
+        }
+        catch (NullPointerException e ){
+
+
+        }
+
+
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         ad=findViewById(R.id.adView_qustionBank_Top);
                 adBelow =findViewById(R.id.adView_qustionBank_Below);
@@ -64,6 +93,15 @@ public class qus_bank_detail extends AppCompatActivity {
                     case R.id.job_prep_menu:
                         Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
                         startActivity(jobprep);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Bank_prep_menu:
                         Intent Bank = new Intent(getApplicationContext() ,Bank_Prep.class);
@@ -141,8 +179,8 @@ public class qus_bank_detail extends AppCompatActivity {
         mTitleTv = findViewById(R.id.titleTv_qus);
         mDetailTv = findViewById(R.id.descriptionTv_qus);
         //get data from intent
-        String title = getIntent().getStringExtra("title");
-        String desc = getIntent().getStringExtra("description");
+         title = getIntent().getStringExtra("title");
+         desc = getIntent().getStringExtra("description");
         //set data to views
         mTitleTv.setText(title);
         mDetailTv.setText(desc);
@@ -153,6 +191,58 @@ public class qus_bank_detail extends AppCompatActivity {
             return  true ;
         }
         return super.onOptionsItemSelected(item);
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
+        MenuItem item = menu.findItem(R.id.bookmark_btn);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+
+                if (ispressed){
+                    Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                }
+                else  {
+                    uploadPostToServer();
+
+                }
+
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    private void uploadPostToServer() {
+
+
+        String ts = mref.push().getKey();
+
+        modelForBookMark model = new modelForBookMark(title , image , desc, ts);
+        mref.child(ts).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                ispressed= true ;
+
+
+                Toast.makeText(getApplicationContext() , "Added To The Bookmark ", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                ispressed= false;
+
+                Toast.makeText(getApplicationContext() , "Network Error!! Could Not Save The Data  ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 

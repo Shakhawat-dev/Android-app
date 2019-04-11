@@ -11,8 +11,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.model.modelForBookMark;
 
 public class Feature_Detail_Activity extends AppCompatActivity {
     TextView mTitleTv , mDetailTv ;
@@ -20,12 +31,32 @@ public class Feature_Detail_Activity extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
+    DatabaseReference mref ;
+    FirebaseAuth mauth ;
+    String  uid ;
+    Boolean ispressed = false ;
+
+    String image , title , desc ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature__detail_);
+
+        mauth = FirebaseAuth.getInstance();
+        try{
+            uid = mauth.getUid();
+
+        }
+        catch (NullPointerException e ){
+
+
+        }
+
+
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
+
 
 
         drawerLayout = findViewById(R.id.drawerId_fetaure_detail);
@@ -72,6 +103,15 @@ public class Feature_Detail_Activity extends AppCompatActivity {
                     case R.id.noticeBoard_prep_menu:
                         Intent notiice = new Intent(getApplicationContext() ,ArticleActivity.class);
                         startActivity(notiice);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.bises_prep_menu:
                         Intent bises = new Intent(getApplicationContext() ,Bises.class);
@@ -136,8 +176,8 @@ public class Feature_Detail_Activity extends AppCompatActivity {
         mTitleTv = findViewById(R.id.titleTv_feature);
         mDetailTv = findViewById(R.id.descriptionTv_feature);
         //get data from intent
-        String title = getIntent().getStringExtra("title");
-        String desc = getIntent().getStringExtra("description");
+         title = getIntent().getStringExtra("title");
+         desc = getIntent().getStringExtra("description");
         //set data to views
         mTitleTv.setText(title);
         mDetailTv.setText(desc);
@@ -149,6 +189,58 @@ public class Feature_Detail_Activity extends AppCompatActivity {
             return  true ;
         }
         return super.onOptionsItemSelected(item);
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
+        MenuItem item = menu.findItem(R.id.bookmark_btn);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+
+                if (ispressed){
+                    Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                }
+                else  {
+                    uploadPostToServer();
+
+                }
+
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    private void uploadPostToServer() {
+
+
+        String ts = mref.push().getKey();
+
+        modelForBookMark model = new modelForBookMark(title , image , desc, ts);
+        mref.child(ts).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                ispressed= true ;
+
+
+                Toast.makeText(getApplicationContext() , "Added To The Bookmark ", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                ispressed= false;
+
+                Toast.makeText(getApplicationContext() , "Network Error!! Could Not Save The Data  ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 

@@ -27,6 +27,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 public class Current_Activity extends AppCompatActivity {
 
@@ -101,6 +102,15 @@ public class Current_Activity extends AppCompatActivity {
                     case R.id.Samprotik_prep_menu:
                         Intent sam = new Intent(getApplicationContext() ,Current_Activity.class);
                         startActivity(sam);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Voca_prep_menu:
                         Intent voca = new Intent(getApplicationContext() ,Voca_activity.class);

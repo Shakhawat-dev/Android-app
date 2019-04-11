@@ -29,6 +29,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 public class Under_Bcs_Button_QustionBank extends AppCompatActivity {
     //this is use the model and the view holder of the all subject  and so on ....
@@ -105,6 +106,15 @@ public class Under_Bcs_Button_QustionBank extends AppCompatActivity {
                     case R.id.Quiz_prep_menu:
                         Intent quiz = new Intent(getApplicationContext() ,QuizActivity.class);
                         startActivity(quiz);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Samprotik_prep_menu:
                         Intent sam = new Intent(getApplicationContext() ,Current_Activity.class);

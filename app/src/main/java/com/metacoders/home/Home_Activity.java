@@ -37,6 +37,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 import com.metacoders.home.loginandSetup.loginactivity;
 import com.onesignal.OneSignal;
 
@@ -128,6 +129,15 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                         Intent sam = new Intent(getApplicationContext() ,Current_Activity.class);
                         startActivity(sam);
                         break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
+                        break;
                     case R.id.Voca_prep_menu:
                         Intent voca = new Intent(getApplicationContext() ,Voca_activity.class);
                         startActivity(voca);
@@ -171,11 +181,12 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
 
 // notification
+        /*
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
-
+*/
         startService(new Intent(this, FireBase_notification.class));
 
 
@@ -378,10 +389,15 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                     i = new Intent(this, ArticleActivity.class);
                     startActivity(i);
                     break;
+
+
+
+
+
                 case R.id.current_Button:
-                    i = new Intent(this, Current_Activity.class);
-                    startActivity(i);
-                    break;
+                i = new Intent(this, Current_Activity.class);
+                startActivity(i);
+                break;
                 case R.id.contact_Button:
                     i = new Intent(this, ContactActivity.class);
                     startActivity(i);

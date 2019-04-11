@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.crashlytics.android.Crashlytics;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +82,15 @@ public class QuizActivity extends AppCompatActivity {
                     case R.id.job_prep_menu:
                         Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
                         startActivity(jobprep);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Bank_prep_menu:
                         Intent Bank = new Intent(getApplicationContext() ,Bank_Prep.class);

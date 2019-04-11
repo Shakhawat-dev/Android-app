@@ -27,6 +27,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 public class career_prep_Bangla extends AppCompatActivity {
     //this is use the model and the view holder of the all subject  and so on ....
@@ -87,6 +88,15 @@ public class career_prep_Bangla extends AppCompatActivity {
                     case R.id.Others_prep_menu:
                         Intent others = new Intent(getApplicationContext() ,career_prep_Others.class);
                         startActivity(others);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.noticeBoard_prep_menu:
                         Intent notiice = new Intent(getApplicationContext() ,ArticleActivity.class);

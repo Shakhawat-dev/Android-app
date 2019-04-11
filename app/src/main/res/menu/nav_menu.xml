@@ -4,6 +4,19 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/profile_menu"
+            android:title="প্রোফাইল"
+
+            />
+        <item
+            android:id="@+id/bookmark_menu"
+            android:title="বুকমার্ক"
+
+            />
+
+
         <item
         android:id="@+id/cakRi_menu"
         android:title="চাকরি বাকরি"

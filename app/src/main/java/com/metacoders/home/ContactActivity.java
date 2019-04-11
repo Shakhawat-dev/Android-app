@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -79,6 +80,15 @@ public class ContactActivity extends AppCompatActivity {
                     case R.id.bises_prep_menu:
                         Intent bises = new Intent(getApplicationContext() ,Bises.class);
                         startActivity(bises);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Quiz_prep_menu:
                         Intent quiz = new Intent(getApplicationContext() ,QuizActivity.class);

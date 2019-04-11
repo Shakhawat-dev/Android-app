@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -95,6 +96,15 @@ public class WPPostDetails extends AppCompatActivity {
                     case R.id.Quiz_prep_menu:
                         Intent quiz = new Intent(getApplicationContext() ,QuizActivity.class);
                         startActivity(quiz);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Samprotik_prep_menu:
                         Intent sam = new Intent(getApplicationContext() ,Current_Activity.class);

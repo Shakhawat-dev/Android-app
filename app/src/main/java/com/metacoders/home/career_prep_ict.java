@@ -29,6 +29,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 public class career_prep_ict extends AppCompatActivity {
 
@@ -87,6 +88,15 @@ public class career_prep_ict extends AppCompatActivity {
                     case R.id.Govt_job_prep_menu:
                         Intent gob = new Intent(getApplicationContext() ,Govt_job_prep.class);
                         startActivity(gob);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Others_prep_menu:
                         Intent others = new Intent(getApplicationContext() ,career_prep_Others.class);

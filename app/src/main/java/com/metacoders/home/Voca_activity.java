@@ -31,6 +31,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 public class Voca_activity extends AppCompatActivity {
     LinearLayoutManager mLayoutManager; //for sorting
@@ -88,6 +89,15 @@ public class Voca_activity extends AppCompatActivity {
                     case R.id.job_prep_menu:
                         Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
                         startActivity(jobprep);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.Bank_prep_menu:
                         Intent Bank = new Intent(getApplicationContext() ,Bank_Prep.class);

@@ -5,29 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:background="@drawable/background_js"
     >
 
     <ProgressBar
-        android:id="@+id/progressBarRegiterPage"
+        android:indeterminateTint="@android:color/holo_orange_light"
+        android:id="@+id/progressBarACCOutnsetup"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:indeterminateTint="@android:color/holo_orange_light"
+        android:backgroundTint="#fff"
+        android:visibility="invisible"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_marginTop="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="JOB\nSOLUTION"
         android:layout_gravity="center"
-        android:textColor="#ffffff"
-        android:textSize="60sp"
-        android:textStyle="normal"
-        android:lines="2"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/pacifio"
         android:gravity="center"
-        android:fontFamily="@font/title_font"
-        />
+        android:lines="2"
+        android:text="Create Your Profile"
+        android:textColor="#ffffff"
+        android:textSize="35sp"
+        android:textStyle="normal" />
 
 
 
@@ -37,22 +40,26 @@
         android:gravity="center"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:showDividers="middle"
         android:divider="@drawable/hrznl_divider">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
 
 
         <EditText
-            android:id="@+id/mail_inputregister"
+            android:id="@+id/Name_input"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:drawablePadding="12dp"
             android:ems="10"
             android:padding="8dp"
-            android:hint="Email Address"
+            android:hint="Enter Your Name"
             android:gravity="center"
             android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:maxLines="1"
@@ -63,23 +70,37 @@
             />
 
         <EditText
-            android:id="@+id/password_input_register"
+            android:id="@+id/phnNumber_input"
             android:layout_width="300dp"
             android:drawablePadding="12dp"
             android:padding="8dp"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="Enter Your Phone Number"
             android:gravity="center"
             android:textSize="16sp"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="phone"
             tools:ignore="LabelFor"
             android:background="#44444444"
             android:importantForAutofill="no"
             tools:targetApi="O"
             />
+        <TextView
+            android:id="@+id/forgetPassword_textView"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:ems="12"
+            android:textColor="#00574B"
+            android:textSize="16sp"
+            android:text="Forget Password?"
+            tools:ignore="LabelFor"
+            android:importantForAutofill="no"
+            tools:targetApi="O"/>
 
     </LinearLayout>
     <LinearLayout
@@ -109,20 +130,19 @@
             android:orientation="horizontal"
             android:layout_gravity="center"
             android:gravity="center">
-
             <Button
-                android:id="@+id/register_btn"
+                android:id="@+id/Next_btn"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:ems="10"
-                android:hint="Register"
+                android:hint="Proceed"
+                tools:ignore="LabelFor"
                 android:background="@color/colorPrimary"
                 android:importantForAutofill="no"
+                tools:targetApi="O"
                 android:maxLines="1"
-                android:padding="8dp"
                 android:textColorHint="#fff"
-                tools:ignore="LabelFor"
-                tools:targetApi="O" />
+                android:ems="10"
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -147,8 +167,6 @@
         android:gravity="bottom"
         android:layout_gravity="bottom"
         />
-
-
 
 
 </LinearLayout>

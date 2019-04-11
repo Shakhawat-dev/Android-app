@@ -41,6 +41,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 import org.w3c.dom.Text;
 
@@ -115,6 +116,15 @@ public class PostsListActivity extends AppCompatActivity  {
                     case R.id.Others_prep_menu:
                         Intent others = new Intent(getApplicationContext() ,career_prep_Others.class);
                         startActivity(others);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.noticeBoard_prep_menu:
                         Intent notiice = new Intent(getApplicationContext() ,ArticleActivity.class);

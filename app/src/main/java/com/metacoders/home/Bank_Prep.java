@@ -27,6 +27,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 public class Bank_Prep extends AppCompatActivity {
 
@@ -73,6 +74,15 @@ public class Bank_Prep extends AppCompatActivity {
                     case R.id.Bcs_prep_menu:
                         Intent bcs = new Intent(getApplicationContext() ,BcsButtonActivity.class);
                         startActivity(bcs);
+                        break;
+                    case R.id.bookmark_menu:
+                        i = new Intent(getApplicationContext(), bookmarkActivity.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.profile_menu:
+                        i = new Intent(getApplicationContext(), profileActivity.class);
+                        startActivity(i);
                         break;
                     case R.id.job_prep_menu:
                         Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
