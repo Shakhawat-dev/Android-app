@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.metacoders.home.loginandSetup.loginactivity;
 import com.onesignal.OneSignal;
 
 import io.fabric.sdk.android.Fabric;
@@ -51,6 +53,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
    NavigationView navigationView ;
 
     FirebaseAuth mAuth;
+    FirebaseUser muser ;
+
     AdView adView;
 
     @Override
@@ -58,6 +62,12 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
+
+
+        mAuth= FirebaseAuth.getInstance();
+        muser = mAuth.getCurrentUser();
+
+
 
         drawerLayout = findViewById(R.id.drawerId);
         navigationView=findViewById(R.id.NAVVIew_ID);
@@ -166,7 +176,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
 
-startService(new Intent(this, FireBase_notification.class));
+        startService(new Intent(this, FireBase_notification.class));
 
 
 //0ne time Dialogue Box
@@ -288,11 +298,38 @@ startService(new Intent(this, FireBase_notification.class));
         }
 
 
-        @Override
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.signout, menu);
+        MenuItem item = menu.findItem(R.id.sign_out_btn);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                mAuth.signOut();
+                Intent io = new Intent(getApplicationContext() , loginactivity.class);
+                startActivity(io);
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
         public boolean onOptionsItemSelected (MenuItem item){
+        int id = item.getItemId();
+
+
             if(toggle.onOptionsItemSelected(item)){
                return  true ;
             }
+
+
+
+
             return super.onOptionsItemSelected(item);
 
         }

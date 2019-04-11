@@ -1,26 +1,17 @@
 package com.metacoders.home;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
+
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
+
 
 import com.crashlytics.android.Crashlytics;
 
-import java.util.Calendar;
+
 
 import io.fabric.sdk.android.Fabric;
-import mehdi.sakout.aboutpage.AboutPage;
-import mehdi.sakout.aboutpage.Element;
 
 public class AboutActivity extends AppCompatActivity {
     //private DrawerLayout mDrawerlayout;
@@ -31,7 +22,7 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
 
-
+/*
         Element adsElement = new Element();
         adsElement.setTitle("Call Us: +880963824476");
 
@@ -69,7 +60,7 @@ public class AboutActivity extends AppCompatActivity {
                 .create();
         
         setContentView(aboutPage);
-
+*/
         /*
         mDrawerlayout = (DrawerLayout) findViewById(R.id.about_activity);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);

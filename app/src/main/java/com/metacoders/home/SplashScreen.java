@@ -1,19 +1,19 @@
 package com.metacoders.home;
 
 import android.content.Intent;
-import android.graphics.Color;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
-import gr.net.maroulis.library.EasySplashScreen;
+import com.metacoders.home.loginandSetup.loginactivity;
+
 
 public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent i = new Intent(this , Home_Activity.class);
+        Intent i = new Intent(this , loginactivity.class);
         startActivity(i);
         finish();
 
