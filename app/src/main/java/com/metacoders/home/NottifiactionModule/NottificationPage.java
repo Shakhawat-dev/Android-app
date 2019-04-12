@@ -18,13 +18,19 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.AboutActivity;
+import com.metacoders.home.BcsButtonActivity;
+import com.metacoders.home.Bises;
+import com.metacoders.home.Current_Activity;
 import com.metacoders.home.Model;
 import com.metacoders.home.PostDetailActivity;
+import com.metacoders.home.PostsListActivity;
 import com.metacoders.home.R;
 import com.metacoders.home.ViewHolder;
+import com.metacoders.home.Voca_activity;
 import com.metacoders.home.model.modelForNottifaction;
 
 public class NottificationPage extends AppCompatActivity {
@@ -40,8 +46,9 @@ public class NottificationPage extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     AdView mAdView ;
+    Class cls ;
 
-Intent  intent ;
+    Intent  intent ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,23 +131,43 @@ Intent  intent ;
                                // String mTitle = getItem(position).getTitle() ;                         //mTitleTv.getText().toString();
                                 String macativity = getItem(position).getActivity();                                  //mDescTv.getText().toString();
                                // String   mImage =  getItem(position).getImage();
+                                Intent i ;
 
 
-
-                                    try{
-                                       intent = new Intent(view.getContext(), Class.forName("AboutActivity "+".class"));
-                                    }
-                                    catch (ClassNotFoundException e ){
-
-                                        Toast.makeText(view.getContext() , "Error"  , Toast.LENGTH_SHORT)
-                                                .show();
-                                    }
-
-                                    startActivity(intent);
+                                if(macativity.contains("PostsListActivity")){
 
 
+                                    i = new Intent(getApplicationContext()  , PostsListActivity.class);
+                                    startActivity(i);
 
+                                }
+                                else if(macativity.contains("BcsButtonActivity")){
 
+                                    i = new Intent(getApplicationContext()  , BcsButtonActivity.class);
+                                    startActivity(i);
+
+                                }
+                                else if(macativity.contains("Current_Activity")){
+
+                                    i = new Intent(getApplicationContext()  , Current_Activity.class);
+                                    startActivity(i);
+
+                                }
+                                else if(macativity.contains("Bises")){
+
+                                    i = new Intent(getApplicationContext()  , Bises.class);
+                                    startActivity(i);
+
+                                }
+                                else if(macativity.contains("Voca_activity")){
+
+                                    i = new Intent(getApplicationContext()  , Voca_activity.class);
+                                    startActivity(i);
+
+                                }
+                                else {
+
+                                }
 
 
 

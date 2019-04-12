@@ -40,22 +40,22 @@ import com.google.firebase.auth.FirebaseUser;
 import com.metacoders.home.NottifiactionModule.NottificationPage;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
 import com.metacoders.home.loginandSetup.loginactivity;
+import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
 
 import io.fabric.sdk.android.Fabric;
 
-public class Home_Activity extends AppCompatActivity implements View.OnClickListener  {
-    private CardView jobsButton, notificationButton, quizButton, vocaButton ,
-            articleButton, current_Button, contactButton, settingsButton, aboutButton , Qus_Bank_Button
-            , bisesButton  , feature_Button , edotrial_btn;
+public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
+    private CardView jobsButton, notificationButton, quizButton, vocaButton,
+            articleButton, current_Button, contactButton, settingsButton, aboutButton, Qus_Bank_Button, bisesButton, feature_Button, edotrial_btn;
     //private DrawerLayout mDrawerlayout;
     //private ActionBarDrawerToggle mToggle;
-   DrawerLayout drawerLayout ;
-   ActionBarDrawerToggle toggle ;
-   NavigationView navigationView ;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
 
     FirebaseAuth mAuth;
-    FirebaseUser muser ;
+    FirebaseUser muser;
 
     AdView adView;
 
@@ -65,18 +65,21 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
 
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .setNotificationOpenedHandler(new notificationOpenHandler())
+                .autoPromptLocation(true)
+                .init();
 
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         muser = mAuth.getCurrentUser();
 
 
-
         drawerLayout = findViewById(R.id.drawerId);
-        navigationView=findViewById(R.id.NAVVIew_ID);
+        navigationView = findViewById(R.id.NAVVIew_ID);
 
-        toggle = new ActionBarDrawerToggle(this,drawerLayout ,R.string.nav_open ,R.string.nav_close  );
-
-
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
 
 
         drawerLayout.addDrawerListener(toggle);
@@ -91,43 +94,43 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.cakRi_menu:
-                        Intent i = new Intent(getApplicationContext() ,PostsListActivity.class);
+                        Intent i = new Intent(getApplicationContext(), PostsListActivity.class);
                         startActivity(i);
                         break;
                     case R.id.Bcs_prep_menu:
-                        Intent bcs = new Intent(getApplicationContext() ,BcsButtonActivity.class);
+                        Intent bcs = new Intent(getApplicationContext(), BcsButtonActivity.class);
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext(), NotificationActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:
-                        Intent Bank = new Intent(getApplicationContext() ,Bank_Prep.class);
+                        Intent Bank = new Intent(getApplicationContext(), Bank_Prep.class);
                         startActivity(Bank);
                         break;
                     case R.id.Govt_job_prep_menu:
-                        Intent gob = new Intent(getApplicationContext() ,Govt_job_prep.class);
+                        Intent gob = new Intent(getApplicationContext(), Govt_job_prep.class);
                         startActivity(gob);
                         break;
                     case R.id.Others_prep_menu:
-                        Intent others = new Intent(getApplicationContext() ,career_prep_Others.class);
+                        Intent others = new Intent(getApplicationContext(), career_prep_Others.class);
                         startActivity(others);
                         break;
                     case R.id.noticeBoard_prep_menu:
-                        Intent notiice = new Intent(getApplicationContext() ,ArticleActivity.class);
+                        Intent notiice = new Intent(getApplicationContext(), ArticleActivity.class);
                         startActivity(notiice);
                         break;
                     case R.id.bises_prep_menu:
-                        Intent bises = new Intent(getApplicationContext() ,Bises.class);
+                        Intent bises = new Intent(getApplicationContext(), Bises.class);
                         startActivity(bises);
                         break;
                     case R.id.Quiz_prep_menu:
-                        Intent quiz = new Intent(getApplicationContext() ,QuizActivity.class);
+                        Intent quiz = new Intent(getApplicationContext(), QuizActivity.class);
                         startActivity(quiz);
                         break;
                     case R.id.Samprotik_prep_menu:
-                        Intent sam = new Intent(getApplicationContext() ,Current_Activity.class);
+                        Intent sam = new Intent(getApplicationContext(), Current_Activity.class);
                         startActivity(sam);
                         break;
                     case R.id.bookmark_menu:
@@ -140,31 +143,31 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                         startActivity(i);
                         break;
                     case R.id.Voca_prep_menu:
-                        Intent voca = new Intent(getApplicationContext() ,Voca_activity.class);
+                        Intent voca = new Intent(getApplicationContext(), Voca_activity.class);
                         startActivity(voca);
                         break;
                     case R.id.Edotorial_prep_menu:
-                        Intent edo = new Intent(getApplicationContext() ,Editorial.class);
+                        Intent edo = new Intent(getApplicationContext(), Editorial.class);
                         startActivity(edo);
                         break;
                     case R.id.Shop_prep_menu:
-                        Intent shop = new Intent(getApplicationContext() ,Shop.class);
+                        Intent shop = new Intent(getApplicationContext(), Shop.class);
                         startActivity(shop);
                         break;
                     case R.id.contact_us_menu:
-                        Intent con = new Intent(getApplicationContext() ,ContactActivity.class);
+                        Intent con = new Intent(getApplicationContext(), ContactActivity.class);
                         startActivity(con);
                         break;
                     case R.id.Rate_menu:
 
-                        try{
-                            startActivity(new Intent(Intent.ACTION_VIEW ,
+                        try {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
                                     Uri.parse("market://details?id=" + getPackageName())));
 
-                        } catch (ActivityNotFoundException e){
+                        } catch (ActivityNotFoundException e) {
 
                             startActivity(new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName() ) ));
+                                    Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
 
                         }
                         break;
@@ -176,7 +179,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         });
 
 
-        adView=(AdView)findViewById(R.id.adView_homepage);
+        adView = (AdView) findViewById(R.id.adView_homepage);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
@@ -192,114 +195,112 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
 
 //0ne time Dialogue Box
-        SharedPreferences  prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         boolean fstart = prefs.getBoolean("firstStart", true);
-        if(fstart){
+        if (fstart) {
 
             show_Dialog_after_Install();
         }
 
 
+        //selecting customs fonts
+        TextView cakri = (TextView) findViewById(R.id.cakribakri);
+        Typeface ace = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        cakri.setTypeface(ace);
 
-            //selecting customs fonts
-            TextView cakri = (TextView) findViewById(R.id.cakribakri);
-            Typeface ace = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            cakri.setTypeface(ace);
-
-            TextView cakri_p = (TextView) findViewById(R.id.cakri_prostoti);
-            Typeface face = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            cakri_p.setTypeface(face);
-
-
-            TextView not = (TextView) findViewById(R.id.notice_text);
-            Typeface face2 = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            not.setTypeface(face2);
-
-            TextView amader_tit = (TextView) findViewById(R.id.amader_title);
-            Typeface amader = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            amader_tit.setTypeface(amader);
-
-            TextView settings = (TextView) findViewById(R.id.settings_ttile);
-            Typeface set = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            settings.setTypeface(set);
-
-            TextView jog = (TextView) findViewById(R.id.jog);
-            Typeface con = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            jog.setTypeface(con);
-
-            TextView vid = (TextView) findViewById(R.id.Editorial_title);
-            Typeface vidTIt = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            vid.setTypeface(vidTIt);
-
-            TextView nott = (TextView) findViewById(R.id.voca_title);
-            Typeface face2a = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            nott.setTypeface(face2a);
-
-            TextView bTitle = (TextView) findViewById(R.id.bank_title);
-            Typeface face3 = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            bTitle.setTypeface(face3);
-
-            TextView notFeture = (TextView) findViewById(R.id.feature_title);
-            Typeface face2featre = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            notFeture.setTypeface(face2featre);
+        TextView cakri_p = (TextView) findViewById(R.id.cakri_prostoti);
+        Typeface face = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        cakri_p.setTypeface(face);
 
 
-            TextView notCurrent = (TextView) findViewById(R.id.current_title);
-            Typeface face2cu = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            notCurrent.setTypeface(face2cu);
+        TextView not = (TextView) findViewById(R.id.notice_text);
+        Typeface face2 = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        not.setTypeface(face2);
 
-            TextView notQuiz = (TextView) findViewById(R.id.quiz_title);
-            Typeface face2Quiz = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            notQuiz.setTypeface(face2Quiz);
+        TextView amader_tit = (TextView) findViewById(R.id.amader_title);
+        Typeface amader = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        amader_tit.setTypeface(amader);
 
-            TextView notBises = (TextView) findViewById(R.id.bises);
-            Typeface face2b = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
-            notBises.setTypeface(face2b);
+        TextView settings = (TextView) findViewById(R.id.settings_ttile);
+        Typeface set = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        settings.setTypeface(set);
 
+        TextView jog = (TextView) findViewById(R.id.jog);
+        Typeface con = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        jog.setTypeface(con);
 
-            //defining cardButtons
-            edotrial_btn=(CardView)findViewById(R.id.video_Button);
-            jobsButton = (CardView) findViewById(R.id.jobs_Button);
-            notificationButton = (CardView) findViewById(R.id.notification_Button);
-            quizButton = (CardView) findViewById(R.id.quiz_Button);
-            articleButton = (CardView) findViewById(R.id.article_Button);
-            current_Button = (CardView) findViewById(R.id.current_Button);
-            contactButton = (CardView) findViewById(R.id.contact_Button);
-            settingsButton = (CardView) findViewById(R.id.settings_Button);
-            aboutButton = (CardView) findViewById(R.id.about_Button);
-            vocaButton = (CardView)findViewById(R.id.vocabulari_Button);
-            Qus_Bank_Button = (CardView)findViewById(R.id.questionBank_Button);
-            bisesButton = (CardView)findViewById(R.id.Bises_Btn) ;
-            feature_Button = (CardView)findViewById(R.id.feature_Button);
-            //Click Listener to CardButton
-            edotrial_btn.setOnClickListener(this);
+        TextView vid = (TextView) findViewById(R.id.Editorial_title);
+        Typeface vidTIt = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        vid.setTypeface(vidTIt);
 
-            jobsButton.setOnClickListener(this);
-            notificationButton.setOnClickListener(this);
-            quizButton.setOnClickListener(this);
-            articleButton.setOnClickListener(this);
-            current_Button.setOnClickListener(this);
-            contactButton.setOnClickListener(this);
-            settingsButton.setOnClickListener(this);
-            aboutButton.setOnClickListener(this);
-            vocaButton.setOnClickListener(this);
-            Qus_Bank_Button.setOnClickListener(this);
-            bisesButton.setOnClickListener(this);
-            feature_Button.setOnClickListener(this);
+        TextView nott = (TextView) findViewById(R.id.voca_title);
+        Typeface face2a = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        nott.setTypeface(face2a);
+
+        TextView bTitle = (TextView) findViewById(R.id.bank_title);
+        Typeface face3 = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        bTitle.setTypeface(face3);
+
+        TextView notFeture = (TextView) findViewById(R.id.feature_title);
+        Typeface face2featre = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        notFeture.setTypeface(face2featre);
 
 
-            // checking  net acces
-            if (!isConnected(Home_Activity.this)) buildDialog(Home_Activity.this).show();
+        TextView notCurrent = (TextView) findViewById(R.id.current_title);
+        Typeface face2cu = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        notCurrent.setTypeface(face2cu);
 
-            else {
+        TextView notQuiz = (TextView) findViewById(R.id.quiz_title);
+        Typeface face2Quiz = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        notQuiz.setTypeface(face2Quiz);
 
-                //without interent what u wnat future devlopment
+        TextView notBises = (TextView) findViewById(R.id.bises);
+        Typeface face2b = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
+        notBises.setTypeface(face2b);
 
-            }
+
+        //defining cardButtons
+        edotrial_btn = (CardView) findViewById(R.id.video_Button);
+        jobsButton = (CardView) findViewById(R.id.jobs_Button);
+        notificationButton = (CardView) findViewById(R.id.notification_Button);
+        quizButton = (CardView) findViewById(R.id.quiz_Button);
+        articleButton = (CardView) findViewById(R.id.article_Button);
+        current_Button = (CardView) findViewById(R.id.current_Button);
+        contactButton = (CardView) findViewById(R.id.contact_Button);
+        settingsButton = (CardView) findViewById(R.id.settings_Button);
+        aboutButton = (CardView) findViewById(R.id.about_Button);
+        vocaButton = (CardView) findViewById(R.id.vocabulari_Button);
+        Qus_Bank_Button = (CardView) findViewById(R.id.questionBank_Button);
+        bisesButton = (CardView) findViewById(R.id.Bises_Btn);
+        feature_Button = (CardView) findViewById(R.id.feature_Button);
+        //Click Listener to CardButton
+        edotrial_btn.setOnClickListener(this);
+
+        jobsButton.setOnClickListener(this);
+        notificationButton.setOnClickListener(this);
+        quizButton.setOnClickListener(this);
+        articleButton.setOnClickListener(this);
+        current_Button.setOnClickListener(this);
+        contactButton.setOnClickListener(this);
+        settingsButton.setOnClickListener(this);
+        aboutButton.setOnClickListener(this);
+        vocaButton.setOnClickListener(this);
+        Qus_Bank_Button.setOnClickListener(this);
+        bisesButton.setOnClickListener(this);
+        feature_Button.setOnClickListener(this);
 
 
+        // checking  net acces
+        if (!isConnected(Home_Activity.this)) buildDialog(Home_Activity.this).show();
 
-            //For drawer
+        else {
+
+            //without interent what u wnat future devlopment
+
+        }
+
+
+        //For drawer
            /* mDrawerlayout = (DrawerLayout) findViewById(R.id.home_Drawer);
             //mDrawerlayout = (DrawerLayout) findViewById(R.id.contact_activity);
             mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
@@ -307,7 +308,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             mToggle.syncState();
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
-        }
+    }
 
 
     @Override
@@ -321,12 +322,11 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         bellicon.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Intent io = new Intent(getApplicationContext() , NottificationPage.class);
+                Intent io = new Intent(getApplicationContext(), NottificationPage.class);
                 startActivity(io);
                 return false;
             }
         });
-
 
 
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -334,7 +334,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             public boolean onMenuItemClick(MenuItem item) {
 
                 mAuth.signOut();
-                Intent io = new Intent(getApplicationContext() , loginactivity.class);
+                Intent io = new Intent(getApplicationContext(), loginactivity.class);
                 startActivity(io);
 
                 return false;
@@ -345,129 +345,124 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-        public boolean onOptionsItemSelected (MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
 
-            if(toggle.onOptionsItemSelected(item)){
-               return  true ;
-            }
-
-
-
-
-            return super.onOptionsItemSelected(item);
-
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
         }
 
 
+        return super.onOptionsItemSelected(item);
+
+    }
 
 
-        @Override
-        public void onClick (View view){
-            Intent i;
+    @Override
+    public void onClick(View view) {
+        Intent i;
 
-            switch (view.getId()) {
-                case R.id.questionBank_Button:
-                    i = new Intent(this, Qustion_Bank.class);
-                    startActivity(i);
-                    break;
+        switch (view.getId()) {
+            case R.id.questionBank_Button:
+                i = new Intent(this, Qustion_Bank.class);
+                startActivity(i);
+                break;
 
-                case R.id.Bises_Btn:
-                    i = new Intent(this, Bises.class);
-                    startActivity(i);
-                    break;
+            case R.id.Bises_Btn:
+                i = new Intent(this, Bises.class);
+                startActivity(i);
+                break;
 
-                case R.id.feature_Button:
-                    i = new Intent(this, Feature_Activity.class);
-                    startActivity(i);
-                    break;
-
-
-                case R.id.vocabulari_Button:
-                    i = new Intent(this, Voca_activity.class);
-                    startActivity(i);
-                    break;
-                case R.id.jobs_Button:
-                    i = new Intent(this, PostsListActivity.class);
-                    startActivity(i);
-                    break;
-                case R.id.notification_Button:
-                    i = new Intent(this, NotificationActivity.class);
-                    startActivity(i);
-                    break;
-                case R.id.quiz_Button:
-                    i = new Intent(this, QuizActivity.class);
-                    startActivity(i);
-                    break;
-                case R.id.article_Button:
-                    i = new Intent(this, ArticleActivity.class);
-                    startActivity(i);
-                    break;
+            case R.id.feature_Button:
+                i = new Intent(this, Feature_Activity.class);
+                startActivity(i);
+                break;
 
 
+            case R.id.vocabulari_Button:
+                i = new Intent(this, Voca_activity.class);
+                startActivity(i);
+                break;
+            case R.id.jobs_Button:
+                i = new Intent(this, PostsListActivity.class);
+                startActivity(i);
+                break;
+            case R.id.notification_Button:
+                i = new Intent(this, NotificationActivity.class);
+                startActivity(i);
+                break;
+            case R.id.quiz_Button:
+                i = new Intent(this, QuizActivity.class);
+                startActivity(i);
+                break;
+            case R.id.article_Button:
+                i = new Intent(this, ArticleActivity.class);
+                startActivity(i);
+                break;
 
 
-
-                case R.id.current_Button:
+            case R.id.current_Button:
                 i = new Intent(this, Current_Activity.class);
                 startActivity(i);
                 break;
-                case R.id.contact_Button:
-                    i = new Intent(this, ContactActivity.class);
-                    startActivity(i);
-                    break;
-                case R.id.settings_Button:
-                    i = new Intent(this, Shop.class);
-                    startActivity(i);
-                    break;
-                case R.id.about_Button:
-                    i = new Intent(this, AboutActivity.class);
-                    startActivity(i);
-                    break;
-                case R.id.video_Button:
-                        i = new Intent(this, Editorial.class);
-                        startActivity(i);
-                        break;
-                default:
-                    break;
+            case R.id.contact_Button:
+                i = new Intent(this, ContactActivity.class);
+                startActivity(i);
+                break;
+            case R.id.settings_Button:
+                i = new Intent(this, Shop.class);
+                startActivity(i);
+                break;
+            case R.id.about_Button:
+                i = new Intent(this, AboutActivity.class);
+                startActivity(i);
+                break;
+            case R.id.video_Button:
+                i = new Intent(this, Editorial.class);
+                startActivity(i);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    public boolean isConnected(Context context) {
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
+                return true;
+            else return false;
+        } else
+            return false;
+    }
+
+    public AlertDialog.Builder buildDialog(Context c) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("You need to have Mobile Data or wifi to access this App. Press ok to Continue Offline");
+
+        builder.setPositiveButton("Use Offline", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
             }
+        });
 
-        }
-        public boolean isConnected (Context context){
+        return builder;
+    }
 
-            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netinfo = cm.getActiveNetworkInfo();
-
-            if (netinfo != null && netinfo.isConnectedOrConnecting()) {
-                android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-                android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
-                if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
-                    return true;
-                else return false;
-            } else
-                return false;
-        }
-
-        public AlertDialog.Builder buildDialog (Context c){
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(c);
-            builder.setTitle("No Internet Connection");
-            builder.setMessage("You need to have Mobile Data or wifi to access this App. Press ok to Continue Offline");
-
-            builder.setPositiveButton("Use Offline", new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-
-                }
-            });
-
-            return builder;
-           }
-private  void show_Dialog_after_Install(){
+    private void show_Dialog_after_Install() {
 
 
         new AlertDialog.Builder(this)
@@ -482,10 +477,30 @@ private  void show_Dialog_after_Install(){
                 .create().show();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart" , false ) ;
+        editor.putBoolean("firstStart", false);
         editor.apply();
-}
+    }
+
+    public class notificationOpenHandler implements OneSignal.NotificationOpenedHandler {
+        @Override
+        public void notificationOpened(OSNotificationOpenResult result) {
+           // String title = result.notification.payload.title;
+           String desc = result.notification.payload.body;
+          //  String f = result.notification.payload.groupKey
+
+           if(desc.equals("Voca_activity")){
+               Intent intent = new Intent(getApplicationContext(), Voca_activity.class);
+               intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+               startActivity(intent);
+           }
+           else {
+               Intent intent = new Intent(getApplicationContext(), NottificationPage.class);
+               intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+               startActivity(intent);
+           }
 
 
+        }
 
     }
+}
