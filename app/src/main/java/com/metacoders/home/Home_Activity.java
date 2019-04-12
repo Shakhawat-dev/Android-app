@@ -37,6 +37,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.metacoders.home.NottifiactionModule.NottificationPage;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
 import com.metacoders.home.loginandSetup.loginactivity;
 import com.onesignal.OneSignal;
@@ -314,6 +315,20 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
         getMenuInflater().inflate(R.menu.signout, menu);
         MenuItem item = menu.findItem(R.id.sign_out_btn);
+        MenuItem bellicon = menu.findItem(R.id.nottfication_btn);
+
+
+        bellicon.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent io = new Intent(getApplicationContext() , NottificationPage.class);
+                startActivity(io);
+                return false;
+            }
+        });
+
+
+
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

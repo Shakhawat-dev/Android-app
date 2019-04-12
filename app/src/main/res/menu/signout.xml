@@ -3,9 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+
+    <item
+        android:id="@+id/nottfication_btn"
+        android:title="Notifications"
+        android:icon="@drawable/bellicon"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/sign_out_btn"
         android:title="Sign Out"
-        app:showAsAction="always"/>
+        app:showAsAction="never"
+        />
+
 
 </menu>

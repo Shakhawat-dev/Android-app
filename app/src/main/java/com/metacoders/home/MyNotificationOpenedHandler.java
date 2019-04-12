@@ -16,11 +16,11 @@ import org.json.JSONObject;
 
     public class MyNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
         // This fires when a notification is opened by tapping on it.
+        private String activityToBeOpened;
         @Override
         public void notificationOpened(OSNotificationOpenResult result) {
             OSNotificationAction.ActionType actionType = result.action.type;
             JSONObject data = result.notification.payload.additionalData;
-            String activityToBeOpened = "xx";
 
             try {
                activityToBeOpened = data.getString("page");
