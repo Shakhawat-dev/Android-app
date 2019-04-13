@@ -17,7 +17,7 @@
         android:layout_height="wrap_content" />
 
         <TextView
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="JOB\nSOLUTION"
@@ -38,11 +38,43 @@
         android:gravity="center"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="70dp"
         android:showDividers="middle"
         android:divider="@drawable/hrznl_divider">
+        <TextView
+            android:id="@+id/otpScreenView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Use One Click Google Sign in !!!"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/imageView3"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="8dp"
 
+            android:textAlignment="center"
+            android:clickable="true"
+            android:focusable="true" />
+        <TextView
+            android:id="@+id/otpScreenView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textColor="#000"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="17sp"/>
         <EditText
             android:id="@+id/mail_input"
             android:layout_width="300dp"
@@ -159,38 +191,8 @@
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/otpScreenView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="OR"
-        android:textColor="#000"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="17sp"/>
-    <TextView
-        android:id="@+id/otpScreenView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" Google sign in !!!"
-        android:textColor="#000"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="14sp"/>
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/imageView3"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:foregroundGravity="center"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="8dp"
-        android:textAlignment="center"
-        android:clickable="true"
-        android:focusable="true" />
+
 
 
 
