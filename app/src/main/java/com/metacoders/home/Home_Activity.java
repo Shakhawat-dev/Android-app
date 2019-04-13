@@ -484,10 +484,14 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     public class notificationOpenHandler implements OneSignal.NotificationOpenedHandler {
         @Override
         public void notificationOpened(OSNotificationOpenResult result) {
-           // String title = result.notification.payload.title;
+         //   String title = result.notification.payload.title;
            String desc = result.notification.payload.body;
           //  String f = result.notification.payload.groupKey
 
+            Intent intent = new Intent(getApplicationContext(), NottificationPage.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            /*
            if(desc.equals("Voca_activity")){
                Intent intent = new Intent(getApplicationContext(), Voca_activity.class);
                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -498,7 +502,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                startActivity(intent);
            }
-
+*/
 
         }
 
