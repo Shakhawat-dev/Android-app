@@ -1,49 +1,37 @@
 package com.metacoders.home;
 
 import android.content.ActivityNotFoundException;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.WallpaperManager;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.Manifest;
 import android.widget.Toast;
 
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.loginandSetup.loginactivity;
 import com.metacoders.home.model.modelForBookMark;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 public class Voc_post_detail extends AppCompatActivity {
 
     TextView mTitleTv, mDetailTv;
@@ -64,16 +52,7 @@ public class Voc_post_detail extends AppCompatActivity {
         setContentView(R.layout.activity_voc_post_detail);
 
         mauth = FirebaseAuth.getInstance();
-        try{
             uid = mauth.getUid();
-
-        }
-        catch (NullPointerException e ){
-
-
-        }
-
-
         mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         //aDD
@@ -227,13 +206,19 @@ public class Voc_post_detail extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
 
 
-                if (ispressed){
-                    Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
-                }
-                else  {
-                    uploadPostToServer();
+                if (isUserSignedIn())
+                {
+                    if (ispressed){
+                        Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                    }
+                    else  {
+                        uploadPostToServer();
 
+                    }
                 }
+                else triggerWarningDialouge();
+
+
 
 
                 return false;
@@ -244,7 +229,9 @@ public class Voc_post_detail extends AppCompatActivity {
     }
 
     private void uploadPostToServer() {
-
+        mauth = FirebaseAuth.getInstance();
+        uid = mauth.getUid();
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         String ts = mref.push().getKey();
 
@@ -267,6 +254,42 @@ public class Voc_post_detail extends AppCompatActivity {
             }
         });
 
+
+    }
+    public    boolean  isUserSignedIn()
+    {
+        FirebaseAuth mauth  = FirebaseAuth.getInstance();
+        FirebaseUser user = mauth.getCurrentUser() ;
+
+        return user != null;
+
+
+
+    }
+    public  void triggerWarningDialouge()
+    {
+        new AwesomeErrorDialog(Voc_post_detail.this)
+                .setTitle("Error!!!")
+                .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")
+                .setColoredCircle(R.color.dialogErrorBackgroundColor)
+                .setDialogIconAndColor(R.drawable.ic_dialog_error, R.color.white)
+                .setCancelable(true)
+                .setButtonText(getString(R.string.dialog_ok_button))
+                .setButtonBackgroundColor(R.color.dialogErrorBackgroundColor)
+                .setButtonText("Proceed To Login")
+                .setErrorButtonClick(new Closure() {
+                    @Override
+                    public void exec() {
+                        // click
+
+                        Intent io = new Intent(getApplicationContext(), loginactivity.class);
+                        startActivity(io);
+
+
+
+                    }
+                })
+                .show();
 
     }
 }

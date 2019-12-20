@@ -10,30 +10,27 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.design.internal.NavigationMenuView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
 import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -47,15 +44,16 @@ import io.fabric.sdk.android.Fabric;
 
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
     private CardView jobsButton, notificationButton, quizButton, vocaButton,
-            articleButton, current_Button, contactButton, settingsButton, aboutButton, Qus_Bank_Button, bisesButton, feature_Button, edotrial_btn;
+            articleButton, current_Button, contactButton, settingsButton, aboutButton,
+            Qus_Bank_Button, bisesButton, feature_Button, edotrial_btn;
     //private DrawerLayout mDrawerlayout;
     //private ActionBarDrawerToggle mToggle;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
 
-    FirebaseAuth mAuth;
-    FirebaseUser muser;
+  //  FirebaseAuth mAuth;
+ //   FirebaseUser muser;
 
     AdView adView;
 
@@ -72,8 +70,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 .autoPromptLocation(true)
                 .init();
 
-        mAuth = FirebaseAuth.getInstance();
-        muser = mAuth.getCurrentUser();
+        //mAuth = FirebaseAuth.getInstance();
+     //   muser = mAuth.getCurrentUser();
 
 
         drawerLayout = findViewById(R.id.drawerId);
@@ -179,7 +177,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         });
 
 
-        adView = (AdView) findViewById(R.id.adView_homepage);
+        adView = findViewById(R.id.adView_homepage);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
@@ -204,75 +202,75 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
 
         //selecting customs fonts
-        TextView cakri = (TextView) findViewById(R.id.cakribakri);
+        TextView cakri = findViewById(R.id.cakribakri);
         Typeface ace = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         cakri.setTypeface(ace);
 
-        TextView cakri_p = (TextView) findViewById(R.id.cakri_prostoti);
+        TextView cakri_p = findViewById(R.id.cakri_prostoti);
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         cakri_p.setTypeface(face);
 
 
-        TextView not = (TextView) findViewById(R.id.notice_text);
+        TextView not = findViewById(R.id.notice_text);
         Typeface face2 = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         not.setTypeface(face2);
 
-        TextView amader_tit = (TextView) findViewById(R.id.amader_title);
+        TextView amader_tit = findViewById(R.id.amader_title);
         Typeface amader = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         amader_tit.setTypeface(amader);
 
-        TextView settings = (TextView) findViewById(R.id.settings_ttile);
+        TextView settings = findViewById(R.id.settings_ttile);
         Typeface set = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         settings.setTypeface(set);
 
-        TextView jog = (TextView) findViewById(R.id.jog);
+        TextView jog = findViewById(R.id.jog);
         Typeface con = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         jog.setTypeface(con);
 
-        TextView vid = (TextView) findViewById(R.id.Editorial_title);
+        TextView vid = findViewById(R.id.Editorial_title);
         Typeface vidTIt = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         vid.setTypeface(vidTIt);
 
-        TextView nott = (TextView) findViewById(R.id.voca_title);
+        TextView nott = findViewById(R.id.voca_title);
         Typeface face2a = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         nott.setTypeface(face2a);
 
-        TextView bTitle = (TextView) findViewById(R.id.bank_title);
+        TextView bTitle = findViewById(R.id.bank_title);
         Typeface face3 = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         bTitle.setTypeface(face3);
 
-        TextView notFeture = (TextView) findViewById(R.id.feature_title);
+        TextView notFeture = findViewById(R.id.feature_title);
         Typeface face2featre = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         notFeture.setTypeface(face2featre);
 
 
-        TextView notCurrent = (TextView) findViewById(R.id.current_title);
+        TextView notCurrent = findViewById(R.id.current_title);
         Typeface face2cu = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         notCurrent.setTypeface(face2cu);
 
-        TextView notQuiz = (TextView) findViewById(R.id.quiz_title);
+        TextView notQuiz = findViewById(R.id.quiz_title);
         Typeface face2Quiz = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         notQuiz.setTypeface(face2Quiz);
 
-        TextView notBises = (TextView) findViewById(R.id.bises);
+        TextView notBises = findViewById(R.id.bises);
         Typeface face2b = Typeface.createFromAsset(getAssets(), "fonts/SolaimanLipi_29-05-06.ttf");
         notBises.setTypeface(face2b);
 
 
         //defining cardButtons
-        edotrial_btn = (CardView) findViewById(R.id.video_Button);
-        jobsButton = (CardView) findViewById(R.id.jobs_Button);
-        notificationButton = (CardView) findViewById(R.id.notification_Button);
-        quizButton = (CardView) findViewById(R.id.quiz_Button);
-        articleButton = (CardView) findViewById(R.id.article_Button);
-        current_Button = (CardView) findViewById(R.id.current_Button);
-        contactButton = (CardView) findViewById(R.id.contact_Button);
-        settingsButton = (CardView) findViewById(R.id.settings_Button);
-        aboutButton = (CardView) findViewById(R.id.about_Button);
-        vocaButton = (CardView) findViewById(R.id.vocabulari_Button);
-        Qus_Bank_Button = (CardView) findViewById(R.id.questionBank_Button);
-        bisesButton = (CardView) findViewById(R.id.Bises_Btn);
-        feature_Button = (CardView) findViewById(R.id.feature_Button);
+        edotrial_btn = findViewById(R.id.video_Button);
+        jobsButton = findViewById(R.id.jobs_Button);
+        notificationButton = findViewById(R.id.notification_Button);
+        quizButton = findViewById(R.id.quiz_Button);
+        articleButton = findViewById(R.id.article_Button);
+        current_Button = findViewById(R.id.current_Button);
+        contactButton = findViewById(R.id.contact_Button);
+        settingsButton = findViewById(R.id.settings_Button);
+        aboutButton = findViewById(R.id.about_Button);
+        vocaButton = findViewById(R.id.vocabulari_Button);
+        Qus_Bank_Button = findViewById(R.id.questionBank_Button);
+        bisesButton = findViewById(R.id.Bises_Btn);
+        feature_Button = findViewById(R.id.feature_Button);
         //Click Listener to CardButton
         edotrial_btn.setOnClickListener(this);
 
@@ -333,9 +331,24 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
-                mAuth.signOut();
-                Intent io = new Intent(getApplicationContext(), loginactivity.class);
-                startActivity(io);
+             //   mAuth.signOut();
+
+                if(isUserSignedIn()){
+                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    mAuth.signOut();
+                    Intent io = new Intent(getApplicationContext(), loginactivity.class);
+                    startActivity(io);
+
+                }
+                else {
+
+                    // trigger  a diaglue that user is not signed in  .
+
+
+
+                    triggerWarningDialouge();
+                }
+
 
                 return false;
             }
@@ -437,9 +450,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
             android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
             android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
-                return true;
-            else return false;
+            return (mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting());
         } else
             return false;
     }
@@ -507,4 +518,43 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         }
 
     }
+
+    public    boolean  isUserSignedIn()
+    {
+        FirebaseAuth mauth  = FirebaseAuth.getInstance();
+        FirebaseUser user = mauth.getCurrentUser() ;
+
+        return user != null;
+
+
+
+    }
+    public  void triggerWarningDialouge()
+    {
+        new AwesomeErrorDialog(Home_Activity.this)
+                .setTitle("Error!!!")
+                .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")
+                .setColoredCircle(R.color.dialogErrorBackgroundColor)
+                .setDialogIconAndColor(R.drawable.ic_dialog_error, R.color.white)
+                .setCancelable(true)
+                .setButtonText(getString(R.string.dialog_ok_button))
+                .setButtonBackgroundColor(R.color.dialogErrorBackgroundColor)
+                .setButtonText("Proceed To Login")
+                .setErrorButtonClick(new Closure() {
+                    @Override
+                    public void exec() {
+                        // click
+
+                        Intent io = new Intent(getApplicationContext(), loginactivity.class);
+                        startActivity(io);
+
+
+
+                    }
+                })
+                .show();
+
+    }
+
 }
+
