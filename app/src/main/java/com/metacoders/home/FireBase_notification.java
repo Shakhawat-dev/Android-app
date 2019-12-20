@@ -1,30 +1,6 @@
 package com.metacoders.home;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Build;
-import android.os.IBinder;
-import android.renderscript.RenderScript;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-
 import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
-
-import org.json.JSONObject;
-
-import java.util.Map;
-
-import static android.support.v4.app.NotificationCompat.PRIORITY_MAX;
 
 public class FireBase_notification extends FirebaseMessagingService {
 

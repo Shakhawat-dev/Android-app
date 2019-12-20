@@ -3,27 +3,31 @@ package com.metacoders.home;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.loginandSetup.loginactivity;
 import com.metacoders.home.model.modelForBookMark;
 
 public class qus_bank_detail extends AppCompatActivity {
@@ -46,18 +50,7 @@ public class qus_bank_detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qus_bank_detail);
 
-        mauth = FirebaseAuth.getInstance();
-        try{
-            uid = mauth.getUid();
 
-        }
-        catch (NullPointerException e ){
-
-
-        }
-
-
-        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         ad=findViewById(R.id.adView_qustionBank_Top);
                 adBelow =findViewById(R.id.adView_qustionBank_Below);
@@ -203,13 +196,20 @@ public class qus_bank_detail extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
 
 
-                if (ispressed){
-                    Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
-                }
-                else  {
-                    uploadPostToServer();
+                if(isUserSignedIn())
+                {
+                    if (ispressed){
+                        Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                    }
+                    else  {
+                        uploadPostToServer();
+
+                    }
+
 
                 }
+                else  triggerWarningDialouge();
+
 
 
                 return false;
@@ -221,6 +221,9 @@ public class qus_bank_detail extends AppCompatActivity {
 
     private void uploadPostToServer() {
 
+        mauth = FirebaseAuth.getInstance();
+        uid = mauth.getUid();
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         String ts = mref.push().getKey();
 
@@ -245,5 +248,43 @@ public class qus_bank_detail extends AppCompatActivity {
 
 
     }
+
+    public    boolean  isUserSignedIn()
+    {
+        FirebaseAuth mauth  = FirebaseAuth.getInstance();
+        FirebaseUser user = mauth.getCurrentUser() ;
+
+        return user != null;
+
+
+
+    }
+    public  void triggerWarningDialouge()
+    {
+        new AwesomeErrorDialog(qus_bank_detail.this)
+                .setTitle("Error!!!")
+                .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")
+                .setColoredCircle(R.color.dialogErrorBackgroundColor)
+                .setDialogIconAndColor(R.drawable.ic_dialog_error, R.color.white)
+                .setCancelable(true)
+                .setButtonText(getString(R.string.dialog_ok_button))
+                .setButtonBackgroundColor(R.color.dialogErrorBackgroundColor)
+                .setButtonText("Proceed To Login")
+                .setErrorButtonClick(new Closure() {
+                    @Override
+                    public void exec() {
+                        // click
+
+                        Intent io = new Intent(getApplicationContext(), loginactivity.class);
+                        startActivity(io);
+
+
+
+                    }
+                })
+                .show();
+
+    }
+
 
 }

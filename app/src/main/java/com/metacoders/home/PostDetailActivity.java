@@ -1,23 +1,21 @@
 package com.metacoders.home;
 
 import android.Manifest;
-import android.app.WallpaperManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -33,6 +33,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.loginandSetup.loginactivity;
@@ -88,7 +89,7 @@ String image , title , desc ;
         }
 
 
-        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
+
 
         //aDD
 
@@ -263,21 +264,7 @@ String image , title , desc ;
 
     }
 
-    /*
-    private void setImgWallpaper() {
 
-        //get image from
-        bitmap = ((BitmapDrawable)mImageIv.getDrawable()).getBitmap();
-
-        WallpaperManager myWallManager = WallpaperManager.getInstance(getApplicationContext());
-        try {
-            myWallManager.setBitmap(bitmap);
-            Toast.makeText(this, "Wallpaper set...", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-*/
     private void shareImage() {
         //get image from
         bitmap = ((BitmapDrawable)mImageIv.getDrawable()).getBitmap();
@@ -375,13 +362,22 @@ String image , title , desc ;
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
-
-                if (ispressed){
+                if ( isUserSignedIn())
+                {
+                    if (ispressed){
                     Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
                 }
                 else  {
                     uploadPostToServer();
 
+                }
+
+                }
+
+
+              else {
+
+                  triggerWarningDialouge();
                 }
 
 
@@ -394,7 +390,7 @@ String image , title , desc ;
 
     private void uploadPostToServer() {
 
-
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
         String ts = mref.push().getKey();
 
         modelForBookMark  model = new modelForBookMark(title , image , desc, ts);
@@ -416,6 +412,42 @@ String image , title , desc ;
                 }
             });
 
+
+    }
+    public    boolean  isUserSignedIn()
+    {
+        FirebaseAuth mauth  = FirebaseAuth.getInstance();
+        FirebaseUser user = mauth.getCurrentUser() ;
+
+        return user != null;
+
+
+
+    }
+    public  void triggerWarningDialouge()
+    {
+        new AwesomeErrorDialog(PostDetailActivity.this)
+                .setTitle("Error!!!")
+                .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")
+                .setColoredCircle(R.color.dialogErrorBackgroundColor)
+                .setDialogIconAndColor(R.drawable.ic_dialog_error, R.color.white)
+                .setCancelable(true)
+                .setButtonText(getString(R.string.dialog_ok_button))
+                .setButtonBackgroundColor(R.color.dialogErrorBackgroundColor)
+                .setButtonText("Proceed To Login")
+                .setErrorButtonClick(new Closure() {
+                    @Override
+                    public void exec() {
+                        // click
+
+                        Intent io = new Intent(getApplicationContext(), loginactivity.class);
+                        startActivity(io);
+
+
+
+                    }
+                })
+                .show();
 
     }
 

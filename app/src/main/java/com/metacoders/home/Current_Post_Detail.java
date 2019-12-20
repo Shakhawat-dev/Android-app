@@ -1,28 +1,33 @@
 package com.metacoders.home;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.metacoders.home.loginandSetup.loginactivity;
 import com.metacoders.home.model.modelForBookMark;
 
 public class Current_Post_Detail extends AppCompatActivity {
     TextView mTitleTv, mDetailTv;
     AdView mAdView ;
-    DatabaseReference mref ;
+    DatabaseReference  mref  ;
     FirebaseAuth mauth ;
     String  uid ;
     Boolean ispressed = false ;
@@ -35,17 +40,9 @@ public class Current_Post_Detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current__post__detail);
         mauth = FirebaseAuth.getInstance();
-        try{
-            uid = mauth.getUid();
-
-        }
-        catch (NullPointerException e ){
 
 
-        }
 
-
-        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         //advirtisement
         mAdView = findViewById(R.id.adView_current);
@@ -85,13 +82,23 @@ public class Current_Post_Detail extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
 
 
-                if (ispressed){
-                    Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                if (isUserSignedIn())
+                {
+                    if (ispressed){
+                        Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                    }
+                    else  {
+                        uploadPostToServer();
+
+                    }
                 }
-                else  {
-                    uploadPostToServer();
+                else {
+
+                    triggerWarningDialouge();
+
 
                 }
+
 
 
                 return false;
@@ -102,7 +109,8 @@ public class Current_Post_Detail extends AppCompatActivity {
     }
 
     private void uploadPostToServer() {
-
+        uid = mauth.getUid();
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
 
         String ts = mref.push().getKey();
 
@@ -125,6 +133,42 @@ public class Current_Post_Detail extends AppCompatActivity {
             }
         });
 
+
+    }
+    public    boolean  isUserSignedIn()
+    {
+        FirebaseAuth mauth  = FirebaseAuth.getInstance();
+        FirebaseUser user = mauth.getCurrentUser() ;
+
+        return user != null;
+
+
+
+    }
+    public  void triggerWarningDialouge()
+    {
+        new AwesomeErrorDialog(Current_Post_Detail.this)
+                .setTitle("Error!!!")
+                .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")
+                .setColoredCircle(R.color.dialogErrorBackgroundColor)
+                .setDialogIconAndColor(R.drawable.ic_dialog_error, R.color.white)
+                .setCancelable(true)
+                .setButtonText(getString(R.string.dialog_ok_button))
+                .setButtonBackgroundColor(R.color.dialogErrorBackgroundColor)
+                .setButtonText("Proceed To Login")
+                .setErrorButtonClick(new Closure() {
+                    @Override
+                    public void exec() {
+                        // click
+
+                        Intent io = new Intent(getApplicationContext(), loginactivity.class);
+                        startActivity(io);
+
+
+
+                    }
+                })
+                .show();
 
     }
 }

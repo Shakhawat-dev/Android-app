@@ -3,33 +3,27 @@ package com.metacoders.home.NottifiactionModule;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.metacoders.home.AboutActivity;
 import com.metacoders.home.BcsButtonActivity;
 import com.metacoders.home.Bises;
 import com.metacoders.home.Current_Activity;
-import com.metacoders.home.Model;
-import com.metacoders.home.PostDetailActivity;
 import com.metacoders.home.PostsListActivity;
 import com.metacoders.home.R;
-import com.metacoders.home.ViewHolder;
 import com.metacoders.home.Voca_activity;
 import com.metacoders.home.model.modelForNottifaction;
 
@@ -79,7 +73,7 @@ public class NottificationPage extends AppCompatActivity {
 
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("notfication");
+        mRef = FirebaseDatabase.getInstance().getReference("notfication");
         mRef.keepSynced(true);
 
 // DOwnloading Data From FIrebd

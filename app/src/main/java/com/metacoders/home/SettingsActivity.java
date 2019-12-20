@@ -1,22 +1,11 @@
 package com.metacoders.home;
 
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
-
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
 
 import io.fabric.sdk.android.Fabric;
 

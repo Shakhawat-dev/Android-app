@@ -3,9 +3,7 @@ package com.metacoders.home;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
-import com.metacoders.home.loginandSetup.loginactivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class SplashScreen extends AppCompatActivity {
@@ -13,7 +11,7 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent i = new Intent(this , loginactivity.class);
+        Intent i = new Intent(this , Home_Activity.class);
         startActivity(i);
         finish();
 
