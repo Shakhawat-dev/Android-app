@@ -19,13 +19,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".sslGateWay.pasymentSuccessfulPage"></activity>
+        <activity android:name=".NewProfileActivity"></activity>
+        <activity android:name=".ChoosePlanActivity" />
+        <activity android:name=".RechargeNowActivity" />
+        <activity android:name=".sslGateWay.pasymentSuccessfulPage" />
         <activity android:name=".sslGateWay.sslgateWayPage" />
         <activity android:name=".NottifiactionModule.NottificationPage" />
         <activity android:name=".loginandSetup.ProfileSetupPage" />
         <activity android:name=".bookMarkController.BookMarkDetails" />
         <activity android:name=".bookMarkController.bookmarkActivity" />
-        <activity android:name=".profileActivity" />
+        <activity
+            android:name=".profileActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".loginandSetup.RegisterActivity" />
         <activity android:name=".loginandSetup.loginactivity" />
 
