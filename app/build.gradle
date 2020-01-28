@@ -91,6 +91,8 @@ dependencies {
     implementation 'com.github.blennerSilva:AwesomeDialog:2.0.6'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.android.volley:volley:1.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
