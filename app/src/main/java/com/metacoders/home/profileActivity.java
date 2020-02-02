@@ -33,9 +33,9 @@ public class profileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_new_profile);
 
-        amountTv = findViewById(R.id.amountTv) ;
+       amountTv = findViewById(R.id.point_bal_tv) ;
         payButton = findViewById(R.id.buttonPay);
 
         payButton.setOnClickListener(new View.OnClickListener() {
