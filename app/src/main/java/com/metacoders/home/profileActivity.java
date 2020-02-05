@@ -20,29 +20,67 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacoders.home.loginandSetup.loginactivity;
+import com.metacoders.home.loginandSetup.modelForUser;
+import com.metacoders.home.model.modelForPayment;
+import com.metacoders.home.model.modelForProfile;
+import com.metacoders.home.packagePage.packageList;
 import com.metacoders.home.sslGateWay.sslgateWayPage;
+import com.metacoders.home.utils.utilities;
 
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class profileActivity extends AppCompatActivity {
 
     Button payButton ;
-
-    TextView amountTv  ;
+    utilities  utilities   ;
+    TextView amountTv , nameTv  , phTv  , mailTv ,expireTv , pacakgeTv  , nametv ;
+    String TODAY ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_profile);
 
-       amountTv = findViewById(R.id.point_bal_tv) ;
+
+        expireTv = findViewById(R.id.expires_tv) ;
+        amountTv = findViewById(R.id.point_bal_tv) ;
         payButton = findViewById(R.id.buttonPay);
+        nameTv = findViewById(R.id.nameTv) ;
+        phTv = findViewById(R.id.phone_tv) ;
+        nametv = findViewById(R.id.name_bal_tv) ;
+        pacakgeTv = findViewById(R.id.package_info_tv) ;
+        mailTv = findViewById(R.id.email_tv ) ;
+           TODAY = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        utilities = new utilities()  ;
+
+        try{
+            FirebaseAuth mauth  = FirebaseAuth.getInstance();
+            FirebaseUser user = mauth.getCurrentUser() ;
+            mailTv.setText(user.getEmail());
+        }
+        catch (Exception er)
+        {
+
+            mailTv.setText("N/A");
+
+        }
+
+
+        loadProfileData() ;
+
+
+
+
+
 
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext() , sslgateWayPage.class);
+                Intent i = new Intent(getApplicationContext() , packageList.class);
 
 
                 startActivity(i);
@@ -52,6 +90,43 @@ public class profileActivity extends AppCompatActivity {
 
         //TODO design the profile
     }
+
+    private void loadProfileData() {
+
+        try{
+            DatabaseReference    profile = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid());
+
+            profile.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                    modelForUser model = dataSnapshot.getValue(modelForUser.class) ;
+
+                    nameTv.setText(model.getUsername());
+                    nametv.setText(model.getUsername());
+                    phTv.setText(model.getPh());
+
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+        catch (Exception e )
+        {
+            nameTv.setText("Error Fetching Name");
+            nametv.setText("Error Fetching Name");
+            phTv.setText("Error Fetching Ph ");
+
+
+        }
+    }
+
     public  void triggerWarningDialouge()
     {
         new AwesomeErrorDialog(profileActivity.this)
@@ -83,6 +158,9 @@ public class profileActivity extends AppCompatActivity {
         FirebaseAuth mauth  = FirebaseAuth.getInstance();
         FirebaseUser user = mauth.getCurrentUser() ;
 
+
+
+
         return user != null;
 
 
@@ -99,7 +177,8 @@ public class profileActivity extends AppCompatActivity {
             triggerWarningDialouge();
 
         }
-        else{
+    else {
+
 
             final ProgressDialog dialog = ProgressDialog.show(this, "",
                     "Loading...Please wait...", true);
@@ -107,7 +186,8 @@ public class profileActivity extends AppCompatActivity {
             dialog.show();
 
 
-            DatabaseReference    mref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("coins");
+
+            final DatabaseReference    mref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("transaction");
             mref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -115,14 +195,35 @@ public class profileActivity extends AppCompatActivity {
 
                     if(dataSnapshot.exists())
                     {
+                       // amountTv.setText(dataSnapshot.getValue().toString() + " Coins");
 
-                        amountTv.setText(dataSnapshot.getValue().toString() + " Coins");
+                        modelForPayment model  = dataSnapshot.getValue(modelForPayment.class) ;
+
+
+
+                        String date = model.getPurchaged_date()  ;
+                        amountTv.setText(model.getCoins().toString() + " Coins");
+                        int  day = utilities.calculateDayCount(date , TODAY) ;
+                        int limit = Integer.valueOf(model.getDuration()) ;
+                        day =  limit - day ;
+
+                        expireTv.setText( "in " + day + " Days") ;
+
+                        if(limit == 7)
+                        {
+                            pacakgeTv.setText("Weekly");
+                        }
+                        else {
+                            pacakgeTv.setText("Monthly");
+                        }
+
                         dialog.dismiss();
-
                     }
 
                     else {
                         amountTv.setText("0 Coins");
+                        expireTv.setText("0 Days");
+                        pacakgeTv.setText("N/A");
 
                         dialog.dismiss();
 

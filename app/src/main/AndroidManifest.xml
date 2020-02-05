@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".NewProfileActivity"></activity>
+        <activity android:name=".packagePage.packageList"></activity>
+        <activity android:name=".NewProfileActivity" />
         <activity android:name=".ChoosePlanActivity" />
         <activity android:name=".RechargeNowActivity" />
         <activity android:name=".sslGateWay.pasymentSuccessfulPage" />
@@ -30,7 +31,7 @@
         <activity android:name=".bookMarkController.bookmarkActivity" />
         <activity
             android:name=".profileActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".loginandSetup.RegisterActivity" />
         <activity android:name=".loginandSetup.loginactivity" />
 

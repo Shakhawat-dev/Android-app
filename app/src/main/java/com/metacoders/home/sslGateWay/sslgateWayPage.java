@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacoders.home.R;
+import com.metacoders.home.model.modelForPayment;
+import com.metacoders.home.utils.utilities;
 import com.sslwireless.sslcommerzlibrary.model.initializer.SSLCommerzInitialization;
 import com.sslwireless.sslcommerzlibrary.model.response.TransactionInfo;
 import com.sslwireless.sslcommerzlibrary.model.response.TransactionInfoModel;
@@ -33,7 +35,9 @@ import com.sslwireless.sslcommerzlibrary.view.singleton.IntegrateSSLCommerz;
 import com.sslwireless.sslcommerzlibrary.viewmodel.listener.TransactionResponseListener;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 public class sslgateWayPage extends AppCompatActivity implements TransactionResponseListener {
@@ -43,16 +47,32 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
     EditText et;
      double oldCoin  , newCoin  ;
      Boolean isCoinAvailable ;
-    String  oldCOIN ;
+    String  oldCOIN , time , point   ;
      DatabaseReference mref;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sslgate_way_page);
-         mref = FirebaseDatabase.getInstance().getReference("Users").child("test").child("coins");
+
+        //  receive the data we sent
+                Intent o  = getIntent();
+                point =   o.getStringExtra("VALUE" ) ;
+                time =  o.getStringExtra("TIME") ;
+
+
+
+
+
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid());
         tv = (TextView) findViewById(R.id.textView);
 
         et = (EditText) findViewById(R.id.editText);
+
+
+        et.setText(point);
+        et.setFocusable(false);
 
        findViewById(R.id.GoBack).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +112,7 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
         int  rand  = new Random().nextInt() ;
 
 
-        final SSLCommerzInitialization sslCommerzInitialization = new SSLCommerzInitialization("careercoachbdlive " , "5D301FC83F92990081"
+        final SSLCommerzInitialization sslCommerzInitialization = new SSLCommerzInitialization("careercoachbdlive" , "5D301FC83F92990081"
         , f , CurrencyType.BDT , "Trans ID : Test" + rand, "food", SdkType.LIVE) ;
 
 
@@ -121,7 +141,7 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
             et.setText(null);
 
 
-            uploadItToTheServer(transactionInfoModel.getAmount()) ;
+            uploadItToTheServer(transactionInfoModel.getAmount() ) ;
 
         }
         // Payment is success but payment is not complete yet. Card on hold now.
@@ -144,9 +164,17 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
                 }
 
                 else {
-                    mref.setValue(amount).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+
+                    String   DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                    modelForPayment modelForPayment  = new modelForPayment(time , DATE,amount) ;
+
+
+                    mref.child("transaction").setValue(modelForPayment).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+
+
 
                             sentToTheTransPage(amount) ;
                         }
@@ -165,7 +193,7 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
 
         // download the coin data and add
       //  DatabaseReference mf = FirebaseDatabase.getInstance().getReference("Users").child("test").child("coins");
-        mref.addListenerForSingleValueEvent(new ValueEventListener() {
+        mref.child("transaction").child("coins").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
               //   oldCoin = Double.parseDouble(dataSnapshot.getValue().toString()) ;
@@ -175,7 +203,9 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
                 newCoin = Double.valueOf(amountt);
                 newCoin = Double.valueOf(oldCOIN) + newCoin ;
           //      Toast.makeText(getApplicationContext() , "oldCoin : " + oldCOIN  +  " newCoin  : " + newCoin , Toast.LENGTH_SHORT).show() ;
-                mref.setValue(String.valueOf(newCoin)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                String   DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                modelForPayment modelForPayment  = new modelForPayment(time , DATE,newCoin+"") ;
+                mref.child("transaction").setValue(modelForPayment).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
@@ -235,7 +265,7 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
 
 
 
-mref.addListenerForSingleValueEvent(new ValueEventListener() {
+mref.child("transaction").child("coins").addListenerForSingleValueEvent(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

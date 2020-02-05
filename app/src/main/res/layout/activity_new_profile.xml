@@ -65,7 +65,7 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/nameTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
@@ -144,7 +144,7 @@
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="32dp"
                                     android:layout_weight="1"
-                                    android:text="500"
+                                    android:text="00"
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
@@ -276,13 +276,13 @@
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/points_bal_tv"
+                                    android:id="@+id/name_bal_tv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="32dp"
                                     android:layout_weight="1"
-                                    android:text="John Doe"
+                                    android:text=""
                                     android:textSize="18sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
