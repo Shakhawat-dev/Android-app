@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class career_prep_Math extends AppCompatActivity {
 
@@ -38,6 +39,8 @@ public class career_prep_Math extends AppCompatActivity {
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
+    Home_Activity home ;
+
     public ProgressBar spinner ;
 
     DrawerLayout drawerLayout ;
@@ -49,6 +52,7 @@ public class career_prep_Math extends AppCompatActivity {
         setContentView(R.layout.activity_career_prep__math);
 
 
+        home = new Home_Activity() ;
 
 
 
@@ -216,20 +220,30 @@ public class career_prep_Math extends AppCompatActivity {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+                                if(home.getAuthra())
+                                {
+                                    //Views
+                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                    //get data from views
+                                    String mTitle = mTitleTv.getText().toString();
+                                    String mDesc = mDescTv.getText().toString();
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(career_prep_Math.this);
+
+
+                                }
 
                             }
 
@@ -289,21 +303,30 @@ public class career_prep_Math extends AppCompatActivity {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+                                if(home.getAuthra())
+                                {
+                                    //Views
+                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+
+                                    //get data from views
+                                    String mTitle = mTitleTv.getText().toString();
+                                    String mDesc = mDescTv.getText().toString();
 
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(career_prep_Math.this);
 
+
+                                }
 
                             }
 

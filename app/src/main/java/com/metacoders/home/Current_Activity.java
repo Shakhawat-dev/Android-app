@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class Current_Activity extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class Current_Activity extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
+    Home_Activity home ;
 
 
     @Override
@@ -48,6 +50,8 @@ public class Current_Activity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawerId_current);
         navigationView=findViewById(R.id.NAVVIew_ID_current);
+        home =  new Home_Activity() ;
+
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout ,R.string.nav_open ,R.string.nav_close );
 
@@ -206,21 +210,33 @@ public class Current_Activity extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view,final int position) {
+
+                                if(home.getAuthra())
+                                {
+//                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
+//                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+
+                                    //get data from views
+                                    String mTitle = getItem(position).getTitle();
+                                    String mDesc = getItem(position).getDescription();
+
+
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Current_Activity.this);
+
+                                }
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
-
-
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
 
                             }
 
@@ -265,20 +281,31 @@ public class Current_Activity extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view,final int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
+                                if(home.getAuthra())
+                                {
+//                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv_current);
+//                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_current);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                    //get data from views
+                                    String mTitle = getItem(position).getTitle();
+                                    String mDesc = getItem(position).getDescription();
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Current_Activity.this);
+
+                                }
 
 
                             }

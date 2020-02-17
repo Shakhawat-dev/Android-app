@@ -202,19 +202,26 @@ public class profileActivity extends AppCompatActivity {
 
 
                         String date = model.getPurchaged_date()  ;
+
                         amountTv.setText(model.getCoins().toString() + " Coins");
+
                         int  day = utilities.calculateDayCount(date , TODAY) ;
-                        int limit = Integer.valueOf(model.getDuration()) ;
+
+                        int limit = Integer.valueOf(model.getDuration())  ;
+
                         day =  limit - day ;
 
                         expireTv.setText( "in " + day + " Days") ;
 
-                        if(limit == 7)
+                        if(limit <= 7)
                         {
                             pacakgeTv.setText("Weekly");
                         }
-                        else {
+                        else if (limit <= 30 ) {
                             pacakgeTv.setText("Monthly");
+                        }
+                        else {
+                            pacakgeTv.setText("Combined");
                         }
 
                         dialog.dismiss();

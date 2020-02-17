@@ -151,8 +151,8 @@ public class postDetails_for_Career_prep_by_subject extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
 
         //initialize views
-        mTitleTv = findViewById(R.id.titleTv_qus);
-        mDetailTv = findViewById(R.id.descriptionTv_qus);
+        mTitleTv = findViewById(R.id.titleTv_postDetails_car_prep);
+        mDetailTv = findViewById(R.id.descriptionTv_postDetails_car_prep);
         //get data from intent
         String title = getIntent().getStringExtra("title");
         String desc = getIntent().getStringExtra("description");

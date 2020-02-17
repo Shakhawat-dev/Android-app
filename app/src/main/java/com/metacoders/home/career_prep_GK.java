@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class career_prep_GK extends AppCompatActivity {
     //this is use the model and the view holder of the all subject  and so on ....
@@ -43,6 +44,8 @@ public class career_prep_GK extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
+    Home_Activity home ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,9 @@ public class career_prep_GK extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawerId_Gk);
         navigationView=findViewById(R.id.NAVVIew_ID_Gk);
+
+        home = new Home_Activity() ;
+
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout ,R.string.nav_open ,R.string.nav_close );
 
@@ -215,20 +221,31 @@ public class career_prep_GK extends AppCompatActivity {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                if(home.getAuthra())
+                                {
+                                    //Views
+                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+
+                                    //get data from views
+                                    String mTitle = mTitleTv.getText().toString();
+                                    String mDesc = mDescTv.getText().toString();
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(career_prep_GK.this);
+
+                                }
+
+
 
                             }
 
@@ -288,21 +305,28 @@ public class career_prep_GK extends AppCompatActivity {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+                                if(home.getAuthra())
+                                {
+                                    //Views
+                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+
+                                    //get data from views
+                                    String mTitle = mTitleTv.getText().toString();
+                                    String mDesc = mDescTv.getText().toString();
 
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(career_prep_GK.this);
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
-
+                                }
 
                             }
 

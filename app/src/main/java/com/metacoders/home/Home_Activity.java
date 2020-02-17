@@ -1,5 +1,6 @@
 package com.metacoders.home;
 
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,6 +13,8 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBar;
@@ -25,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
 import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
@@ -33,14 +37,26 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+import  com.metacoders.home.utils.utilities ;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.metacoders.home.NottifiactionModule.NottificationPage;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
 import com.metacoders.home.loginandSetup.loginactivity;
+import com.metacoders.home.model.modelForPayment;
+import com.metacoders.home.utils.utilities;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import io.fabric.sdk.android.Fabric;
+
 
 public class Home_Activity extends AppCompatActivity implements View.OnClickListener {
     private CardView jobsButton, notificationButton, quizButton, vocaButton,
@@ -51,6 +67,10 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
+public static  Boolean isAuthorized  ;
+     utilities  util;
+     String TODAY ;
+
 
   //  FirebaseAuth mAuth;
  //   FirebaseUser muser;
@@ -73,6 +93,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
         //mAuth = FirebaseAuth.getInstance();
      //   muser = mAuth.getCurrentUser();
 
+        util =  new  utilities() ;
+        TODAY = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
         drawerLayout = findViewById(R.id.drawerId);
         navigationView = findViewById(R.id.NAVVIew_ID);
@@ -333,6 +355,8 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
 
              //   mAuth.signOut();
 
+             // util.TriggerAlertDialougeForPurchage(Home_Activity.this);
+
                 if(isUserSignedIn()){
                     FirebaseAuth mAuth = FirebaseAuth.getInstance();
                     mAuth.signOut();
@@ -343,10 +367,7 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 else {
 
                     // trigger  a diaglue that user is not signed in  .
-
-
-
-                    triggerWarningDialouge();
+                       triggerWarningDialouge();
                 }
 
 
@@ -555,6 +576,106 @@ public class Home_Activity extends AppCompatActivity implements View.OnClickList
                 .show();
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // check user  has  payment or not
+
+        if(isUserSignedIn())
+        {
+            checkUserHasPayment() ;
+        }
+
+        else {
+
+            isAuthorized = false ;
+        }
+
+
+
+
+    }
+
+    private void checkUserHasPayment() {
+      final  ProgressDialog dialog = new ProgressDialog(Home_Activity.this );
+        dialog.setTitle("Checking For Payment");
+        final DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Users")
+                .child(FirebaseAuth.getInstance().getUid()).child("transaction");
+
+        dialog.show();
+
+        mref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists())
+                {
+                    // calculate  his time is available or not
+
+                    modelForPayment model =dataSnapshot.getValue(modelForPayment.class) ;
+
+                    int  limit  = Integer.parseInt(model.getDuration())  ;
+
+                  String qDate = model.getPurchaged_date() ;
+
+                  int checkLimit = util.calculateDayCount(qDate ,TODAY ) ;
+                  if(limit <= checkLimit)
+                  {
+                      // time has over
+
+                      mref.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                          @Override
+                          public void onComplete(@NonNull Task<Void> task) {
+
+                              isAuthorized = false ;
+                              dialog.dismiss();
+                          }
+                      }) ;
+                  }
+                  else {
+
+                      isAuthorized = true ;
+
+
+                      Toast.makeText(getApplicationContext() , isAuthorized + "  " + checkLimit + " duration "+ limit  +" "+ model.getPurchaged_date() + " today "+ TODAY, Toast.LENGTH_LONG)
+                              .show();
+
+                      dialog.dismiss();
+                  }
+
+                }
+                else if ( !dataSnapshot.exists()) {
+
+                    isAuthorized = false ;
+                    dialog.dismiss();
+                }
+                else {
+                    isAuthorized = false ;
+                    dialog.dismiss();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+
+            }
+        });
+
+    }
+
+    public boolean getAuthra()
+    {
+            Boolean daa = isAuthorized ;
+
+
+        return daa ;
+    }
+
+
 
 }
 

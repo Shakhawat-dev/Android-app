@@ -193,18 +193,25 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
 
         // download the coin data and add
       //  DatabaseReference mf = FirebaseDatabase.getInstance().getReference("Users").child("test").child("coins");
-        mref.child("transaction").child("coins").addListenerForSingleValueEvent(new ValueEventListener() {
+        mref.child("transaction").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
               //   oldCoin = Double.parseDouble(dataSnapshot.getValue().toString()) ;
-                 oldCOIN = dataSnapshot.getValue().toString() ;
+                modelForPayment modelFoPayment = dataSnapshot.getValue(modelForPayment.class) ;
+
+                 oldCOIN = modelFoPayment.getCoins();
             //    Toast.makeText(getApplicationContext() , "oldCoin : " +  , Toast.LENGTH_SHORT).show() ;
+
+                int newLimit  = Integer.parseInt(modelFoPayment.getDuration()) ;
+                 newLimit = Integer.parseInt(time)+ newLimit ;
 
                 newCoin = Double.valueOf(amountt);
                 newCoin = Double.valueOf(oldCOIN) + newCoin ;
+
           //      Toast.makeText(getApplicationContext() , "oldCoin : " + oldCOIN  +  " newCoin  : " + newCoin , Toast.LENGTH_SHORT).show() ;
-                String   DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                modelForPayment modelForPayment  = new modelForPayment(time , DATE,newCoin+"") ;
+             //   String   DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
+                modelForPayment modelForPayment  = new modelForPayment(newLimit+"" , modelFoPayment.getPurchaged_date(),newCoin+"") ;
                 mref.child("transaction").setValue(modelForPayment).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class Shikok_nivondon extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ LinearLayoutManager mLayoutManager; //for sorting
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
+    Home_Activity home ;
 
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
@@ -48,6 +50,7 @@ LinearLayoutManager mLayoutManager; //for sorting
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shikok_nivondon);
 
+        home = new Home_Activity()  ;
 
 
 
@@ -216,20 +219,33 @@ LinearLayoutManager mLayoutManager; //for sorting
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                if(home.getAuthra())
+                                {
+                                    //Views
+                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
+                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
+
+                                    //get data from views
+                                    String mTitle = mTitleTv.getText().toString();
+                                    String mDesc = mDescTv.getText().toString();
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+                                }
+                                else {
+
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Shikok_nivondon.this);
+
+
+
+                                }
+
 
                             }
 
@@ -276,18 +292,31 @@ LinearLayoutManager mLayoutManager; //for sorting
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
+                                if(home.getAuthra())
+                                {
+                                    //Views
+                                    TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
+                                    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                    //get data from views
+                                    String mTitle = mTitleTv.getText().toString();
+                                    String mDesc = mDescTv.getText().toString();
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+                                }
+                                else {
+
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Shikok_nivondon.this);
+
+
+
+                                }
 
 
                             }

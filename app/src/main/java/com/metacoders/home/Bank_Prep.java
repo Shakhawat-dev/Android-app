@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import androidx.annotation.NonNull;
+
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeSuccessDialog;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,12 +25,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.core.utilities.Utilities;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class Bank_Prep extends AppCompatActivity {
 
@@ -42,12 +49,19 @@ public class Bank_Prep extends AppCompatActivity {
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
 
+    Home_Activity home ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank__prep);
+
+        // getting authraization
+
+       home  = new Home_Activity() ;
+
+
 
 
         drawerLayout = findViewById(R.id.drawerId_bank_prep);
@@ -209,19 +223,40 @@ public class Bank_Prep extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                try{
+                                    if(home.getAuthra())
+                                    {
+
+                                        //Views
+                                        //   TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
+                                        //   TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+
+                                        //get data from views
+                                        String mTitle = getItem(position).getTitle() ;
+                                        String mDesc = getItem(position).getDescription();
+
+                                        //pass this data to new activity
+                                        Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                        intent.putExtra("title", mTitle); // put title
+                                        intent.putExtra("description", mDesc); //put description
+                                        startActivity(intent); //start activity
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext() , " "+ home.getAuthra() , Toast.LENGTH_SHORT).show();
+                                        utilities utilities = new utilities() ;
+                                        utilities.TriggerAlertDialougeForPurchage(Bank_Prep.this);
+                                    }
+                                }
+                                catch (Exception e )
+                                {
+                                    new AwesomeErrorDialog(Bank_Prep.this)
+                                            .setTitle("Error")
+                                            .setMessage("Error Happened While Checking Your Payment . " ) ;
+                                }
 
                             }
 
@@ -266,20 +301,45 @@ public class Bank_Prep extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+                            public void onItemClick(View view,final int position) {
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                try{
+                                    if(home.getAuthra())
+                                    {
+
+                                        //Views
+                                        //   TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
+                                        //   TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+
+                                        //get data from views
+                                        String mTitle = getItem(position).getTitle() ;
+                                        String mDesc = getItem(position).getDescription();
+
+                                        //pass this data to new activity
+                                        Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                        intent.putExtra("title", mTitle); // put title
+                                        intent.putExtra("description", mDesc); //put description
+                                        startActivity(intent); //start activity
+
+
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(getApplicationContext() , " "+ home.getAuthra() , Toast.LENGTH_SHORT).show();
+                                        utilities utilities = new utilities() ;
+                                        utilities.TriggerAlertDialougeForPurchage(Bank_Prep.this);
+                                    }
+                                }
+                                catch (Exception e )
+                                {
+                                    new AwesomeErrorDialog(Bank_Prep.this)
+                                            .setTitle("Error")
+                                            .setMessage("Error Happened While Checking Your Payment . " ) ;
+                                }
+
+
+
 
 
                             }

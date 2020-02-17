@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class Feature_Activity extends AppCompatActivity {
     LinearLayoutManager mLayoutManager; //for sorting
@@ -38,12 +39,16 @@ public class Feature_Activity extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
+    Home_Activity home ;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feature_);
+
+        home = new Home_Activity() ;
 
 
 
@@ -206,21 +211,33 @@ public class Feature_Activity extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view,final int position) {
+
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+                                if(home.getAuthra())
+                                {
+                                   // TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
+                                   // TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                    //get data from views
+                                    String mTitle = getItem(position).getTitle();
+                                    String mDesc = getItem(position).getDescription();
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+                                }
+                                else {
+
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Feature_Activity.this);
+
+                                }
+
 
                             }
 
@@ -265,20 +282,34 @@ public class Feature_Activity extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view,  final int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
+//                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
+//                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                if(home.getAuthra())
+                                {
+                                    // TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
+                                    // TextView mDescTv = view.findViewById(R.id.rDescriptionTv_feature);
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                    //get data from views
+                                    String mTitle = getItem(position).getTitle();
+                                    String mDesc = getItem(position).getDescription();
+
+
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+                                }
+                                else {
+
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Feature_Activity.this);
+
+                                }
 
 
                             }

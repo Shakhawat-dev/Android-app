@@ -1,9 +1,17 @@
 package com.metacoders.home.utils;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.metacoders.home.Home_Activity;
+import com.metacoders.home.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 
 public class utilities {
 
@@ -12,13 +20,13 @@ public class utilities {
         String dayDifference = "0.00" ;
         try {
             //Dates to compare
-            String CurrentDate=  QueryDate;
-            String FinalDate=  todayDate;
+            String CurrentDate=  todayDate;
+            String FinalDate=  QueryDate;
 
             Date date1;
             Date date2;
 
-            SimpleDateFormat dates = new SimpleDateFormat("dd-mm-yyyy");
+            SimpleDateFormat dates = new SimpleDateFormat("dd-MM-yyyy");
 
             //Setting dates
             date1 = dates.parse(CurrentDate);
@@ -42,6 +50,31 @@ public class utilities {
 
 
         return  Integer.parseInt(dayDifference) ;
+    }
+
+    //  8o8Rnfu2GxQ68bubfTKLugxnIqo2 test uid
+
+
+    public  void TriggerAlertDialougeForPurchage(final Context context)
+    {
+        new PrettyDialog(context)
+                .setIcon(R.drawable.logo)
+                .setTitle("PrettyDialog Title")
+                .setMessage("PrettyDialog Message")
+                .addButton(
+                        "OK",     // button text
+                        R.color.pdlg_color_white,  // button text color
+                        R.color.pdlg_color_green,  // button background color
+                        new PrettyDialogCallback() {  // button OnClick listener
+                            @Override
+                            public void onClick() {
+                                // Do what you gotta do
+                                Toast.makeText(context ,"Clicked", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        }
+                )
+                .show();
     }
 
 

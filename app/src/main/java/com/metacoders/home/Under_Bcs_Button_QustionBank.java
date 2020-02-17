@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class Under_Bcs_Button_QustionBank extends AppCompatActivity {
     //this is use the model and the view holder of the all subject  and so on ....
@@ -43,11 +44,16 @@ public class Under_Bcs_Button_QustionBank extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
+    Home_Activity home ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_under__bcs__button__qustion_bank);
+
+        home = new Home_Activity() ;
+
 
 
 //spinner
@@ -214,21 +220,33 @@ public class Under_Bcs_Button_QustionBank extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view, final  int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+                               // TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                              //  TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                if(home.getAuthra())
+                                {
+                                    //get data from views
+                                    String mTitle =getItem(position).getTitle();
+                                    String mDesc =getItem(position).getDescription();
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+                                }
+                                else {
+
+
+                                    utilities utilities  = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Under_Bcs_Button_QustionBank.this);
+
+                                }
+
+
 
                             }
 
@@ -287,21 +305,32 @@ public class Under_Bcs_Button_QustionBank extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view, final int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
+                             //   TextView mTitleTv = view.findViewById(R.id.rTitleTv__Career_prep_by_subject);
+                                //TextView mDescTv = view.findViewById(R.id.rDescriptionTv_Career_prep_by_subject);
 
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                if(home.getAuthra())
+                                {
+                                    //get data from views
+                                    String mTitle =getItem(position).getTitle();
+                                    String mDesc =getItem(position).getDescription();
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), postDetails_for_Career_prep_by_subject.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+                                }
+                                else {
+
+
+                                    utilities utilities  = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Under_Bcs_Button_QustionBank.this);
+
+                                }
 
 
                             }

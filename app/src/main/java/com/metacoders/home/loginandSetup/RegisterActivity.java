@@ -17,7 +17,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.R;
+import com.metacoders.home.model.modelForPayment;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -28,6 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseUser muser ;
     FirebaseAuth mauth ;
     ProgressBar progressBar ;
+    DatabaseReference mref ;
+
 
 
 
@@ -35,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
-
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid());
         mailIn = findViewById(R.id.mail_inputregister );
         passIn = (EditText)  findViewById(R.id.password_input_register);
         registerBtn = findViewById(R.id.register_btn);
@@ -91,9 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
 
 
-                            Intent io = new Intent(getApplicationContext() , ProfileSetupPage.class);
-                            startActivity(io);
-                            finish();
+                            giveHimCoin();
 
                         }
                         else {
@@ -115,5 +122,26 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public  void giveHimCoin()
+    {
+        String   DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        modelForPayment modelForPayment  = new modelForPayment("3" , DATE,"5") ;
+
+
+
+        mref.child("transaction").setValue(modelForPayment).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+
+                Intent io = new Intent(getApplicationContext() , ProfileSetupPage.class);
+                startActivity(io);
+                finish();
+
+
+            }
+        }) ;
     }
 }

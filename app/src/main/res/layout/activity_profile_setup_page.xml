@@ -11,12 +11,14 @@
     >
 
     <ProgressBar
-        android:indeterminateTint="@android:color/holo_orange_light"
+
         android:id="@+id/progressBarACCOutnsetup"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:backgroundTint="#fff"
         android:visibility="invisible"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
         android:layout_height="wrap_content" />
 
     <TextView

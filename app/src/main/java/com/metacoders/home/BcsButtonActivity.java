@@ -33,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class BcsButtonActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayoutManager mLayoutManager; //for sorting
@@ -51,6 +52,8 @@ public CardView QusBank_button;
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
+    Home_Activity home ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,10 @@ public CardView QusBank_button;
 
         drawerLayout = findViewById(R.id.drawerId_bcs_Activity);
         navigationView=findViewById(R.id.NAVVIew_ID_bcs_activty);
+
+        home = new Home_Activity() ;
+
+
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout ,R.string.nav_open ,R.string.nav_close );
 
@@ -256,21 +263,35 @@ public CardView QusBank_button;
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view, final  int position) {
+
+
+
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_bcs_prep);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bcs_prep);
+                            //    TextView mTitleTv = view.findViewById(R.id.rTitleTv_bcs_prep);
+                            //    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bcs_prep);
+                                if(home.getAuthra())
+                                {
+                                    //get data from views
+                                    String mTitle = getItem(position).getTitle() ;
+                                    String mDesc = getItem(position).getDescription() ;
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+                                }
+                                else {
+
+                                    utilities  utilities  = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(BcsButtonActivity.this);
+                                }
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+
 
                             }
 
@@ -328,18 +349,28 @@ public CardView QusBank_button;
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_bcs_prep);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bcs_prep);
+                              //  TextView mTitleTv = view.findViewById(R.id.rTitleTv_bcs_prep);
+                            //    TextView mDescTv = view.findViewById(R.id.rDescriptionTv_bcs_prep);
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                if(home.getAuthra())
+                                {
+                                    //get data from views
+                                    String mTitle = getItem(position).getTitle() ;
+                                    String mDesc = getItem(position).getDescription() ;
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), bises_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), bises_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+                                }
+                                else {
+
+                                    utilities  utilities  = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(BcsButtonActivity.this);
+                                }
 
 
                             }

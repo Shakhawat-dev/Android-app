@@ -19,6 +19,8 @@ public class packageList extends AppCompatActivity {
 
     Button week , mon ;
 
+//TODO REDESIGN  THIS PAGE  SMS VAi
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

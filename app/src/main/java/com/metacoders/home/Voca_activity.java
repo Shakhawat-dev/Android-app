@@ -32,6 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 public class Voca_activity extends AppCompatActivity {
     LinearLayoutManager mLayoutManager; //for sorting
@@ -44,6 +45,7 @@ public class Voca_activity extends AppCompatActivity {
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
     AdView ad;
+    Home_Activity home ;
 
 
 
@@ -53,6 +55,7 @@ public class Voca_activity extends AppCompatActivity {
         setContentView(R.layout.activity_voca_activity);
 
         ad = findViewById(R.id.adView_voaca_activity);
+        home = new Home_Activity() ;
 
         AdRequest adRequest = new AdRequest.Builder().build();
         ad.loadAd(adRequest);
@@ -226,21 +229,31 @@ public class Voca_activity extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view,final int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
+                                if(home.getAuthra())
+                                {
+                                    String mTitle = getItem(position).getTitle();
+                                    String mDesc =getItem(position).getDescription();
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
+
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Voca_activity.this);
+
+                                }
+
+//                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
+//                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
 
                                 //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
 
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
 
                             }
 
@@ -297,20 +310,24 @@ public class Voca_activity extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view,final int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.rTitleTv_voc);
-                                TextView mDescTv = view.findViewById(R.id.rDescriptionTv_voc);
+                                if(home.getAuthra())
+                                {
+                                    String mTitle = getItem(position).getTitle();
+                                    String mDesc =getItem(position).getDescription();
+                                    //pass this data to new activity
+                                    Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
+                                    intent.putExtra("title", mTitle); // put title
+                                    intent.putExtra("description", mDesc); //put description
+                                    startActivity(intent); //start activity
 
-                                //get data from views
-                                String mTitle = mTitleTv.getText().toString();
-                                String mDesc = mDescTv.getText().toString();
+                                }
+                                else {
+                                    utilities utilities = new utilities() ;
+                                    utilities.TriggerAlertDialougeForPurchage(Voca_activity.this);
 
-                                //pass this data to new activity
-                                Intent intent = new Intent(view.getContext(), Voc_post_detail.class);
-                                intent.putExtra("title", mTitle); // put title
-                                intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                }
 
 
                             }

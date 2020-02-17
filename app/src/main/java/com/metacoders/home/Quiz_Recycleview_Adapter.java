@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.metacoders.home.utils.utilities;
+
 import java.util.ArrayList;
 
 public class Quiz_Recycleview_Adapter extends RecyclerView.Adapter {
@@ -53,25 +55,66 @@ public class Quiz_Recycleview_Adapter extends RecyclerView.Adapter {
         ( (Quiz_Recycleview_Adapter.ImageTypeViewHolder) holder).title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, Wp_Quiz_details.class);
-                intent.putExtra("itemPosition", position);
-                mContext.startActivity(intent);
+                Home_Activity home = new Home_Activity() ;
+                if(home.getAuthra())
+                {
+                    Intent intent = new Intent(mContext, Wp_Quiz_details.class);
+                    intent.putExtra("itemPosition", position);
+                    mContext.startActivity(intent);
+                }
+                else {
+
+                    utilities utilities = new utilities() ;
+                    utilities.TriggerAlertDialougeForPurchage(mContext);
+
+                }
+
+
+
+
             }
         });
         ( (Quiz_Recycleview_Adapter.ImageTypeViewHolder) holder).subtitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, Wp_Quiz_details.class);
-                intent.putExtra("itemPosition", position);
-                mContext.startActivity(intent);
+
+                Home_Activity home = new Home_Activity() ;
+                if(home.getAuthra())
+                {
+                    Intent intent = new Intent(mContext, Wp_Quiz_details.class);
+                    intent.putExtra("itemPosition", position);
+                    mContext.startActivity(intent);
+                }
+                else {
+
+                    utilities utilities = new utilities() ;
+                    utilities.TriggerAlertDialougeForPurchage(mContext);
+
+                }
+
+
             }
         });
         ( (Quiz_Recycleview_Adapter.ImageTypeViewHolder) holder).imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, Wp_Quiz_details.class);
-                intent.putExtra("itemPosition", position);
-                mContext.startActivity(intent);
+
+                Home_Activity home = new Home_Activity() ;
+                if(home.getAuthra())
+                {
+                    Intent intent = new Intent(mContext, Wp_Quiz_details.class);
+                    intent.putExtra("itemPosition", position);
+                    mContext.startActivity(intent);
+
+                }
+                else {
+
+                    utilities utilities = new utilities() ;
+                    utilities.TriggerAlertDialougeForPurchage(mContext);
+
+                }
+
+
             }
         });
 
