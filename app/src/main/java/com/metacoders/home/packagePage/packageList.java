@@ -39,9 +39,6 @@ public class packageList extends AppCompatActivity {
                 i.putExtra("VALUE", "20") ;
                 startActivity(i);
 
-
-
-
             }
         });
 
