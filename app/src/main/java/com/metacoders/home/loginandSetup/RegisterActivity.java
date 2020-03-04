@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
-        mref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid());
+
         mailIn = findViewById(R.id.mail_inputregister );
         passIn = (EditText)  findViewById(R.id.password_input_register);
         registerBtn = findViewById(R.id.register_btn);
@@ -126,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public  void giveHimCoin()
     {
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid());
         String   DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         modelForPayment modelForPayment  = new modelForPayment("3" , DATE,"5") ;
 

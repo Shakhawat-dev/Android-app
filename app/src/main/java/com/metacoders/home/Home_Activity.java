@@ -362,7 +362,7 @@ public static  Boolean isAuthorized  ;
                     mAuth.signOut();
                     Intent io = new Intent(getApplicationContext(), loginactivity.class);
                     startActivity(io);
-
+                    finish();
                 }
                 else {
 
