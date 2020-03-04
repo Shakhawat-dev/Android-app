@@ -441,15 +441,15 @@ public static  Boolean isAuthorized  ;
                 startActivity(i);
                 break;
             case R.id.contact_Button:
-                i = new Intent(this, ContactActivity.class);
-                startActivity(i);
+//                i = new Intent(this, ContactActivity.class);
+//                startActivity(i);
                 break;
             case R.id.settings_Button:
                 i = new Intent(this, Shop.class);
                 startActivity(i);
                 break;
             case R.id.about_Button:
-                i = new Intent(this, AboutActivity.class);
+                i = new Intent(this, ContactActivity.class);
                 startActivity(i);
                 break;
             case R.id.video_Button:
@@ -628,7 +628,10 @@ public static  Boolean isAuthorized  ;
                           @Override
                           public void onComplete(@NonNull Task<Void> task) {
 
+                              Toast.makeText(getApplicationContext() , "Your Subscription Ended !! " +isAuthorized + "  ", Toast.LENGTH_SHORT)
+                                      .show();
                               isAuthorized = false ;
+
                               dialog.dismiss();
                           }
                       }) ;
@@ -637,8 +640,8 @@ public static  Boolean isAuthorized  ;
 
                       isAuthorized = true ;
 
-
-                      Toast.makeText(getApplicationContext() , isAuthorized + "  " + checkLimit + " duration "+ limit  +" "+ model.getPurchaged_date() + " today "+ TODAY, Toast.LENGTH_LONG)
+//
+                      Toast.makeText(getApplicationContext() , "You are Authed : " +isAuthorized + "  " + checkLimit + " duration "+ limit  +" "+ model.getPurchaged_date() + " today "+ TODAY, Toast.LENGTH_SHORT)
                               .show();
 
                       dialog.dismiss();
@@ -648,9 +651,13 @@ public static  Boolean isAuthorized  ;
                 else if ( !dataSnapshot.exists()) {
 
                     isAuthorized = false ;
+                    Toast.makeText(getApplicationContext() , "You Have No  Subscription !! " +isAuthorized + "  ", Toast.LENGTH_SHORT)
+                            .show();
                     dialog.dismiss();
                 }
                 else {
+                    Toast.makeText(getApplicationContext() , "You Have No  Subscription !! " +isAuthorized + "  ", Toast.LENGTH_SHORT)
+                            .show();
                     isAuthorized = false ;
                     dialog.dismiss();
                 }

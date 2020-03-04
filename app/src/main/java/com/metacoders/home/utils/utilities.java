@@ -1,11 +1,15 @@
 package com.metacoders.home.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.metacoders.home.Home_Activity;
 import com.metacoders.home.R;
+import com.metacoders.home.loginandSetup.loginactivity;
+import com.metacoders.home.packagePage.packageList;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,18 +63,28 @@ public class utilities {
     {
         new PrettyDialog(context)
                 .setIcon(R.drawable.logo)
-                .setTitle("PrettyDialog Title")
-                .setMessage("PrettyDialog Message")
+                .setTitle("Subscription \n Now To" )
+                .setMessage("If You Want Access This Please Subscribe Our Packages. ")
                 .addButton(
-                        "OK",     // button text
+                        "SUBSCRIBE",     // button text
                         R.color.pdlg_color_white,  // button text color
                         R.color.pdlg_color_green,  // button background color
                         new PrettyDialogCallback() {  // button OnClick listener
                             @Override
                             public void onClick() {
-                                // Do what you gotta do
-                                Toast.makeText(context ,"Clicked", Toast.LENGTH_SHORT)
-                                        .show();
+
+                                if(FirebaseAuth.getInstance().getCurrentUser() != null)
+                                {
+
+                                    Intent  o = new Intent(context , packageList.class );
+                                    context.startActivity(o);
+
+                                }
+                                else {
+
+                                    Intent  o = new Intent(context , loginactivity.class );
+                                    context.startActivity(o);
+                                }
                             }
                         }
                 )

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.metacoders.home.Home_Activity;
 import com.metacoders.home.R;
 import com.metacoders.home.profileActivity;
 
@@ -36,7 +37,7 @@ public class pasymentSuccessfulPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent o = new Intent(getApplicationContext()  , profileActivity.class);
+                Intent o = new Intent(getApplicationContext()  , Home_Activity.class);
                 startActivity(o);
                 finish();
 

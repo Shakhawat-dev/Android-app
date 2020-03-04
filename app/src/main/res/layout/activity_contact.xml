@@ -44,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/aboutText"
                     android:textSize="18sp" />
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

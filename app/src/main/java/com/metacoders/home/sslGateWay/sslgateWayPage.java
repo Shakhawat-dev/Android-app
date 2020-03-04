@@ -91,8 +91,7 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
                 try {
                     float amount = Float.parseFloat(et.getText().toString());
                     if (amount > 0.0) {
-                        //doPay(amount);
-                        uploadItToTheServer(String.valueOf(amount)) ;
+                        doPay(amount);
                        // sentToTheTransPage(String.valueOf(amount));
                     } else {
                         Toast.makeText(sslgateWayPage.this, "Enter Amount!", Toast.LENGTH_SHORT).show();
