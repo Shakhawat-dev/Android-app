@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.metacoders.home.Home_Activity;
 import com.metacoders.home.R;
+import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
 public class loginactivity extends AppCompatActivity {
 
@@ -41,7 +42,8 @@ public class loginactivity extends AppCompatActivity {
 
     private final static  int RC_SIGN_IN =2 ;
     FirebaseAuth.AuthStateListener mAuthListener ;
-    SignInButton google_btn ;
+    //    SignInButton google_btn ;
+    GoogleSignInButton google_btn;
     GoogleApiClient mGoogleApiClient ;
 
     FirebaseUser mUser ;
@@ -73,7 +75,7 @@ public class loginactivity extends AppCompatActivity {
         RegisterBtn = findViewById(R.id.SignUPBTN);
         progressBar = findViewById(R.id.progressBarLoginPage);
         progressBar.setVisibility(View.INVISIBLE);
-        google_btn =  findViewById(R.id.imageView3);
+        google_btn = findViewById(R.id.google_btn);
 
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
