@@ -2,6 +2,7 @@ package com.metacoders.home;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
@@ -10,8 +11,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
+import android.widget.ProgressBar;
 
 import com.crashlytics.android.Crashlytics;
+import com.kazy.lx.LxWebView;
+import com.kazy.lx.WebViewStateListener;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
 
 import io.fabric.sdk.android.Fabric;
@@ -29,6 +35,37 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new Crashlytics());
         setContentView(R.layout.activity_contact);
+        final ProgressBar progressBar = findViewById(R.id.progress_bar);
+        LxWebView mwebview = findViewById(R.id.webview_view);
+
+
+            mwebview.loadUrl("https://careercoachbd.net/contactus/");
+            mwebview.addOnWebViewStateListener(new WebViewStateListener() {
+                @Override
+                public void onStartLoading(String s, Bitmap bitmap) {
+
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onError(int i, String s, String s1) {
+
+
+                }
+
+                @Override
+                public void onFinishLoaded(String s) {
+
+                    progressBar.setVisibility(View.GONE);
+                }
+
+
+                @Override
+                public void onProgressChanged(WebView webView, int i) {
+
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
 
 
 
@@ -58,7 +95,7 @@ public class ContactActivity extends AppCompatActivity {
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:

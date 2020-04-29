@@ -118,7 +118,7 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
 
         IntegrateSSLCommerz.getInstance(sslgateWayPage.this)
                 .addSSLCommerzInitialization(sslCommerzInitialization)
-                .buildApiCall(this);
+                .buildApiCall(sslgateWayPage.this);
     }
 
     @Override

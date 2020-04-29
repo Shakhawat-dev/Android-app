@@ -19,12 +19,28 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.metacoders.home.ArticleActivity;
+import com.metacoders.home.Bank_Prep;
 import com.metacoders.home.BcsButtonActivity;
 import com.metacoders.home.Bises;
 import com.metacoders.home.Current_Activity;
+import com.metacoders.home.Editorial;
+import com.metacoders.home.Feature_Activity;
+import com.metacoders.home.Govt_job_prep;
 import com.metacoders.home.PostsListActivity;
+import com.metacoders.home.QuizActivity;
+import com.metacoders.home.Qustion_Bank;
 import com.metacoders.home.R;
+import com.metacoders.home.Shikok_nivondon;
 import com.metacoders.home.Voca_activity;
+import com.metacoders.home.career_prep_Bangla;
+import com.metacoders.home.career_prep_Bangladesh;
+import com.metacoders.home.career_prep_Eng;
+import com.metacoders.home.career_prep_GK;
+import com.metacoders.home.career_prep_International;
+import com.metacoders.home.career_prep_Math;
+import com.metacoders.home.career_prep_Others;
+import com.metacoders.home.career_prep_ict;
 import com.metacoders.home.model.modelForNottifaction;
 
 public class NottificationPage extends AppCompatActivity {
@@ -155,10 +171,149 @@ public class NottificationPage extends AppCompatActivity {
                                 }
                                 else if(macativity.contains("Voca_activity")){
 
+
                                     i = new Intent(getApplicationContext()  , Voca_activity.class);
                                     startActivity(i);
 
                                 }
+                                else if (macativity.contains("ENGLISH"))
+                                {
+                                    i = new Intent(getApplicationContext()  , career_prep_Eng.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("BANGLA"))
+                                {
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("MATH"))
+                                {
+                                    i = new Intent(getApplicationContext()  , career_prep_Math.class);
+                                    startActivity(i);
+
+                                }
+                                else if (macativity.contains("ICT"))
+                                {
+
+                                    i = new Intent(getApplicationContext()  , career_prep_ict.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("BANGLADESH"))
+                                {
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangladesh.class);
+                                    startActivity(i);
+
+                                }else if (macativity.contains("INTERNATIONAL"))
+                                {
+                                    i = new Intent(getApplicationContext()  , career_prep_International.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("GENERAL_SCIENCE"))
+                                {
+                                    i = new Intent(getApplicationContext()  , career_prep_GK.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("OTHERS"))
+                                {
+                                    i = new Intent(getApplicationContext()  , career_prep_Others.class);
+                                    startActivity(i);
+
+                                }
+                                else if (macativity.contains("FEATURE"))
+                                {
+
+                                    i = new Intent(getApplicationContext()  , Feature_Activity.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("TEACHER_REG"))
+                                {
+
+                                    i = new Intent(getApplicationContext()  , Shikok_nivondon.class);
+                                    startActivity(i);
+
+                                }
+                                else if (macativity.contains("GOVT_JOB"))
+                                {
+                                    i = new Intent(getApplicationContext()  , Govt_job_prep.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("BANK"))
+                                {
+                                    i = new Intent(getApplicationContext()  , Bank_Prep.class);
+                                    startActivity(i);
+
+
+                                }
+                                else if (macativity.contains("EDOTIRIAL"))
+                                {
+
+                                    i = new Intent(getApplicationContext()  , Editorial.class);
+                                    startActivity(i);
+                                }
+                                else if (macativity.contains("QUSTION_BANK"))
+                                {
+                                    i = new Intent(getApplicationContext()  , Qustion_Bank.class);
+                                    startActivity(i);
+
+                                }
+                                else if (macativity.contains("QUIZ"))
+                                {
+                                    i = new Intent(getApplicationContext()  , QuizActivity.class);
+                                    startActivity(i);
+
+                                }
+                               else if (macativity.contains("NOTICE_BOARD"))
+                               {
+                                   i = new Intent(getApplicationContext()  , ArticleActivity.class);
+                                   startActivity(i);
+
+                               }
+//                                else if (macativity.contains(""))
+//                                {
+//
+//                                }
+//                                else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }else if (macativity.contains(""))
+//                                {
+//
+//                                }
+
+
                                 else {
 
                                 }

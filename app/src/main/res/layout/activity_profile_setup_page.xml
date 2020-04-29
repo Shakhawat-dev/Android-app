@@ -18,7 +18,7 @@
         android:backgroundTint="#fff"
         android:visibility="invisible"
         android:indeterminate="true"
-        android:indeterminateTint="@android:color/white"
+        android:indeterminateTint="@color/white"
         android:layout_height="wrap_content" />
 
     <TextView

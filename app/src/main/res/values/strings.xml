@@ -5,4 +5,7 @@
     <string name="nav_open">open</string>
     <string name="nav_close">Close</string>
     <string name="adUnitId">ca-app-pub-1385980455216480/1705152193</string>
+    <string name="dialogue_title">Please Subscribe to\n</string>
+    <string name="dialogue_dubtitle">বিস্তারিত দেখতে সাবস্ক্রাইব করুন</string>
+    <string name="watch_ad">Watch Ad</string>
 </resources>

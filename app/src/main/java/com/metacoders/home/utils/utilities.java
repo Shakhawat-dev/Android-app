@@ -5,9 +5,15 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.metacoders.home.Home_Activity;
 import com.metacoders.home.R;
+import com.metacoders.home.bises_post_detail;
 import com.metacoders.home.loginandSetup.loginactivity;
 import com.metacoders.home.packagePage.packageList;
 
@@ -63,8 +69,9 @@ public class utilities {
     {
         new PrettyDialog(context)
                 .setIcon(R.drawable.logo)
-                .setTitle("Subscription \n Now To" )
-                .setMessage("If You Want Access This Please Subscribe Our Packages. ")
+                .setTitle("Please Subscribe to\n" +
+                        "Read the Content" )
+                .setMessage("বিস্তারিত দেখতে সাবস্ক্রাইব করুন")
                 .addButton(
                         "SUBSCRIBE",     // button text
                         R.color.pdlg_color_white,  // button text color
@@ -90,6 +97,54 @@ public class utilities {
                 )
                 .show();
     }
+
+
+    public RewardedAd loadRewardAd(final Context context )
+    {
+        RewardedAd    rewardedAd = new RewardedAd(context,
+                "ca-app-pub-3940256099942544/5224354917"); //ca-app-pub-3940256099942544/5224354917
+        RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
+            @Override
+            public void onRewardedAdLoaded() {
+                // Ad successfully loaded.
+//                Toast.makeText(context , "The rewarded ad  loaded "
+//                        , Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onRewardedAdFailedToLoad(int errorCode) {
+                // Ad failed to load.
+
+//                Toast.makeText(context , "The rewarded ad failed to  load."
+//                        , Toast.LENGTH_SHORT).show();
+            }
+        };
+        rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+
+    return  rewardedAd  ;
+
+    }
+
+
+    public  void sendToDesiredActivity(Class test  , Context context , String mTitle  , String mDesc) {
+
+        Intent intent = new Intent(context, test);
+        intent.putExtra("title", mTitle); // put title
+        intent.putExtra("description", mDesc); //put description
+       context.startActivity(intent); //start activity
+
+    }
+
+    public  InterstitialAd  loadIntersitalAd( Context c )
+    {
+        MobileAds.initialize(c,
+                "ca-app-pub-3940256099942544/1033173712");
+        InterstitialAd  mInterstitialAd = new InterstitialAd(c);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        return  mInterstitialAd;
+    }
+
 
 
 }

@@ -4,6 +4,9 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBar;
@@ -12,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
 import com.metacoders.home.loginandSetup.loginactivity;
 import com.metacoders.home.model.modelForBookMark;
+import com.metacoders.home.utils.utilities;
 
 public class bises_post_detail extends AppCompatActivity {
     TextView mTitleTv, mDetailTv;
@@ -40,13 +45,21 @@ public class bises_post_detail extends AppCompatActivity {
     FirebaseAuth mauth ;
     String  uid ;
     Boolean ispressed = false ;
-
+    utilities utilities;
     String image = "null" , title , desc ;
-
+    int rewardd = 0 ;
+    RewardedAd rewardedAd;
+    InterstitialAd interstitialAd ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bises_post_detail);
+
+
+        utilities = new utilities() ;
+        Home_Activity home = new Home_Activity() ;
+
+
 
 
 
@@ -77,7 +90,7 @@ public class bises_post_detail extends AppCompatActivity {
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.bookmark_menu:
@@ -154,11 +167,13 @@ public class bises_post_detail extends AppCompatActivity {
 
 
 
-
         //add
         mAdView = findViewById(R.id.adView_Biases);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+
+
 
 
 
@@ -179,6 +194,13 @@ public class bises_post_detail extends AppCompatActivity {
         //set data to views
         mTitleTv.setText(title);
         mDetailTv.setText(desc);
+
+        mTitleTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }) ; 
     }
 
     @Override
@@ -284,4 +306,6 @@ public class bises_post_detail extends AppCompatActivity {
                 .show();
 
     }
+
+
 }

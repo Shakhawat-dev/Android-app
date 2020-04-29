@@ -52,8 +52,11 @@ public class Voc_post_detail extends AppCompatActivity {
         setContentView(R.layout.activity_voc_post_detail);
 
         mauth = FirebaseAuth.getInstance();
-            uid = mauth.getUid();
-        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
+
+
+
+
+
 
         //aDD
 
@@ -88,7 +91,7 @@ public class Voc_post_detail extends AppCompatActivity {
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:
@@ -266,6 +269,7 @@ public class Voc_post_detail extends AppCompatActivity {
 
 
     }
+
     public  void triggerWarningDialouge()
     {
         new AwesomeErrorDialog(Voc_post_detail.this)
@@ -292,4 +296,6 @@ public class Voc_post_detail extends AppCompatActivity {
                 .show();
 
     }
+
+
 }

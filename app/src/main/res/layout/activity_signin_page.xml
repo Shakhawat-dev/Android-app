@@ -15,7 +15,7 @@
         android:backgroundTint="#fff"
         android:indeterminate="true"
 
-        android:indeterminateTint="@android:color/white"
+        android:indeterminateTint="@color/colorPrimaryDark"
         android:progressTint="@color/white" />
 
     <ImageView

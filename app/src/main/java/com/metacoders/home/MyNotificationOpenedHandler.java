@@ -17,6 +17,7 @@ import org.json.JSONObject;
     public class MyNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
         // This fires when a notification is opened by tapping on it.
         private String activityToBeOpened;
+        //TODO ADD here (NOT SURE )
         @Override
         public void notificationOpened(OSNotificationOpenResult result) {
             OSNotificationAction.ActionType actionType = result.action.type;
@@ -34,12 +35,6 @@ import org.json.JSONObject;
                 Intent intent = new Intent(MyApplication.getContext(), PostsListActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
                 MyApplication.getContext().startActivity(intent);
-
-
-
-
-
-
             }
 
 

@@ -13,7 +13,6 @@ import android.os.Environment;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
@@ -126,7 +125,7 @@ String image , title , desc ;
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:

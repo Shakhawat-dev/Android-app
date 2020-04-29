@@ -9,44 +9,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <ScrollView
+
+        <ProgressBar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:indeterminateTint="@color/green"
+            android:indeterminate="true"/>
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/logo"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="জব সলিউশন"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="20sp" />
+        <com.kazy.lx.LxWebView
+            android:id="@+id/webview_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:dom_storage_enabled="true"
+            app:app_cache_enabled="true"
+            app:java_script_enabled="true"
+            app:built_in_zoom_controls="true"
+            app:display_zoom_controls="false"
+            app:load_with_overview_mode="true"
+            app:use_wide_view_port="true"/>
 
-                <TextView
-                    android:paddingTop="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingBottom="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/aboutText"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-        </ScrollView>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

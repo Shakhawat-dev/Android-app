@@ -4,6 +4,9 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,6 +21,7 @@ import android.widget.ProgressBar;
 
 import com.crashlytics.android.Crashlytics;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.utils.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,9 @@ public class QuizActivity extends AppCompatActivity {
     NavigationView navigationView ;
 
 
-
+    InterstitialAd interstitialAd ;
+    com.metacoders.home.utils.utilities utilities;
+    RewardedAd rewardedAd;
 
 
     @Override
@@ -56,7 +62,9 @@ public class QuizActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawerId_quiz);
         navigationView=findViewById(R.id.NAVVIew_ID_Quiz);
-
+        utilities = new utilities() ;
+        rewardedAd =  utilities.loadRewardAd(QuizActivity.this);
+        interstitialAd = utilities.loadIntersitalAd(QuizActivity.this);
         toggle = new ActionBarDrawerToggle(this,drawerLayout ,R.string.nav_open ,R.string.nav_close );
 
 
@@ -80,7 +88,7 @@ public class QuizActivity extends AppCompatActivity {
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.bookmark_menu:
@@ -219,5 +227,14 @@ public class QuizActivity extends AppCompatActivity {
     }
     public static List<Wp_post_quiz> getList(){
         return  mListPost_quiz ;
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+
+        rewardedAd =  utilities.loadRewardAd(QuizActivity.this);
+        interstitialAd = utilities.loadIntersitalAd(QuizActivity.this);
     }
 }

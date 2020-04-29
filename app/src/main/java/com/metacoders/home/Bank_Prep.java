@@ -8,7 +8,6 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 
 import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
-import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeSuccessDialog;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -24,15 +23,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.core.utilities.Utilities;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
 import com.metacoders.home.utils.utilities;
 
@@ -99,7 +95,7 @@ public class Bank_Prep extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:

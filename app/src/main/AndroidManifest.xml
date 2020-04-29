@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".packagePage.packageList"></activity>
+        <activity android:name=".packagePage.packageList" />
         <activity android:name=".NewProfileActivity" />
         <activity android:name=".ChoosePlanActivity" />
         <activity android:name=".RechargeNowActivity" />
@@ -56,7 +56,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".JobsActivity" />
-        <activity android:name=".NotificationActivity" />
+        <activity android:name=".CareerPrepActivity" />
         <activity android:name=".QuizActivity" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".SettingsActivity" />

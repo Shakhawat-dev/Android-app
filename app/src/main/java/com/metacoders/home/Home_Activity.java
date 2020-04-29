@@ -17,13 +17,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
-import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,7 +46,6 @@ import com.metacoders.home.NottifiactionModule.NottificationPage;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
 import com.metacoders.home.loginandSetup.loginactivity;
 import com.metacoders.home.model.modelForPayment;
-import com.metacoders.home.utils.utilities;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
 
@@ -82,6 +80,20 @@ public static  Boolean isAuthorized  ;
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
+
+
+        // check user  has  payment or not
+
+        if(isUserSignedIn())
+        {
+            checkUserHasPayment() ;
+        }
+
+        else {
+
+            isAuthorized = false ;
+        }
+
 
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
@@ -122,7 +134,7 @@ public static  Boolean isAuthorized  ;
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext(), NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext(), CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:
@@ -423,7 +435,7 @@ public static  Boolean isAuthorized  ;
                 startActivity(i);
                 break;
             case R.id.notification_Button:
-                i = new Intent(this, NotificationActivity.class);
+                i = new Intent(this, CareerPrepActivity.class);
                 startActivity(i);
                 break;
             case R.id.quiz_Button:
@@ -580,17 +592,6 @@ public static  Boolean isAuthorized  ;
     @Override
     protected void onStart() {
         super.onStart();
-        // check user  has  payment or not
-
-        if(isUserSignedIn())
-        {
-            checkUserHasPayment() ;
-        }
-
-        else {
-
-            isAuthorized = false ;
-        }
 
 
 
@@ -599,7 +600,7 @@ public static  Boolean isAuthorized  ;
 
     private void checkUserHasPayment() {
       final  ProgressDialog dialog = new ProgressDialog(Home_Activity.this );
-        dialog.setTitle("Checking For Payment");
+        dialog.setMessage("Checking For Payment");
         final DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Users")
                 .child(FirebaseAuth.getInstance().getUid()).child("transaction");
 

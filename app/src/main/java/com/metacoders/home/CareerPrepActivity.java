@@ -19,19 +19,18 @@ import com.google.android.gms.ads.AdView;
 
 import io.fabric.sdk.android.Fabric;
 
-public class NotificationActivity extends AppCompatActivity implements View.OnClickListener{
+public class CareerPrepActivity extends AppCompatActivity implements View.OnClickListener{
 
     private CardView bcsButton, bankButton, govtButton, teacherButton , banglaButton  , engbtn , ictButton, mathButton
            ,  BD_Button , GKButton ,Internation_btn , Others_btn ;
 
-    //private DrawerLayout mDrawerlayout;
-    //private ActionBarDrawerToggle mToggle;
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
     AdView mAdView , adviewBottom , adviewMiddle ;
 
 
+// all the career_Prep has been rerouted  on only one page CareerPrepBangla . except BCS button
 
 
     @Override
@@ -76,7 +75,7 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:
@@ -143,14 +142,6 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
         });
 
 
-        //For Drawer
-        /*
-        mDrawerlayout = (DrawerLayout) findViewById(R.id.notification_activity);
-        mToggle = new ActionBarDrawerToggle(this, mDrawerlayout, R.string.open, R.string.close);
-        mDrawerlayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); */
-
 
         //defining cardButtons
         GKButton=(CardView)findViewById(R.id.general_btn);
@@ -207,58 +198,73 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.govt_Button:
-                i = new Intent(this, Govt_job_prep.class);
+                i = new Intent(this, career_prep_Bangla.class);
+                // Govt_job  Govt_job_prep.class
+                i.putExtra("DB" , "Govt_job") ;
                 startActivity(i);
                 break;
 
             case R.id.bank_Button:
-                i = new Intent(this, Bank_Prep.class);
+                i = new Intent(this, career_prep_Bangla.class);
+                //  Bank_prep , Bank_Prep.class
+                i.putExtra("DB" , "Bank_prep") ;
                 startActivity(i);
                 break;
 
             case R.id.teacher_Button:
-             i=new Intent(this , Shikok_nivondon.class);
+             i=new Intent(this , career_prep_Bangla.class);
+                //  Bank_prep ,Shikok_nivondon.class
+                i.putExtra("DB" , "Shikok_nivondon") ;
              startActivity(i);
              break;
 
+             // all carreer prep By Subject Rerouted to only Career Prep Bangla
             case R.id.english_Button:
-                i=new Intent(this , career_prep_Eng.class);
+                i=new Intent(this , career_prep_Bangla.class);
+                i.putExtra("DB" , "career_prep_English") ;
                 startActivity(i);
                 break;
 
 
             case R.id.bangla_Button:
                 i=new Intent(this , career_prep_Bangla.class);
+                i.putExtra("DB" , "Career_Prep_Bangla") ;
                 startActivity(i);
                 break;
 
             case R.id.math_btn:
-                i = new Intent(this, career_prep_Math.class);
+                i = new Intent(this, career_prep_Bangla.class);
+                i.putExtra("DB" , "career_prep_MAth") ;
                 startActivity(i);
                 break;
 
             case R.id.ict_btn:
-                i = new Intent(this, career_prep_ict.class);
+                i = new Intent(this, career_prep_Bangla.class);
+                i.putExtra("DB" , "career_prep_Ict") ;
                 startActivity(i);
                 break;
 
             case R.id.bdtopic_Button:
-                i = new Intent(this, career_prep_Bangladesh.class);
+                i = new Intent(this, career_prep_Bangla.class);
+                i.putExtra("DB" , "career_prep_Bangladesh") ;
                 startActivity(i);
                 break;
             case R.id.international_btn:
-                i = new Intent(this, career_prep_International.class);
+                i = new Intent(this, career_prep_Bangla.class);
+                i.putExtra("DB" , "career_prep_Inter") ;
                 startActivity(i);
                 break;
 
             case R.id.general_btn:
-                i = new Intent(this, career_prep_GK.class);
+                i = new Intent(this, career_prep_Bangla.class);
+                i.putExtra("DB" , "career_prep_Gk") ;
                 startActivity(i);
                 break;
 
 
             case R.id.others_btn:
-                i = new Intent(this, career_prep_Others.class);
+                i = new Intent(this, career_prep_Bangla.class); // alll rerouted to career prep Bangla
+                i.putExtra("DB" , "career_prep_Others") ;
                 startActivity(i);
                 break;
 

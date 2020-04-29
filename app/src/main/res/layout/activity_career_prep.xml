@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
 
-    tools:context="com.metacoders.home.NotificationActivity">
+    tools:context="com.metacoders.home.CareerPrepActivity">
 
     <LinearLayout
         android:id="@+id/notification_activity"

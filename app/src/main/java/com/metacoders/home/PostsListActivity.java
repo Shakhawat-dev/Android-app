@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
+
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.MenuItemCompat;
@@ -24,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -90,7 +89,7 @@ public class PostsListActivity extends AppCompatActivity  {
                         startActivity(bcs);
                         break;
                     case R.id.job_prep_menu:
-                        Intent jobprep = new Intent(getApplicationContext() ,NotificationActivity.class);
+                        Intent jobprep = new Intent(getApplicationContext() , CareerPrepActivity.class);
                         startActivity(jobprep);
                         break;
                     case R.id.Bank_prep_menu:
@@ -170,8 +169,8 @@ public class PostsListActivity extends AppCompatActivity  {
 
 
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Wait For The  Loading To End" ,Toast.LENGTH_LONG);
-        toast.show();
+      //  Toast toast = Toast.makeText(getApplicationContext(), "Wait For The  Loading To End" ,Toast.LENGTH_LONG);
+       // toast.show();
 
 
         job_progressBar = (ProgressBar) findViewById(R.id.progressbar_job_ad) ;
@@ -230,6 +229,7 @@ public class PostsListActivity extends AppCompatActivity  {
                     protected void populateViewHolder(ViewHolder viewHolder, Model model, int position) {
 
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage());
+
                     }
 
                     @Override
@@ -330,18 +330,12 @@ public class PostsListActivity extends AppCompatActivity  {
                     protected void populateViewHolder(ViewHolder viewHolder, Model model, int position) {
 
 
+                        job_progressBar.setVisibility(View.GONE);
                         viewHolder.setDetails(getApplicationContext(), model.getTitle(), model.getDescription(), model.getImage());
 
 
-                       Handler handler  = new Handler() ;
-                        handler.postDelayed(new Runnable() {
-                           @Override
-                            public void run() {
 
-                               job_progressBar.setVisibility(View.GONE);
 
-                           }
-                       },3000);
 
                     }
 
