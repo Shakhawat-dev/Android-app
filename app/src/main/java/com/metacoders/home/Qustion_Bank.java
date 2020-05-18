@@ -67,6 +67,7 @@ AdView ad ;
     String mTitle , mDesc ;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

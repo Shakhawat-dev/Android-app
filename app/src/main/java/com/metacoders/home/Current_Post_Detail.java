@@ -1,12 +1,16 @@
 package com.metacoders.home;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,13 +35,14 @@ public class Current_Post_Detail extends AppCompatActivity {
     FirebaseAuth mauth ;
     String  uid ;
     Boolean ispressed = false ;
-
+    AlertDialog alertDialog ;
     String image = "null" , title , desc ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+
         setContentView(R.layout.activity_current__post__detail);
         mauth = FirebaseAuth.getInstance();
 
@@ -72,17 +77,31 @@ public class Current_Post_Detail extends AppCompatActivity {
         mTitleTv.setText(title);
         mDetailTv.setText(desc);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
         MenuItem item = menu.findItem(R.id.bookmark_btn);
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        MenuItem item1 = menu.findItem(R.id.font_btn) ;
+
+        item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
 
-                if (isUserSignedIn())
+                resizeTheFont() ;
+
+
+                return false;
+            }
+        }) ;
+
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                if ( isUserSignedIn())
                 {
                     if (ispressed){
                         Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
@@ -91,20 +110,51 @@ public class Current_Post_Detail extends AppCompatActivity {
                         uploadPostToServer();
 
                     }
+
                 }
+
+
                 else {
 
                     triggerWarningDialouge();
-
-
                 }
-
 
 
                 return false;
             }
         });
         return super.onCreateOptionsMenu(menu);
+
+    }
+    private void resizeTheFont() {
+
+
+        CharSequence[] textSize = {"Normal","Large","Extra Large"};
+        // Toast.makeText(getApplicationContext() , "CLOCKED" , Toast.LENGTH_SHORT).show();
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Current_Post_Detail.this,R.style.DialogTheme);
+        builder.setTitle("Select Text Size");
+        builder.setSingleChoiceItems(textSize, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                switch (item){
+                    case 0:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+                        break;
+                    case 1:
+                        //  dView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                        break;
+                    case 2:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,23);
+                        break;
+                }
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog=builder.create();
+        alertDialog.show();
 
     }
 
@@ -135,6 +185,8 @@ public class Current_Post_Detail extends AppCompatActivity {
 
 
     }
+
+
     public    boolean  isUserSignedIn()
     {
         FirebaseAuth mauth  = FirebaseAuth.getInstance();

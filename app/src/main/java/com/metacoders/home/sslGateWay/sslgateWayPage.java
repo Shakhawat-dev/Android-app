@@ -113,7 +113,7 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
 
 
         final SSLCommerzInitialization sslCommerzInitialization = new SSLCommerzInitialization("careercoachbdlive" , "5D301FC83F92990081"
-        , f , CurrencyType.BDT , "Trans ID : Test" + rand, "food", SdkType.LIVE) ;
+        , f , CurrencyType.BDT , "Trans ID : " + rand, "Package", SdkType.LIVE) ;
 
 
         IntegrateSSLCommerz.getInstance(sslgateWayPage.this)

@@ -19,18 +19,18 @@ repositories {
 
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.metacoders.home"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 29
         manifestPlaceholders = [
                 onesignal_app_id               : '27b8c41e-5187-4c4d-9373-8a888dc7100d',
                 // Project number pulled from dashboard, local value is ignored.
                 onesignal_google_project_number: 'REMOTE'
         ]
-        versionCode 5
-        versionName "1.4"
+        versionCode 6
+        versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -73,7 +73,7 @@ dependencies {
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+    implementation('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
         transitive = true
     }
 

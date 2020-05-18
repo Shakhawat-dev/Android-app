@@ -8,5 +8,11 @@
         android:title="Bookmark"
         android:icon="@drawable/bookmarkicon"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/font_btn"
+        android:title="Font Size"
+        android:icon="@drawable/ic_text_format"
+        app:showAsAction="always"/>
+
 
 </menu>

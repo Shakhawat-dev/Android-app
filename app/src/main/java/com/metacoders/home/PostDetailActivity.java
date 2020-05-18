@@ -1,7 +1,9 @@
 package com.metacoders.home;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -15,9 +17,12 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,7 +69,7 @@ public class PostDetailActivity extends AppCompatActivity {
     FirebaseAuth mauth ;
     String  uid ;
     Boolean ispressed = false ;
-
+    AlertDialog alertDialog;
 String image , title , desc ;
 
 
@@ -75,6 +80,7 @@ String image , title , desc ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this,new  Crashlytics());
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_post_detail);
 
         mauth = FirebaseAuth.getInstance();
@@ -357,6 +363,20 @@ String image , title , desc ;
 
         getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
         MenuItem item = menu.findItem(R.id.bookmark_btn);
+        MenuItem item1 = menu.findItem(R.id.font_btn) ;
+
+        item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+
+                resizeTheFont() ;
+
+
+                return false;
+            }
+        }) ;
+
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -387,6 +407,37 @@ String image , title , desc ;
 
     }
 
+    private void resizeTheFont() {
+
+        CharSequence[] textSize = {"Normal","Large","Extra Large"};
+       // Toast.makeText(getApplicationContext() , "CLOCKED" , Toast.LENGTH_SHORT).show();
+
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(PostDetailActivity.this,R.style.DialogTheme);
+            builder.setTitle("Select Text Size");
+            builder.setSingleChoiceItems(textSize, -1, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    switch (item){
+                        case 0:
+                              mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+                            break;
+                        case 1:
+                            //  dView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+                            mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                            break;
+                        case 2:
+                            mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,23);
+                            break;
+                    }
+                    alertDialog.dismiss();
+                }
+            });
+            alertDialog=builder.create();
+            alertDialog.show();
+
+    }
+
     private void uploadPostToServer() {
 
         mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
@@ -413,8 +464,7 @@ String image , title , desc ;
 
 
     }
-    public    boolean  isUserSignedIn()
-    {
+    public    boolean  isUserSignedIn() {
         FirebaseAuth mauth  = FirebaseAuth.getInstance();
         FirebaseUser user = mauth.getCurrentUser() ;
 
@@ -423,8 +473,7 @@ String image , title , desc ;
 
 
     }
-    public  void triggerWarningDialouge()
-    {
+    public  void triggerWarningDialouge() {
         new AwesomeErrorDialog(PostDetailActivity.this)
                 .setTitle("Error!!!")
                 .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")

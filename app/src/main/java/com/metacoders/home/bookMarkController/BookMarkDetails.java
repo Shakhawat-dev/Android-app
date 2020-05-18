@@ -1,5 +1,8 @@
 package com.metacoders.home.bookMarkController;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
@@ -7,6 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.R;
+import com.metacoders.home.bises_post_detail;
 import com.squareup.picasso.Picasso;
 
 public class BookMarkDetails extends AppCompatActivity {
@@ -40,7 +47,7 @@ public class BookMarkDetails extends AppCompatActivity {
     FirebaseAuth mauth ;
     String  uid ;
     Boolean ispressed = false ;
-
+    AlertDialog alertDialog ;
     String image , title , desc , postUID;
 
     @Override
@@ -76,8 +83,8 @@ public class BookMarkDetails extends AppCompatActivity {
         //get data from intent
         image = getIntent().getStringExtra("image");
         title = getIntent().getStringExtra("title");
-        desc = getIntent().getStringExtra("description");
-        postUID = getIntent().getStringExtra("POSTID");
+        desc = getIntent().getStringExtra("desc");
+        postUID = getIntent().getStringExtra("id");
 
         //set data to views
         mTitleTv.setText(title);
@@ -110,6 +117,63 @@ public class BookMarkDetails extends AppCompatActivity {
 
 
 
+
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
+        MenuItem item = menu.findItem(R.id.bookmark_btn);
+        item.setVisible(false);
+        MenuItem item1 = menu.findItem(R.id.font_btn) ;
+
+        item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+
+                resizeTheFont() ;
+
+
+                return false;
+            }
+        }) ;
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    private void resizeTheFont() {
+
+
+        CharSequence[] textSize = {"Normal","Large","Extra Large"};
+        // Toast.makeText(getApplicationContext() , "CLOCKED" , Toast.LENGTH_SHORT).show();
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(BookMarkDetails.this,R.style.DialogTheme);
+        builder.setTitle("Select Text Size");
+        builder.setSingleChoiceItems(textSize, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                switch (item){
+                    case 0:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+                        break;
+                    case 1:
+                        //  dView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                        break;
+                    case 2:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,23);
+                        break;
+                }
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog=builder.create();
+        alertDialog.show();
 
     }
 }

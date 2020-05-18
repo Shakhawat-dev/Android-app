@@ -1,21 +1,39 @@
 package com.metacoders.home;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.NonNull;
+
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
+import com.awesomedialog.blennersilva.awesomedialoglibrary.interfaces.Closure;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.metacoders.home.bookMarkController.bookmarkActivity;
+import com.metacoders.home.loginandSetup.loginactivity;
+import com.metacoders.home.model.modelForBookMark;
 
 public class postDetails_for_Career_prep_by_subject extends AppCompatActivity {
         TextView mTitleTv , mDetailTv ;
@@ -24,11 +42,18 @@ public class postDetails_for_Career_prep_by_subject extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
-
+    AlertDialog alertDialog ;
+    DatabaseReference mref ;
+    FirebaseAuth mauth ;
+    String  uid , title , desc ;
+    Boolean ispressed = false ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.activity_post_details_for__career_prep_by_subject);
+
+        mauth = FirebaseAuth.getInstance();
 
 
         //ad implement
@@ -154,8 +179,8 @@ public class postDetails_for_Career_prep_by_subject extends AppCompatActivity {
         mTitleTv = findViewById(R.id.titleTv_postDetails_car_prep);
         mDetailTv = findViewById(R.id.descriptionTv_postDetails_car_prep);
         //get data from intent
-        String title = getIntent().getStringExtra("title");
-        String desc = getIntent().getStringExtra("description");
+         title = getIntent().getStringExtra("title");
+         desc = getIntent().getStringExtra("description");
         //set data to views
         mTitleTv.setText(title);
         mDetailTv.setText(desc);
@@ -168,5 +193,146 @@ public class postDetails_for_Career_prep_by_subject extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
+        MenuItem item = menu.findItem(R.id.bookmark_btn);
+        MenuItem item1 = menu.findItem(R.id.font_btn) ;
+
+        item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+
+                resizeTheFont() ;
+
+
+                return false;
+            }
+        }) ;
+
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                if ( isUserSignedIn())
+                {
+                    if (ispressed){
+                        Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
+                    }
+                    else  {
+                        uploadPostToServer();
+
+                    }
+
+                }
+
+
+                else {
+
+                    triggerWarningDialouge();
+                }
+
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    private void resizeTheFont() {
+
+        CharSequence[] textSize = {"Normal","Large","Extra Large"};
+        // Toast.makeText(getApplicationContext() , "CLOCKED" , Toast.LENGTH_SHORT).show();
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(postDetails_for_Career_prep_by_subject.this,R.style.DialogTheme);
+        builder.setTitle("Select Text Size");
+        builder.setSingleChoiceItems(textSize, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                switch (item){
+                    case 0:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+                        break;
+                    case 1:
+                        //  dView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                        break;
+                    case 2:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,23);
+                        break;
+                }
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog=builder.create();
+        alertDialog.show();
+
+    }
+    private void uploadPostToServer() {
+
+        uid  =FirebaseAuth.getInstance().getUid() ;
+        mref = FirebaseDatabase.getInstance().getReference("Users").child(uid).child("bookmarks");
+        String ts = mref.push().getKey();
+
+        modelForBookMark model = new modelForBookMark(title , "nulld" , desc, ts);
+        mref.child(ts).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                ispressed= true ;
+
+
+                Toast.makeText(getApplicationContext() , "Added To The Bookmark ", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                ispressed= false;
+
+                Toast.makeText(getApplicationContext() , "Network Error!! Could Not Save The Data  ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+    public    boolean  isUserSignedIn() {
+        FirebaseAuth mauth  = FirebaseAuth.getInstance();
+        FirebaseUser user = mauth.getCurrentUser() ;
+
+        return user != null;
+
+
+
+    }
+    public  void triggerWarningDialouge() {
+        new AwesomeErrorDialog(postDetails_for_Career_prep_by_subject.this)
+                .setTitle("Error!!!")
+                .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")
+                .setColoredCircle(R.color.dialogErrorBackgroundColor)
+                .setDialogIconAndColor(R.drawable.ic_dialog_error, R.color.white)
+                .setCancelable(true)
+                .setButtonText(getString(R.string.dialog_ok_button))
+                .setButtonBackgroundColor(R.color.dialogErrorBackgroundColor)
+                .setButtonText("Proceed To Login")
+                .setErrorButtonClick(new Closure() {
+                    @Override
+                    public void exec() {
+                        // click
+
+                        Intent io = new Intent(getApplicationContext(), loginactivity.class);
+                        startActivity(io);
+
+
+
+                    }
+                })
+                .show();
+
+    }
+
 
 }

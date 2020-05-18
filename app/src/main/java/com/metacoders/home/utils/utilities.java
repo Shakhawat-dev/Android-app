@@ -102,7 +102,7 @@ public class utilities {
     public RewardedAd loadRewardAd(final Context context )
     {
         RewardedAd    rewardedAd = new RewardedAd(context,
-                "ca-app-pub-3940256099942544/5224354917"); //ca-app-pub-3940256099942544/5224354917
+                "ca-app-pub-1385980455216480/4831863278"); //ca-app-pub-3940256099942544/5224354917
         RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
             @Override
             public void onRewardedAdLoaded() {
@@ -138,9 +138,9 @@ public class utilities {
     public  InterstitialAd  loadIntersitalAd( Context c )
     {
         MobileAds.initialize(c,
-                "ca-app-pub-3940256099942544/1033173712");
+                "ca-app-pub-1385980455216480/4528610941");
         InterstitialAd  mInterstitialAd = new InterstitialAd(c);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-1385980455216480/4528610941");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         return  mInterstitialAd;
     }

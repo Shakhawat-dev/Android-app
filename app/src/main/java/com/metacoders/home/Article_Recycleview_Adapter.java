@@ -117,20 +117,22 @@ public static class  ImageTypeViewHolder extends  RecyclerView.ViewHolder{
                 rewardedAd =  utilities.loadRewardAd(mContext);
                 interstitialAd = utilities.loadIntersitalAd(mContext);
                 positions  = position ;
-                if(home.getAuthra())
-                {
+
+                //TODO CHAGE IT  TO SHOW AD
+              //  if(home.getAuthra())
+              //  {
                     // TextView mTitleTv = view.findViewById(R.id.rTitleTv_feature);
                     Intent intent = new Intent(mContext, WPPostDetails.class);
                     intent.putExtra("itemPosition", position);
                     mContext.startActivity(intent);
-                }
-                else {
+              //  }
+             //   else {
 
                     // utilities utilities = new utilities() ;
                     //  utilities.TriggerAlertDialougeForPurchage(Feature_Activity.this);
 
-                    showPaymentDialog() ;
-                }
+               //     showPaymentDialog() ;
+              //  }
 
             }
         });

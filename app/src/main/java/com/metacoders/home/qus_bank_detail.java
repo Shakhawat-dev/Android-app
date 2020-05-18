@@ -1,6 +1,8 @@
 package com.metacoders.home;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.NonNull;
@@ -10,8 +12,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +36,7 @@ import com.metacoders.home.model.modelForBookMark;
 
 public class qus_bank_detail extends AppCompatActivity {
     TextView mTitleTv, mDetailTv;
-
+    AlertDialog alertDialog  ;
     DrawerLayout drawerLayout ;
     ActionBarDrawerToggle toggle ;
     NavigationView navigationView ;
@@ -48,6 +52,8 @@ public class qus_bank_detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+
         setContentView(R.layout.activity_qus_bank_detail);
 
 
@@ -186,17 +192,31 @@ public class qus_bank_detail extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.bookmarkmenu, menu);
         MenuItem item = menu.findItem(R.id.bookmark_btn);
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        MenuItem item1 = menu.findItem(R.id.font_btn) ;
+
+        item1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
 
-                if(isUserSignedIn())
+                resizeTheFont() ;
+
+
+                return false;
+            }
+        }) ;
+
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                if ( isUserSignedIn())
                 {
                     if (ispressed){
                         Toast.makeText(getApplicationContext() , "You All Ready Added This", Toast.LENGTH_SHORT).show();
@@ -206,10 +226,13 @@ public class qus_bank_detail extends AppCompatActivity {
 
                     }
 
-
                 }
-                else  triggerWarningDialouge();
 
+
+                else {
+
+                    triggerWarningDialouge();
+                }
 
 
                 return false;
@@ -218,6 +241,38 @@ public class qus_bank_detail extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
 
     }
+    private void resizeTheFont() {
+
+
+        CharSequence[] textSize = {"Normal","Large","Extra Large"};
+        // Toast.makeText(getApplicationContext() , "CLOCKED" , Toast.LENGTH_SHORT).show();
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(qus_bank_detail.this,R.style.DialogTheme);
+        builder.setTitle("Select Text Size");
+        builder.setSingleChoiceItems(textSize, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                switch (item){
+                    case 0:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+                        break;
+                    case 1:
+                        //  dView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+                        break;
+                    case 2:
+                        mDetailTv.setTextSize(TypedValue.COMPLEX_UNIT_SP,23);
+                        break;
+                }
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog=builder.create();
+        alertDialog.show();
+
+    }
+
 
     private void uploadPostToServer() {
 
@@ -248,6 +303,9 @@ public class qus_bank_detail extends AppCompatActivity {
 
 
     }
+
+
+
 
     public    boolean  isUserSignedIn()
     {

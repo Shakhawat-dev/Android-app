@@ -70,6 +70,7 @@ public static  Boolean isAuthorized  ;
      String TODAY ;
 
 
+
   //  FirebaseAuth mAuth;
  //   FirebaseUser muser;
 
@@ -80,19 +81,6 @@ public static  Boolean isAuthorized  ;
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
-
-
-        // check user  has  payment or not
-
-        if(isUserSignedIn())
-        {
-            checkUserHasPayment() ;
-        }
-
-        else {
-
-            isAuthorized = false ;
-        }
 
 
         OneSignal.startInit(this)
@@ -224,6 +212,18 @@ public static  Boolean isAuthorized  ;
                 .init();
 */
         startService(new Intent(this, FireBase_notification.class));
+
+
+
+        if(isUserSignedIn())
+        {
+            checkUserHasPayment() ;
+        }
+
+        else {
+
+            isAuthorized = false ;
+        }
 
 
 //0ne time Dialogue Box
@@ -535,18 +535,6 @@ public static  Boolean isAuthorized  ;
             Intent intent = new Intent(getApplicationContext(), NottificationPage.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            /*
-           if(desc.equals("Voca_activity")){
-               Intent intent = new Intent(getApplicationContext(), Voca_activity.class);
-               intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
-               startActivity(intent);
-           }
-           else {
-               Intent intent = new Intent(getApplicationContext(), NottificationPage.class);
-               intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
-               startActivity(intent);
-           }
-*/
 
         }
 
@@ -562,8 +550,7 @@ public static  Boolean isAuthorized  ;
 
 
     }
-    public  void triggerWarningDialouge()
-    {
+    public  void triggerWarningDialouge() {
         new AwesomeErrorDialog(Home_Activity.this)
                 .setTitle("Error!!!")
                 .setMessage("You Are Not Allowed To Do This Action.Please Login first . ")
@@ -681,6 +668,21 @@ public static  Boolean isAuthorized  ;
 
 
         return daa ;
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                       finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
 
