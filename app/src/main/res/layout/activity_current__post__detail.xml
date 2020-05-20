@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     app:cardBackgroundColor="#fff"
     app:cardCornerRadius="3dp"
-    android:orientation="vertical"
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="5dp"
@@ -16,44 +15,45 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <com.google.android.gms.ads.AdView
-                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/adView_current"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-1385980455216480/1705152193"
-                    >
-                </com.google.android.gms.ads.AdView>
+                    ads:adUnitId="ca-app-pub-1385980455216480/1705152193"></com.google.android.gms.ads.AdView>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/detail_tile_current"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Title"
+                android:layout_marginLeft="2dp"
                 android:fontFamily="@font/lip"
+                android:text="Title"
                 android:textColor="#000"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="2dp"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_description_current"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lip"
+                android:justificationMode="inter_word"
+                android:textColor="@color/black"
                 android:text="This will be the description of the post"
-                android:textSize="18sp"
-                />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

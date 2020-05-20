@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerId_postDetail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerId_postDetail"
     tools:context=".PostDetailActivity">
-
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:cardBackgroundColor="#fff"
         app:cardCornerRadius="3dp"
-        android:orientation="vertical"
         app:cardElevation="3dp"
         app:cardUseCompatPadding="true"
         app:contentPadding="5dp">
@@ -24,23 +22,23 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <com.google.android.gms.ads.AdView
-                        xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+                    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/adView_BOOOKMARKDETAILS3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         ads:adSize="BANNER"
-                        ads:adUnitId="ca-app-pub-1385980455216480/1705152193"
-                        >
-                    </com.google.android.gms.ads.AdView>
+                        ads:adUnitId="ca-app-pub-1385980455216480/1705152193"></com.google.android.gms.ads.AdView>
                 </LinearLayout>
 
 
@@ -48,8 +46,8 @@
                     android:id="@+id/titleTvBOOOKMARKDETAILS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Title"
                     android:fontFamily="@font/lip"
+                    android:text="Title"
                     android:textColor="#000"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -65,52 +63,50 @@
                 <TextView
                     android:id="@+id/descriptionTvBOOOKMARKDETAILS"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/lip"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/lip"
+                    android:justificationMode="inter_word"
                     android:text="This will be the description of the post"
-                    android:textSize="20sp"
-                    />
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <com.google.android.gms.ads.AdView
-                        xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+                    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/adView_BOOOKMARKDETAILS2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         ads:adSize="BANNER"
-                        ads:adUnitId="ca-app-pub-1385980455216480/1705152193"
-                        >
-                    </com.google.android.gms.ads.AdView>
+                        ads:adUnitId="ca-app-pub-1385980455216480/1705152193"></com.google.android.gms.ads.AdView>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <Button
                         android:id="@+id/DelBtnBOOOKMARKDETAILS"
-                        android:layout_weight="1"
-                        android:text="Delete"
                         style="@style/Widget.AppCompat.Button.Colored"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Delete" />
 
                 </LinearLayout>
-                <com.google.android.gms.ads.AdView
-                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/adView_BOOOKMARKDETAILS1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-1385980455216480/1705152193"
-                    >
-                </com.google.android.gms.ads.AdView>
+                    ads:adUnitId="ca-app-pub-1385980455216480/1705152193"></com.google.android.gms.ads.AdView>
             </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>
-
 
 
     <com.google.android.material.navigation.NavigationView
@@ -120,9 +116,9 @@
         android:layout_gravity="start"
         android:clickable="true"
         android:fitsSystemWindows="true"
-        app:menu="@menu/nav_menu"
+        android:focusable="true"
         app:itemBackground="@drawable/menu_item_background"
-        android:focusable="true">
+        app:menu="@menu/nav_menu">
 
     </com.google.android.material.navigation.NavigationView>
 

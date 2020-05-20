@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.drawerlayout.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/drawerId_carrerer_prep_by_subject"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerId_carrerer_prep_by_subject"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true"
 
     >
@@ -13,66 +12,64 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:cardBackgroundColor="#fff"
         app:cardCornerRadius="3dp"
-        android:orientation="vertical"
         app:cardElevation="3dp"
         app:cardUseCompatPadding="true"
         app:contentPadding="5dp"
         tools:context=".postDetails_for_Career_prep_by_subject">
 
 
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <com.google.android.gms.ads.AdView
-                        xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+                    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/adView_post_details_for_carer_prep_bySbjest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         ads:adSize="BANNER"
-                        ads:adUnitId="@string/adUnitId"
-                        >
-                    </com.google.android.gms.ads.AdView>
+                        ads:adUnitId="@string/adUnitId"></com.google.android.gms.ads.AdView>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/titleTv_postDetails_car_prep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Title"
+                    android:layout_marginLeft="2dp"
                     android:fontFamily="@font/lip"
+                    android:text="Title"
                     android:textColor="#000"
                     android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="2dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/descriptionTv_postDetails_car_prep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lip"
+                    android:justificationMode="inter_word"
+                    android:textColor="@color/black"
                     android:text="This will be the description of the post"
-                    android:textSize="18sp"
-                    />
-                <com.google.android.gms.ads.AdView
-                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:textSize="18sp" />
+
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/adView_postdestail_postDeatils_BYSubject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     ads:adSize="BANNER"
-                    ads:adUnitId="@string/adUnitId"
-                    >
-                </com.google.android.gms.ads.AdView>
+                    ads:adUnitId="@string/adUnitId"></com.google.android.gms.ads.AdView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -94,11 +91,11 @@
         android:layout_gravity="start"
         android:clickable="true"
         android:fitsSystemWindows="true"
-        app:menu="@menu/nav_menu"
+        android:focusable="true"
         app:itemBackground="@drawable/menu_item_background"
-        android:focusable="true">
+        app:menu="@menu/nav_menu">
 
     </com.google.android.material.navigation.NavigationView>
 
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
