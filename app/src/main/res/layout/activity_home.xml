@@ -688,30 +688,10 @@
         android:clickable="true"
         android:fitsSystemWindows="true"
         app:menu="@menu/nav_menu"
-        app:itemBackground="@drawable/menu_item_background"
         android:focusable="true">
 
 
 
     </com.google.android.material.navigation.NavigationView>
-
-
-
-
-
-
-    <!--
-    <android.support.design.widget.NavigationView
-        app:headerLayout="@layout/header"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:itemTextColor="@color/colorPrimaryDark"
-        app:menu="@menu/drawer_menu"
-        android:layout_gravity="start"
-        android:background="#ffffff">
-
-
-    </android.support.design.widget.NavigationView>
-    -->
 
 </androidx.drawerlayout.widget.DrawerLayout>

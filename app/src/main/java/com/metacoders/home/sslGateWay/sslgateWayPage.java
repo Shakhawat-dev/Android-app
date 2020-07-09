@@ -36,7 +36,9 @@ import com.sslwireless.sslcommerzlibrary.viewmodel.listener.TransactionResponseL
 
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
@@ -238,18 +240,42 @@ public class sslgateWayPage extends AppCompatActivity implements TransactionResp
 
     }
 
-    private void sentToTheTransPage(String amount) {
-        Intent nextPage = new Intent(getApplicationContext() , pasymentSuccessfulPage.class);
-        nextPage.putExtra("coins", amount);
-        startActivity(nextPage);
-        finish();
+    private void sentToTheTransPage(final String amount) {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss a");
+        String formattedDate = df.format(c.getTime());
+        String uid  = FirebaseAuth.getInstance().getUid() ;
+
+        DatabaseReference transRef = FirebaseDatabase.getInstance().getReference("transRef").child(uid);
+
+        String key  = transRef.push().getKey();
+
+
+        HashMap map = new HashMap() ;
+        map.put("amount", amount) ;
+        map.put("time" ,formattedDate ) ;
+
+        transRef.child(key).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                Intent nextPage = new Intent(getApplicationContext() , pasymentSuccessfulPage.class);
+                nextPage.putExtra("coins", amount);
+                startActivity(nextPage);
+                finish();
+
+            }
+        }) ;
+
+
+
 
     }
 
     @Override
     public void transactionFail(String s) {
-        Log.e(TAG, "Transaction Fail");
-        tv.setText("Transaction Fail " + s );
+        Log.e(TAG, "Transaction Failed");
+        tv.setText("Transaction Failed " + s );
         et.setText(null);
     }
 

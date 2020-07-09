@@ -3,11 +3,14 @@ package com.metacoders.home;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
@@ -73,6 +76,70 @@ public class profileActivity extends AppCompatActivity {
 
 
 
+        findViewById(R.id.edit_Button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(isUserSignedIn()){
+
+                    // deploy  The Dialgue
+                    final Dialog DoneDailogue = new Dialog(profileActivity.this);
+                    DoneDailogue.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    DoneDailogue.setContentView(R.layout.dialog_profile_edit);
+                    DoneDailogue.setCancelable(false);
+                    final EditText nameEdit = DoneDailogue.findViewById(R.id.editText2) ;
+                    final EditText PhoneEdit = DoneDailogue.findViewById(R.id.editText4) ;
+                    Button confirmBtn = DoneDailogue.findViewById(R.id.button2) ;
+                    Button cancelBtn = (Button) DoneDailogue.findViewById(R.id.button3);
+
+                    nameEdit.setText(nameTv.getText());
+                    PhoneEdit.setText(phTv.getText());
+
+
+                    cancelBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            DoneDailogue.dismiss();
+                        }
+                    });
+
+
+                    confirmBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            // update the data
+                            if(isUserSignedIn())
+                            {
+                                String uid = FirebaseAuth.getInstance().getUid() ;
+
+                                DatabaseReference mref = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+
+                                mref.child("username").setValue(nameEdit.getText().toString().trim());
+                                mref.child("ph").setValue(PhoneEdit.getText().toString().trim()) ;
+
+                                DoneDailogue.dismiss();
+
+                            }
+
+                        }
+                    }) ;
+
+
+                    DoneDailogue.show();
+
+                }
+                else
+                {
+                    triggerWarningDialouge();
+
+                }
+
+
+
+            }
+        });
 
 
 
@@ -106,6 +173,9 @@ public class profileActivity extends AppCompatActivity {
                     nameTv.setText(model.getUsername());
                     nametv.setText(model.getUsername());
                     phTv.setText(model.getPh());
+
+
+
 
 
 

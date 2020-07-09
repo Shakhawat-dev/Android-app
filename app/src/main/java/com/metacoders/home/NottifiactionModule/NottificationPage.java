@@ -128,7 +128,7 @@ public class NottificationPage extends AppCompatActivity {
 
                         viewHolder.setOnClickListener(new viewholderForNottification.ClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemClick(View view,final int position) {
 
                                 //Views
                                 //   TextView mTitleTv = view.findViewById(R.id.rTitleTv);
@@ -184,38 +184,45 @@ public class NottificationPage extends AppCompatActivity {
                                 else if (macativity.contains("BANGLA"))
                                 {
                                     i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "Career_Prep_Bangla") ;
                                     startActivity(i);
                                 }
                                 else if (macativity.contains("MATH"))
                                 {
-                                    i = new Intent(getApplicationContext()  , career_prep_Math.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "career_prep_MAth") ;
                                     startActivity(i);
 
                                 }
                                 else if (macativity.contains("ICT"))
                                 {
 
-                                    i = new Intent(getApplicationContext()  , career_prep_ict.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "career_prep_Ict") ;
                                     startActivity(i);
                                 }
                                 else if (macativity.contains("BANGLADESH"))
                                 {
-                                    i = new Intent(getApplicationContext()  , career_prep_Bangladesh.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "career_prep_Bangladesh") ;
                                     startActivity(i);
 
                                 }else if (macativity.contains("INTERNATIONAL"))
                                 {
-                                    i = new Intent(getApplicationContext()  , career_prep_International.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "career_prep_Inter") ;
                                     startActivity(i);
                                 }
                                 else if (macativity.contains("GENERAL_SCIENCE"))
                                 {
-                                    i = new Intent(getApplicationContext()  , career_prep_GK.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "career_prep_Gk") ;
                                     startActivity(i);
                                 }
                                 else if (macativity.contains("OTHERS"))
                                 {
-                                    i = new Intent(getApplicationContext()  , career_prep_Others.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "career_prep_Others") ;
                                     startActivity(i);
 
                                 }
@@ -228,18 +235,21 @@ public class NottificationPage extends AppCompatActivity {
                                 else if (macativity.contains("TEACHER_REG"))
                                 {
 
-                                    i = new Intent(getApplicationContext()  , Shikok_nivondon.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "Shikok_nivondon") ;
                                     startActivity(i);
 
                                 }
                                 else if (macativity.contains("GOVT_JOB"))
                                 {
-                                    i = new Intent(getApplicationContext()  , Govt_job_prep.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "Govt_job") ;
                                     startActivity(i);
                                 }
                                 else if (macativity.contains("BANK"))
                                 {
-                                    i = new Intent(getApplicationContext()  , Bank_Prep.class);
+                                    i = new Intent(getApplicationContext()  , career_prep_Bangla.class);
+                                    i.putExtra("DB" , "Bank_prep") ;
                                     startActivity(i);
 
 
