@@ -277,7 +277,7 @@ String image , title , desc ;
         try {
             //get title and description and save in string s
             String s = mTitleTv.getText().toString() + "\n \n" + mDetailTv.getText().toString();
-       Intent     shareIntent = new Intent(Intent.ACTION_SEND);
+             Intent shareIntent = new Intent(Intent.ACTION_SEND);
                     shareIntent.setType("text/plain") ;
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT,"My App");
             shareIntent.putExtra(Intent.EXTRA_TEXT,s);
